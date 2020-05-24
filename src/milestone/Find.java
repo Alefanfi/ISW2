@@ -108,9 +108,7 @@ public class Find {
 	      for(i=0;i<tickets.size();i++) {
 	    	  System.out.println(tickets.get(i).getId());
 	    	 
-	      }
-	      
-	      //System.out.println(tickets.size());
+	      }	      
 	      
 	      return tickets;
 	   
