@@ -1,4 +1,4 @@
-languange : java
+languange: java
 jdk:
 - openjdk8
 
@@ -6,6 +6,6 @@ addons:
  sonarcloud: 
   organization: alefanfi
   token: 7d732a80b2c2289f07ef33c9d97ecd8d9a23cae4
-script : 
--ant build
--sonar-scanner
+script: 
+- ant build
+- sonar-scanner
