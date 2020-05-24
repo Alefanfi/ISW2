@@ -204,13 +204,6 @@ public static void sortCommits(ArrayList<Ticket> tickets, ArrayList<Commit> comm
 	   //Associating commits to tickets
 	   
 	   String message = null;
-	 /*  
-	  
-	  for(int i=0;i<tickets.size();i++) {
-    	  System.out.println(tickets.get(i).getId());
-    	  System.out.println("----------------------------------------");
-      }*/
-	   //System.out.println(commits.size());
 	   
 	   for(int i=0;i<commits.size();i++) {
 		   
