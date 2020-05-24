@@ -3,17 +3,13 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ISW2">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ISW22">
     <property environment="env"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="9"/>
     <property name="source" value="9"/>
-    <path id="ISW2.classpath">
+    <path id="ISW22.classpath">
         <pathelement location="bin"/>
-        <pathelement location="json-20190722.jar"/>
-    </path>
-    <path id="run.Main (7).classpath">
-        <path refid="ISW2.classpath"/>
         <pathelement location="json-20190722.jar"/>
     </path>
     <target name="init">
@@ -35,7 +31,7 @@
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
-            <classpath refid="ISW2.classpath"/>
+            <classpath refid="ISW22.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
@@ -51,10 +47,5 @@
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
-    </target>
-    <target name="Main (7)">
-        <java classname="milestone.Main" failonerror="true" fork="yes">
-            <classpath refid="run.Main (7).classpath"/>
-        </java>
     </target>
 </project>
