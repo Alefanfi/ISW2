@@ -205,11 +205,6 @@ public static void sortCommits(ArrayList<Ticket> tickets, ArrayList<Commit> comm
 	   
 	   String message = null;
 	 /*  
-	  for(int i=0;i<commits.size();i++) {
-	 	  System.out.println(commits.get(i).getMessage());
-	 	  System.out.println(commits.get(i).getDate());
-	 	  System.out.println("----------------------------------------");
-   }
 	  
 	  for(int i=0;i<tickets.size();i++) {
     	  System.out.println(tickets.get(i).getId());
