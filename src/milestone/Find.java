@@ -190,16 +190,9 @@ public class Find {
 		            
 		   }
 
-		  /* for(i=0;i<commits.size();i++) {
-		    	  System.out.println(commits.get(i).getMessage());
-		    	  System.out.println(commits.get(i).getDate());
-		    	  System.out.println("----------------------------------------");
-		      }*/
 		   page++;	//Going to the next page
 		   		 
 	   } 
-	  
-	  //System.out.println(commits.size());
 
 	   return commits;
 	   
