@@ -16,7 +16,7 @@ public class Commit {
 		
 		this.message = message;
 		
-		this.date = (Date) formatter.parse(date);
+		this.date = formatter.parse(date);
 			
 	}
 	public String getMessage() {
@@ -30,7 +30,7 @@ public class Commit {
 	}
 	public void setDate(String date) throws ParseException {
 		
-		this.date = (Date) formatter.parse(date);
+		this.date = formatter.parse(date);
 		
 		
 	}
