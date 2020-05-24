@@ -1,4 +1,4 @@
-package milestone1Dev1;
+package milestone;
 
 public interface ReadPropertyFile {
 	

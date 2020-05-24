@@ -1,4 +1,4 @@
-package milestone1Dev1;
+package milestone;
 
 import java.io.File;
 //import java.io.FileOutputStream;

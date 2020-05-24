@@ -1,4 +1,4 @@
-package milestone1Dev1;
+package milestone;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

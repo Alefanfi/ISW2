@@ -53,7 +53,7 @@
         <antcall target="build"/>
     </target>
     <target name="Main (7)">
-        <java classname="milestone1Dev1.Main" failonerror="true" fork="yes">
+        <java classname="milestone.Main" failonerror="true" fork="yes">
             <classpath refid="run.Main (7).classpath"/>
         </java>
     </target>
