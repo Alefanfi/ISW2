@@ -24,10 +24,6 @@ public class Main {
 		//Generate the output.csv file 
 		
 		PrintStream printer = new PrintStream(new File("output.csv"));
-		
-		//FileOutputStream printer = new FileOutputStream("output.csv", true);
-		
-		//PrintWriter pw = new PrintWriter(printer);
 		  
 	       printer.println("Ticket,Year,Month");
 

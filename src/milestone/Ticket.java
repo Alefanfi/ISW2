@@ -58,8 +58,7 @@ public class Ticket {
 				
 			}
 		}
-		
-		//System.out.println(oldestDate);
+
 		return resolutionDate;
 		
 	}
