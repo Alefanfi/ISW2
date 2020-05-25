@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Find {
+public final class Find {
 	
 	//List of tickets from the project
 	public static ArrayList<Ticket> tickets;	
@@ -215,6 +215,7 @@ public static void sortCommits(ArrayList<Ticket> tickets, ArrayList<Commit> comm
 			   if(message.contains(tickets.get(j).getId()+":")) {	
 				   
 				   tickets.get(j).addCommit(commits.get(i));
+				   System.out.println(message);
 				   break;
 			   }
 			   

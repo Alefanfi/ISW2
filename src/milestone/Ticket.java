@@ -43,7 +43,7 @@ public class Ticket {
 	}
 
 	public Date findDate() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub for find commit that has te latest date
 		
 		if(resolutionDate == null) {
 
