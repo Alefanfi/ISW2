@@ -2,6 +2,7 @@ package milestone;
 
 import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.InputStream;
 
@@ -9,7 +10,7 @@ public class PropertiesUtils {
 	
 	public static String getProperty(String properties) throws IOException {
 		
-		final Logger LOGGER= Logger.getLogger(Main.class.getName());
+		final Logger LOGGER= Logger.getLogger(PropertiesUtils.class.getName());
 		 
 		//LOGGER.info("[INFO] - getProperty method called.");
 		Properties prop;
@@ -28,7 +29,7 @@ public class PropertiesUtils {
 		
 		}catch(IOException ioException) {
 			
-			LOGGER.info("[ERROR] - getProperty method failed: " + ioException);
+			LOGGER.log(Level.SEVERE,"[ERROR] - getProperty method failed: " + ioException);
 			throw new IOException(ioException);
 		}
 		

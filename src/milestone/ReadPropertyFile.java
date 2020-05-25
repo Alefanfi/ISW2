@@ -1,7 +1,7 @@
 package milestone;
 
-public interface ReadPropertyFile {
+public class ReadPropertyFile {
 	
-	String TOKEN = "GITHUB_TOKEN";
+	 public static final String TOKEN = "GITHUB_TOKEN";
 
 }

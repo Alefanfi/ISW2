@@ -12,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.json.JSONArray;
@@ -34,7 +35,7 @@ public final class Find {
 	//AccessCredential
 	private static String token;
 	
-	private static final Logger LOGGER= Logger.getLogger(Find.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(Find.class.getName());
 	
 	
    private static String readAll(Reader rd) throws IOException {
@@ -50,28 +51,24 @@ public final class Find {
   public static JSONObject JsonFromUrl(String url) throws IOException, JSONException {
 	      
 	   java.io.InputStream is = new URL(url).openStream();
-	      try {
-	         BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+	      try (BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")))) {
 	         String jsonText = readAll(rd);
 	         JSONObject json = new JSONObject(jsonText);
 	         return json;
-	       } finally {
-	         is.close();
-	       }
+	       } 
 	}
    
    public static JSONObject readJsonFromUrl(String url, String accept) throws IOException, JSONException {
+	   
 	   URL url2 = new URL(url);
 	   HttpURLConnection urlConnection = (HttpURLConnection)  url2.openConnection();
 	   urlConnection.setRequestProperty("Accept", accept);
-      try {
-         BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), Charset.forName("UTF-8")));
+      
+	   try (BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), Charset.forName("UTF-8")))) {
          String jsonText = readAll(rd);
          JSONObject json = new JSONObject(jsonText);
          return json;
-       } finally {
-         urlConnection.disconnect();
-       }
+       } 
    }
    
    
@@ -149,7 +146,7 @@ public final class Find {
 	   JSONArray comm = null;
 	   token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
 
-	   //System.out.println(token);
+	   //LOGGER.info(token);
 	   
 	  while(true) {
 		   
@@ -160,16 +157,19 @@ public final class Find {
 		  try{
 			  
 	    	   comm = readJsonArrayFromUrl(url, token);
-	       }catch(Exception e) {
-	    	   System.out.println(e);
-	    	   break;
-	       }
 	       
-		  
+		  }catch(Exception e) {
+			  
+	    	   LOGGER.log(Level.SEVERE, "[ERROR]" + e);
+	    	  
+	    	   break;
+	       
+		  }
+	       
 	       int total = comm.length();
 	       int i;
 	       
-	       //System.out.println(total);
+	       //LOGGER.info(total);
 	       
 	       if(total == 0) {
 	    	   break;
@@ -179,7 +179,7 @@ public final class Find {
 		        	
 			   JSONObject commit = comm.getJSONObject(i).getJSONObject("commit");
 			   
-			   //System.out.println(commit);
+			   //LOGGER.info(commit);
 			   
 			   String message = commit.get("message").toString();
 			   String date = commit.getJSONObject("committer").get("date").toString();
@@ -212,7 +212,7 @@ public static void sortCommits(List<Ticket> tickets2, List<Commit> commits2) thr
 	   for(int i=0;i<commits2.size();i++) {
 		   
 		   message = commits2.get(i).getMessage();
-		   //System.out.println(message);
+		   //LOGGER.info(message);
 		   
 		   for(int j=0;j<tickets2.size();j++) {
 			   
