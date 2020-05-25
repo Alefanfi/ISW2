@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.logging.Logger;
@@ -27,11 +28,11 @@ public class Main {
 		
 		PrintStream printer = new PrintStream(new File("output.csv"));
 		  
-	       printer.println("Ticket,Year,Month");
+	       printer.println("Ticket,Date");
 
 	       String tkt = null;
 	       Date d = null;
-	       LocalDate ld = null;
+	       LocalDateTime ld = null;
 	       
 	       for(int i=0;i<Find.tickets.size();i++) {
 	    	   
@@ -43,8 +44,8 @@ public class Main {
 	    		   continue;
 	    	   }
 	    	   
-	    	   ld = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-	    	   printer.println(tkt+","+ld.getYear()+","+ld.getMonthValue());
+	    	   ld = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+	    	   printer.println(tkt + "," + ld.getYear()+ "/" + ld.getMonth());
 	       }
 	       
 	       printer.flush();

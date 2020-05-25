@@ -81,10 +81,12 @@ public final class Find {
 	   
 	      do {
 	         //Only gets a max of 1000 at a time, so must do this multiple times if >1000
-	         j = i + 1000;
+	        
+	    	  j = i + 1000;
 	         
 	         //Url for found all Tickets related to task, bug and new features
-	       String url = "https://issues.apache.org/jira/rest/api/2/search?jql=project=%22"
+	       
+	         String url = "https://issues.apache.org/jira/rest/api/2/search?jql=project=%22"
 		             + project + "%22AND(%22status%22=%22closed%22OR"
 		             + "%22status%22=%22resolved%22)&fields=key,resolutiondate,versions,created&startAt="
 		             + i.toString() + "&maxResults=" + j.toString();
@@ -107,11 +109,11 @@ public final class Find {
 	         }
 	         
 	      } while (i < total);
-	      
+	      /*
 	      for(i=0;i<tickets.size();i++) {
 	    	  LOGGER.info(tickets.get(i).getId());
 	    	 
-	      }	      
+	      }	*/      
 	      
 	      return tickets;
 	   

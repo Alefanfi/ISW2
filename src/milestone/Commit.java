@@ -10,7 +10,7 @@ public class Commit {
 	
 	private Date date;
 	
-	private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+	private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
 	
 	public Commit(String message, String date) throws ParseException{
 		
@@ -30,7 +30,8 @@ public class Commit {
 	}
 	public void setDate(String date) throws ParseException {
 		
-		this.date = formatter.parse(date);	
+		this.date = formatter.parse(date);
+		
 		
 	}
 
