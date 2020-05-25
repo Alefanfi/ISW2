@@ -30,8 +30,7 @@ public class Commit {
 	}
 	public void setDate(String date) throws ParseException {
 		
-		this.date = formatter.parse(date);
-		
+		this.date = formatter.parse(date);	
 		
 	}
 

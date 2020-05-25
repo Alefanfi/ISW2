@@ -27,10 +27,8 @@ public class Ticket {
 	}
 
 	public void addCommit(Commit commit) {
-		// TODO Auto-generated method stub
 		
 		commitsTicket.add(commit);
-		//System.out.println(commitsTicket);
 		
 	}
 	
@@ -43,7 +41,6 @@ public class Ticket {
 	}
 
 	public Date findDate() {
-		// TODO Auto-generated method stub for find commit that has te latest date
 		
 		if(resolutionDate == null) {
 

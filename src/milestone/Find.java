@@ -109,7 +109,7 @@ public final class Find {
 	      } while (i < total);
 	      
 	      for(i=0;i<tickets.size();i++) {
-	    	  System.out.println(tickets.get(i).getId());
+	    	  LOGGER.info(tickets.get(i).getId());
 	    	 
 	      }	      
 	      
@@ -145,8 +145,6 @@ public final class Find {
 	   Integer page=0;
 	   JSONArray comm = null;
 	   token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
-
-	   //LOGGER.info(token);
 	   
 	  while(true) {
 		   
@@ -160,7 +158,7 @@ public final class Find {
 	       
 		  }catch(Exception e) {
 			  
-	    	   LOGGER.log(Level.SEVERE, "[ERROR]" + e);
+	    	   LOGGER.log(Level.SEVERE, "[ERROR]", e);
 	    	  
 	    	   break;
 	       
@@ -168,8 +166,6 @@ public final class Find {
 	       
 	       int total = comm.length();
 	       int i;
-	       
-	       //LOGGER.info(total);
 	       
 	       if(total == 0) {
 	    	   break;
@@ -221,15 +217,13 @@ public static void sortCommits(List<Ticket> tickets2, List<Commit> commits2) thr
 			   if(message.contains(tickets2.get(j).getId()+":")) {	
 				   
 				   tickets2.get(j).addCommit(commits2.get(i));
-				   LOGGER.info(message);
+				   //LOGGER.info(message);
 				   break;
 			   }
 			   
 		   }
 		     
 	   }
-	      
-	   return;
 	
 	}
 
