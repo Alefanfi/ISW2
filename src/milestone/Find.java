@@ -11,9 +11,13 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+
 
 public final class Find {
 	
@@ -31,6 +35,7 @@ public final class Find {
 	//AccessCredential
 	private static String token;
 	
+	private static final Logger LOGGER= Logger.getLogger(Find.class.getName());
 	
 	
    private static String readAll(Reader rd) throws IOException {
@@ -217,7 +222,7 @@ public static void sortCommits(ArrayList<Ticket> tickets, ArrayList<Commit> comm
 			   if(message.contains(tickets.get(j).getId()+":")) {	
 				   
 				   tickets.get(j).addCommit(commits.get(i));
-				   System.out.println(message);
+				   LOGGER.info(message);
 				   break;
 			   }
 			   
