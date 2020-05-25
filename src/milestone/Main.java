@@ -1,13 +1,13 @@
 package milestone;
 
 import java.io.File;
-//import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import org.json.JSONException;
 
@@ -20,6 +20,8 @@ public class Main {
 		Find.getAllCommits();
 		
 		Find.sortCommits(Find.tickets, Find.commits);
+		
+		final Logger LOGGER= Logger.getLogger(Main.class.getName());
 		
 		//Generate the output.csv file 
 		
@@ -48,9 +50,7 @@ public class Main {
 	       printer.flush();
 	       printer.close();
 	       
-	       System.out.println("----------------------------------------");
-	       System.out.println("File output.csv has been created");
-	       System.out.println("----------------------------------------");
+	       LOGGER.info("File output.csv has been created");       
 	
 	}
 

@@ -11,23 +11,22 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
-
 public final class Find {
 	
 	private Find() {}
 	
 	//List of tickets from the project
-	public static ArrayList<Ticket> tickets;	
+	public static List<Ticket> tickets;	
 	
 	//List of all the commits of the project
-	public static ArrayList<Commit> commits;	
+	public static List<Commit> commits;	
 	
 	//Name of the project to analyze
 	private static String project ="FALCON";
@@ -76,7 +75,7 @@ public final class Find {
    }
    
    
-   public static  ArrayList<Ticket> getTickets() throws JSONException, IOException{
+   public static List<Ticket> getTickets() throws JSONException, IOException{
 	 
 	   //Searchs for all the tickets of type 'Tickets' which have been resolved/closed
 	   
@@ -140,7 +139,7 @@ public final class Find {
 
    }
 
-   public static  ArrayList<Commit> getAllCommits() throws JSONException, IOException, InterruptedException, ParseException{
+   public static List<Commit> getAllCommits() throws JSONException, IOException, InterruptedException, ParseException{
 	   
 	   //Searchs for all the commits for the specified commit id
 	   
@@ -205,23 +204,23 @@ public final class Find {
 
 
 
-public static void sortCommits(ArrayList<Ticket> tickets, ArrayList<Commit> commits) throws FileNotFoundException {
+public static void sortCommits(List<Ticket> tickets2, List<Commit> commits2) throws FileNotFoundException {
 	   //Associating commits to tickets
 	   
 	   String message = null;
 	   
-	   for(int i=0;i<commits.size();i++) {
+	   for(int i=0;i<commits2.size();i++) {
 		   
-		   message = commits.get(i).getMessage();
+		   message = commits2.get(i).getMessage();
 		   //System.out.println(message);
 		   
-		   for(int j=0;j<tickets.size();j++) {
+		   for(int j=0;j<tickets2.size();j++) {
 			   
 			 //If a ticket is found in the message that commit is added to the list
 			   
-			   if(message.contains(tickets.get(j).getId()+":")) {	
+			   if(message.contains(tickets2.get(j).getId()+":")) {	
 				   
-				   tickets.get(j).addCommit(commits.get(i));
+				   tickets2.get(j).addCommit(commits2.get(i));
 				   LOGGER.info(message);
 				   break;
 			   }

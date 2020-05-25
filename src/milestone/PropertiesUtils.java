@@ -2,14 +2,16 @@ package milestone;
 
 import java.io.IOException;
 import java.util.Properties;
-
+import java.util.logging.Logger;
 import java.io.InputStream;
 
 public class PropertiesUtils {
 	
 	public static String getProperty(String properties) throws IOException {
+		
+		final Logger LOGGER= Logger.getLogger(Main.class.getName());
 		 
-		//System.out.println("[INFO] - getProperty method called.");
+		//LOGGER.info("[INFO] - getProperty method called.");
 		Properties prop;
 		
 		try {
@@ -18,7 +20,7 @@ public class PropertiesUtils {
 			InputStream fis = PropertiesUtils.class.getClassLoader().getResourceAsStream("conf.properties");
 			prop.load(fis);
 			
-			//System.out.println("[INFO] - property " + prop.getProperty(properties) + " successfully loaded.");
+			//LOGGER.info("[INFO] - property " + prop.getProperty(properties) + " successfully loaded.");
 			
 			fis.close();
 			return prop.getProperty(properties);
@@ -26,7 +28,7 @@ public class PropertiesUtils {
 		
 		}catch(IOException ioException) {
 			
-			System.out.println("[ERROR] - getProperty method failed: " + ioException);
+			LOGGER.info("[ERROR] - getProperty method failed: " + ioException);
 			throw new IOException(ioException);
 		}
 		
