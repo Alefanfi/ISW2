@@ -17,6 +17,8 @@ import org.json.JSONObject;
 
 public final class Find {
 	
+	private Find() {}
+	
 	//List of tickets from the project
 	public static ArrayList<Ticket> tickets;	
 	
@@ -228,4 +230,5 @@ public static void sortCommits(ArrayList<Ticket> tickets, ArrayList<Commit> comm
 	}
 
 }
+
 
