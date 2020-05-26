@@ -30,7 +30,8 @@ public final class Find {
 	public static List<Commit> commits;	
 	
 	//Name of the project to analyze
-	private static String project ="FALCON";
+	//private static String project ="FALCON";
+	private static String project;
 	
 	//AccessCredential
 	private static String token;
@@ -78,6 +79,7 @@ public final class Find {
 	   
 	   tickets = new ArrayList<Ticket>();
 	   Integer j = 0, i = 0, total = 1;
+	   project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 	   
 	      do {
 	         //Only gets a max of 1000 at a time, so must do this multiple times if >1000
