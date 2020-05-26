@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.Properties;
 import java.io.InputStream;
 
-public class PropertiesUtils {
+public final class PropertiesUtils {
+	
+	private PropertiesUtils() {}
 	
 	public static String getProperty(String properties) throws IOException {
 		

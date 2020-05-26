@@ -29,13 +29,6 @@ public final class Find {
 	//List of all the commits of the project
 	public static List<Commit> commits;	
 	
-	//Name of the project to analyze
-	//private static String project ="FALCON";
-	private static String project;
-	
-	//AccessCredential
-	private static String token;
-	
 	private static final Logger LOGGER = Logger.getLogger(Find.class.getName());
 	
 	
@@ -77,9 +70,11 @@ public final class Find {
 	 
 	   //Searchs for all the tickets of type 'Tickets' which have been resolved/closed
 	   
+	   
+	   
 	   tickets = new ArrayList<Ticket>();
 	   Integer j = 0, i = 0, total = 1;
-	   project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
+	   String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 	   
 	      do {
 	         //Only gets a max of 1000 at a time, so must do this multiple times if >1000
@@ -111,11 +106,11 @@ public final class Find {
 	         }
 	         
 	      } while (i < total);
-	      /*
+	      
 	      for(i=0;i<tickets.size();i++) {
 	    	  LOGGER.info(tickets.get(i).getId());
 	    	 
-	      }	*/      
+	      }	
 	      
 	      return tickets;
 	   
@@ -148,7 +143,7 @@ public final class Find {
 	   
 	   Integer page=0;
 	   JSONArray comm = null;
-	   token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
+	   String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
 	   
 	  while(true) {
 		   
@@ -205,14 +200,14 @@ public final class Find {
 
 
 public static void sortCommits(List<Ticket> tickets2, List<Commit> commits2) throws FileNotFoundException {
-	   //Associating commits to tickets
+	   
+	//Associating commits to tickets
 	   
 	   String message = null;
 	   
 	   for(int i=0;i<commits2.size();i++) {
 		   
 		   message = commits2.get(i).getMessage();
-		   //LOGGER.info(message);
 		   
 		   for(int j=0;j<tickets2.size();j++) {
 			   
