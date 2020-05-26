@@ -42,12 +42,14 @@ public final class Find {
 	   }
 
 
-  public static JSONObject JsonFromUrl(String url) throws IOException, JSONException {
+  public static JSONObject connectionGetTictets(String url) throws IOException, JSONException {
 	      
 	   java.io.InputStream is = new URL(url).openStream();
 	      try (BufferedReader rd = new BufferedReader(new InputStreamReader(is,StandardCharsets.UTF_8))) {
 	    	  
 	    	 JSONObject json = new JSONObject(readAll(rd)); 
+	    	 
+	    	 is.close();
 	      
 	         return json;
 	       } 
@@ -62,6 +64,8 @@ public final class Find {
 	   try (BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8))) {
         
          JSONObject json = new JSONObject(readAll(rd));
+         
+         urlConnection.disconnect();
          
          return json;
        } 
@@ -93,7 +97,7 @@ public final class Find {
 		             + i.toString() + "&maxResults=" + j.toString();
 	         
 	         
-	         JSONObject json = JsonFromUrl(url);
+	         JSONObject json = connectionGetTictets(url);
 	         JSONArray issues = json.getJSONArray("issues");
 	         total = json.getInt("total");
 	         
@@ -162,8 +166,6 @@ public final class Find {
 		  }catch(Exception e) {
 			  
 	    	   LOGGER.log(Level.SEVERE, "[ERROR]", e);
-	    	  
-	    	   //break;
 	       
 		  }
 	       
