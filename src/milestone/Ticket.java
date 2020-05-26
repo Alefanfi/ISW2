@@ -14,7 +14,7 @@ public class Ticket {
 	public Ticket(String id) {
 
 		this.id = id;
-		this.commitsTicket = new ArrayList<Commit>();
+		this.commitsTicket = new ArrayList<>();
 		
 	}
 

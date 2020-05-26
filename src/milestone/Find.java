@@ -143,14 +143,14 @@ public final class Find {
 
    }
 
-   public static List<Commit> getAllCommits() throws JSONException, IOException, InterruptedException, ParseException{
+   public static List<Commit> getAllCommits() throws Exception{
 	   
 	   //Searchs for all the commits for the specified commit id
 	   
 	   commits = new ArrayList<>();
 	   
 	   Integer page=0;
-	   JSONArray comm = null;
+	   JSONArray comm;
 	   String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
 	   
 	  while(true) {
@@ -166,7 +166,8 @@ public final class Find {
 		  }catch(Exception e) {
 			  
 	    	   LOGGER.log(Level.SEVERE, "[ERROR]", e);
-	       
+	    	   
+	    	   throw new Exception(e);
 		  }
 	       
 	       int total = comm.length();
