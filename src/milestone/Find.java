@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import java.nio.charset.StandardCharsets;
-
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -143,7 +143,7 @@ public final class Find {
 
    }
 
-   public static List<Commit> getAllCommits() throws JSONException, IOException, ParseException{
+   public static List<Commit> getAllCommits() throws JSONException, IOException, InterruptedException, ParseException{
 	   
 	   //Searchs for all the commits for the specified commit id
 	   
@@ -163,40 +163,50 @@ public final class Find {
 			  
 	    	   comm = readJsonArrayFromUrl(url, token);
 	       
-		  }catch(JSONException e) {
+		  }catch(Exception e) {
 			  
 	    	   LOGGER.log(Level.SEVERE, "[ERROR]", e);
-	    	   
-	    	   throw new JSONException(e);
+	       
+	    	   break;
 		  }
 	       
 	       int total = comm.length();
 	       int i;
 	       
-	       if(total == 0) {
+	       /*if(total == 0) {
 	    	   break;
 	       }
-	  
+	  */
 	       i = 0;
 	       
-	       while(i<total) {
-		        	
-			   JSONObject commit = comm.getJSONObject(i).getJSONObject("commit");
-			   
-			   String message = commit.get("message").toString();
-			   String date = commit.getJSONObject("committer").get("date").toString();
-		        	 
-			   String formattedDate = date.substring(0,9)+" "+date.substring(11,19);
-			   
-			   Commit c = new Commit(message,formattedDate);
-			   
-			   //Adds the new commit to the list
-			   
-			   commits.add(c);	
-			   
-			   i++;
+	       if(total != 0) {
+	    	   
+	       
+		       while(i<total) {
+			        	
+				   JSONObject commit = comm.getJSONObject(i).getJSONObject("commit");
+				   
+				   String message = commit.get("message").toString();
+				   String date = commit.getJSONObject("committer").get("date").toString();
+			        	 
+				   String formattedDate = date.substring(0,9)+" "+date.substring(11,19);
+				   
+				   Commit c = new Commit(message,formattedDate);
+				   
+				   //Adds the new commit to the list
+				   
+				   commits.add(c);	
+				   
+				   i++;
+		       }
 		            
 		   }
+	       
+	       else {
+	    	   
+	    	   break;
+	    	   
+	       }
 
 		   page++;	//Going to the next page
 		   		 
