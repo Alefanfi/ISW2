@@ -49,6 +49,7 @@ public class Ticket {
 				if(resolutionDate == null) {
 					resolutionDate = commitsTicket.get(i).getDate();
 				}
+				
 				else if(resolutionDate.compareTo(commitsTicket.get(i).getDate()) < 0) {
 					resolutionDate = commitsTicket.get(i).getDate();
 				}

@@ -163,7 +163,7 @@ public final class Find {
 			  
 	    	   LOGGER.log(Level.SEVERE, "[ERROR]", e);
 	    	  
-	    	   break;
+	    	   //break;
 	       
 		  }
 	       
@@ -174,7 +174,9 @@ public final class Find {
 	    	   break;
 	       }
 	  
-		   for (i=0; i < total; i++) {
+	       i = 0;
+	       
+	       while(i<total) {
 		        	
 			   JSONObject commit = comm.getJSONObject(i).getJSONObject("commit");
 			   
@@ -188,6 +190,8 @@ public final class Find {
 			   //Adds the new commit to the list
 			   
 			   commits.add(c);	
+			   
+			   i++;
 		            
 		   }
 
