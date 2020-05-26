@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import java.nio.charset.StandardCharsets;
-import java.text.ParseException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -143,7 +143,7 @@ public final class Find {
 
    }
 
-   public static List<Commit> getAllCommits() throws Exception{
+   public static List<Commit> getAllCommits() throws JSONException, IOException, ParseException{
 	   
 	   //Searchs for all the commits for the specified commit id
 	   
@@ -163,11 +163,11 @@ public final class Find {
 			  
 	    	   comm = readJsonArrayFromUrl(url, token);
 	       
-		  }catch(Exception e) {
+		  }catch(JSONException e) {
 			  
 	    	   LOGGER.log(Level.SEVERE, "[ERROR]", e);
 	    	   
-	    	   throw new Exception(e);
+	    	   throw new JSONException(e);
 		  }
 	       
 	       int total = comm.length();
