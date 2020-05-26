@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.Charset;
+
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -24,10 +24,10 @@ public final class Find {
 	private Find() {}
 	
 	//List of tickets from the project
-	public static List<Ticket> tickets;	
+	static List<Ticket> tickets;	
 	
 	//List of all the commits of the project
-	public static List<Commit> commits;	
+	static List<Commit> commits;	
 	
 	private static final Logger LOGGER = Logger.getLogger(Find.class.getName());
 	
@@ -45,9 +45,10 @@ public final class Find {
   public static JSONObject JsonFromUrl(String url) throws IOException, JSONException {
 	      
 	   java.io.InputStream is = new URL(url).openStream();
-	      try (BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")))) {
-	         String jsonText = readAll(rd);
-	         JSONObject json = new JSONObject(jsonText);
+	      try (BufferedReader rd = new BufferedReader(new InputStreamReader(is,StandardCharsets.UTF_8))) {
+	    	  
+	    	 JSONObject json = new JSONObject(readAll(rd)); 
+	      
 	         return json;
 	       } 
 	}
@@ -58,9 +59,10 @@ public final class Find {
 	   HttpURLConnection urlConnection = (HttpURLConnection)  url2.openConnection();
 	   urlConnection.setRequestProperty("Accept", accept);
       
-	   try (BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), Charset.forName("UTF-8")))) {
-         String jsonText = readAll(rd);
-         JSONObject json = new JSONObject(jsonText);
+	   try (BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8))) {
+        
+         JSONObject json = new JSONObject(readAll(rd));
+         
          return json;
        } 
    }
@@ -72,8 +74,10 @@ public final class Find {
 	   
 	   
 	   
-	   tickets = new ArrayList<Ticket>();
-	   Integer j = 0, i = 0, total = 1;
+	   tickets = new ArrayList<>();
+	   Integer j = 0;
+	   Integer i = 0;
+	   Integer total = 1;
 	   String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 	   
 	      do {
@@ -139,7 +143,7 @@ public final class Find {
 	   
 	   //Searchs for all the commits for the specified commit id
 	   
-	   commits = new ArrayList<Commit>();
+	   commits = new ArrayList<>();
 	   
 	   Integer page=0;
 	   JSONArray comm = null;
@@ -174,8 +178,6 @@ public final class Find {
 		        	
 			   JSONObject commit = comm.getJSONObject(i).getJSONObject("commit");
 			   
-			   //LOGGER.info(commit);
-			   
 			   String message = commit.get("message").toString();
 			   String date = commit.getJSONObject("committer").get("date").toString();
 		        	 
@@ -183,7 +185,7 @@ public final class Find {
 			   
 			   Commit c = new Commit(message,formattedDate);
 			   
-			 //Adds the new commit to the list
+			   //Adds the new commit to the list
 			   
 			   commits.add(c);	
 		            
@@ -216,7 +218,9 @@ public static void sortCommits(List<Ticket> tickets2, List<Commit> commits2) thr
 			   if(message.contains(tickets2.get(j).getId()+":")) {	
 				   
 				   tickets2.get(j).addCommit(commits2.get(i));
-				   //LOGGER.info(message);
+				   
+				   LOGGER.info(message);
+				   
 				   break;
 			   }
 			   
@@ -227,5 +231,3 @@ public static void sortCommits(List<Ticket> tickets2, List<Commit> commits2) thr
 	}
 
 }
-
-
