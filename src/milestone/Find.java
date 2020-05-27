@@ -115,10 +115,15 @@ public final class Find {
 	         
 	      } while (i < total);
 	      
+	      
+	      
 	      for(i=0;i<tickets.size();i++) {
 	    	  LOGGER.info(tickets.get(i).getId());
+	    	  //System.out.println(tickets.get(i).getId());
 	    	 
 	      }	
+	      
+	      LOGGER.info("NUMERO: "+ tickets.size());
 	      
 	      return tickets;
 	   
@@ -166,47 +171,36 @@ public final class Find {
 		  }catch(Exception e) {
 			  
 	    	   LOGGER.log(Level.SEVERE, "[ERROR]", e);
-	       
 	    	   break;
 		  }
 	       
-	       int total = comm.length();
-	       int i;
+	      int total = comm.length();
+	      int i;
 	       
-	       /*if(total == 0) {
+	      if(total == 0) {
 	    	   break;
-	       }
-	  */
-	       i = 0;
+	      }
+	  
+	      i = 0;
 	       
-	       if(total != 0) {
-	    	   
-	       
-		       while(i<total) {
-			        	
-				   JSONObject commit = comm.getJSONObject(i).getJSONObject("commit");
-				   
-				   String message = commit.get("message").toString();
-				   String date = commit.getJSONObject("committer").get("date").toString();
-			        	 
-				   String formattedDate = date.substring(0,9)+" "+date.substring(11,19);
-				   
-				   Commit c = new Commit(message,formattedDate);
-				   
-				   //Adds the new commit to the list
-				   
-				   commits.add(c);	
-				   
-				   i++;
-		       }
+	       while(i<total) {
+		        	
+			   JSONObject commit = comm.getJSONObject(i).getJSONObject("commit");
+			   
+			   String message = commit.get("message").toString();
+			   String date = commit.getJSONObject("committer").get("date").toString();
+		        	 
+			   String formattedDate = date.substring(0,9)+" "+date.substring(11,19);
+			   
+			   Commit c = new Commit(message,formattedDate);
+			   
+			   //Adds the new commit to the list
+			   
+			   commits.add(c);	
+			   
+			   i++;
 		            
 		   }
-	       
-	       else {
-	    	   
-	    	   break;
-	    	   
-	       }
 
 		   page++;	//Going to the next page
 		   		 
@@ -232,7 +226,8 @@ public static void sortCommits(List<Ticket> tickets2, List<Commit> commits2) thr
 			   
 			 //If a ticket is found in the message that commit is added to the list
 			   
-			   if(message.contains(tickets2.get(j).getId()+":")) {	
+			   if(message.contains(tickets2.get(j).getId()+":")||(message.contains(tickets2.get(j).getId()+"]"))||
+					   (message.contains(tickets2.get(j).getId()))){	
 				   
 				   tickets2.get(j).addCommit(commits2.get(i));
 				   

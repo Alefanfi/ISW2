@@ -44,7 +44,7 @@ public class Main {
 	    	   }
 	    	   
 	    	   ld = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-	    	   printer.println(tkt + "," + ld.getYear()+ "/" + ld.getMonth());
+	    	   printer.println(tkt + "," + ld.getMonthValue() + "/" + ld.getYear());
 	       }
 	       
 	       printer.flush();
