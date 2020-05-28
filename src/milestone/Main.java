@@ -21,7 +21,7 @@ public class Main {
 		
 		Find.sortCommits(Find.tickets, Find.commits);
 		
-		final Logger LOGGER= Logger.getLogger(Main.class.getName());
+		final Logger logger= Logger.getLogger(Main.class.getName());
 		
 		//Generate the output.csv file 
 		
@@ -50,7 +50,7 @@ public class Main {
 	       printer.flush();
 	       printer.close();
 	       
-	       LOGGER.info("File output.csv has been created");       
+	       logger.info("File output.csv has been created");       
 	
 	}
 

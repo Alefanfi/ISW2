@@ -75,9 +75,7 @@ public final class Find {
    public static List<Ticket> getTickets() throws JSONException, IOException{
 	 
 	   //Searchs for all the tickets of type 'Tickets' which have been resolved/closed
-	   
-	   
-	   
+	      
 	   tickets = new ArrayList<>();
 	   Integer j = 0;
 	   Integer i = 0;
@@ -114,16 +112,12 @@ public final class Find {
 	         }
 	         
 	      } while (i < total);
-	      
-	      
-	      
+	     
 	      for(i=0;i<tickets.size();i++) {
+	    	  
 	    	  LOGGER.info(tickets.get(i).getId());
-	    	  //System.out.println(tickets.get(i).getId());
 	    	 
 	      }	
-	      
-	      LOGGER.info("NUMERO: "+ tickets.size());
 	      
 	      return tickets;
 	   
@@ -167,6 +161,7 @@ public final class Find {
 		  try{
 			  
 	    	   comm = readJsonArrayFromUrl(url, token);
+	    	   
 	       
 		  }catch(Exception e) {
 			  
@@ -176,7 +171,7 @@ public final class Find {
 	       
 	      int total = comm.length();
 	      int i;
-	       
+	      
 	      if(total == 0) {
 	    	   break;
 	      }
