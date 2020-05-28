@@ -24,13 +24,11 @@ public class GetReleaseInfo {
 
 	private GetReleaseInfo() {}
 	
-	public static Map<LocalDateTime, String> releaseNames;
-	public static Map<LocalDateTime, String> releaseID;
-	public static List<LocalDateTime> releases;
+	static Map<LocalDateTime, String> releaseNames;
+	static Map<LocalDateTime, String> releaseID;
+	static List<LocalDateTime> releases;
 	
-	public static String projName ="AVRO";
-	
-	//private static final Logger LOGGER = Logger.getLogger(GetReleaseInfo.class.getName());
+	static String projName ="AVRO";
 
 	public static List<LocalDateTime> getRelease() throws JSONException, IOException{
 		
@@ -48,9 +46,9 @@ public class GetReleaseInfo {
 		
 		JSONArray versions = json.getJSONArray("versions");
 		
-		releaseNames = new HashMap<LocalDateTime, String>();
+		releaseNames = new HashMap<>();
 		
-		releaseID = new HashMap<LocalDateTime, String> ();
+		releaseID = new HashMap<> ();
 		   
 		for (i = 0; i < versions.length(); i++ ) {
 			   
@@ -109,8 +107,6 @@ public class GetReleaseInfo {
 		
 		releaseNames.put(dateTime, name);
 		releaseID.put(dateTime, id);
-		
-		return;
 	   
 	}
 
@@ -122,12 +118,11 @@ public class GetReleaseInfo {
 			
 			JSONObject json = new JSONObject(readAll(rd));
 			
+			is.close();
+			
 			return json;
 	         
-		} finally {
-			is.close();
-	       
-		}
+		} 
 	   
 	}
 	   

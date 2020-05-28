@@ -2,24 +2,26 @@ package deliverable;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import org.json.JSONException;
 
 public class Main {
 	
 	public static Integer numVersions;
+	private static Logger LOGGER;
 
 	public static void main(String[] args) throws JSONException, IOException {
+		
+		LOGGER = Logger.getLogger(Main.class.getName());
 	
 		GetReleaseInfo.getRelease();
+		
+		String outname = GetReleaseInfo.projName + "VersionInfo.csv";
 		 
-		 try {
-		     
-			 String outname = GetReleaseInfo.projName + "VersionInfo.csv";
+		 try (FileWriter fileWriter = new FileWriter(outname)) {
 		        
 		     //Name of CSV for output
-		     
-		     FileWriter fileWriter = new FileWriter(outname);
 		     
 		     fileWriter.append("Index,Version ID,Version Name,Date");
 		     
@@ -56,7 +58,7 @@ public class Main {
 
 		 } catch (Exception e) {
 			 
-			 System.out.println("Error in csv writer");
+			 LOGGER.info("Error in csv writer");
 		     e.printStackTrace();
 		     
 		 }
