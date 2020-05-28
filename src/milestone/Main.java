@@ -27,30 +27,36 @@ public class Main {
 		
 		PrintStream printer = new PrintStream(new File("output.csv"));
 		  
-	       printer.println("Ticket,Date");
+		printer.println("Ticket,Date");
 
-	       String tkt = null;
-	       Date d = null;
-	       LocalDateTime ld = null;
+	    String tkt = null;
+	    Date d = null;
+	    LocalDateTime ld = null;
 	       
-	       for(int i=0;i<Find.tickets.size();i++) {
+	    for(int i=0;i<Find.tickets.size();i++) {
 	    	   
-	    	   tkt=Find.tickets.get(i).getId(); 
+	    	tkt=Find.tickets.get(i).getId(); 
 	    	  
-	    	   d = Find.tickets.get(i).findDate();
+	    	d = Find.tickets.get(i).findDate();
 	    	   
-	    	   if(d == null) {
-	    		   continue;
-	    	   }
+	    	if(d == null) {
+	    		   
+	    		continue;
+	    	  
+	    	}
+	    	    	   
+	    	ld = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 	    	   
-	    	   ld = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-	    	   printer.println(tkt + "," + ld.getMonthValue() + "/" + ld.getYear());
-	       }
+	    	printer.println(tkt + "," + ld.getMonthValue() + "/" + ld.getYear());
 	       
-	       printer.flush();
-	       printer.close();
+	    }
 	       
-	       logger.info("File output.csv has been created");       
+	       
+	    printer.flush();
+	       
+	    printer.close();
+	         
+	    logger.info("File output.csv has been created");       
 	
 	}
 

@@ -31,8 +31,8 @@ public final class Find {
 	
 	private static final Logger LOGGER = Logger.getLogger(Find.class.getName());
 	
-	
-   private static String readAll(Reader rd) throws IOException {
+   
+	private static String readAll(Reader rd) throws IOException {
 	      StringBuilder sb = new StringBuilder();
 	      int cp;
 	      while ((cp = rd.read()) != -1) {
@@ -41,8 +41,7 @@ public final class Find {
 	      return sb.toString();
 	   }
 
-
-  public static JSONObject connectionGetTictets(String url) throws IOException, JSONException {
+	public static JSONObject connectionGetTictets(String url) throws IOException, JSONException {
 	      
 	   java.io.InputStream is = new URL(url).openStream();
 	      try (BufferedReader rd = new BufferedReader(new InputStreamReader(is,StandardCharsets.UTF_8))) {
@@ -53,9 +52,10 @@ public final class Find {
 	      
 	         return json;
 	       } 
+	
 	}
    
-   public static JSONObject readJsonFromUrl(String url, String accept) throws IOException, JSONException {
+	public static JSONObject readJsonFromUrl(String url, String accept) throws IOException, JSONException {
 	   
 	   URL url2 = new URL(url);
 	   HttpURLConnection urlConnection = (HttpURLConnection)  url2.openConnection();
@@ -69,10 +69,10 @@ public final class Find {
          
          return json;
        } 
-   }
    
+	}
    
-   public static List<Ticket> getTickets() throws JSONException, IOException{
+	public static List<Ticket> getTickets() throws JSONException, IOException{
 	 
 	   //Searchs for all the tickets of type 'Tickets' which have been resolved/closed
 	      
@@ -121,9 +121,9 @@ public final class Find {
 	      
 	      return tickets;
 	   
-   }
+	}
    
-   public static JSONArray readJsonArrayFromUrl(String url, String token) throws IOException, JSONException {
+	public static JSONArray readJsonArrayFromUrl(String url, String token) throws IOException, JSONException {
        URL url2 = new URL(url);
        HttpURLConnection urlConnection = (HttpURLConnection)  url2.openConnection();
 
@@ -139,10 +139,10 @@ public final class Find {
        urlConnection.disconnect();
 
        return json;
+   
+	}
 
-   }
-
-   public static List<Commit> getAllCommits() throws JSONException, IOException, InterruptedException, ParseException{
+	public static List<Commit> getAllCommits() throws JSONException, IOException, InterruptedException, ParseException{
 	   
 	   //Searchs for all the commits for the specified commit id
 	   
@@ -151,12 +151,13 @@ public final class Find {
 	   Integer page=0;
 	   JSONArray comm;
 	   String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
+	   String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 	   
 	  while(true) {
 		   
 		  //Takes all commits
 		   
-		  String url = "https://api.github.com/repos/apache/falcon/commits?&per_page=100&page="+page.toString();
+		  String url = "https://api.github.com/repos/apache/"+ project +"/commits?&per_page=100&page="+page.toString();
 		  
 		  try{
 			  
@@ -203,11 +204,13 @@ public final class Find {
 
 	   return commits;
 	   
-  }
+  
+	}
 
 
 
-public static void sortCommits(List<Ticket> tickets2, List<Commit> commits2) throws FileNotFoundException {
+
+	public static void sortCommits(List<Ticket> tickets2, List<Commit> commits2) throws FileNotFoundException {
 	   
 	//Associating commits to tickets
 	   
