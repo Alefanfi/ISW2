@@ -36,7 +36,7 @@ public class GetReleaseInfo {
 		   
 		//Ignores releases with missing dates
 		
-		releases = new ArrayList<LocalDateTime>();
+		releases = new ArrayList<>();
 		         
 		Integer i;
 		   

@@ -8,12 +8,11 @@ import org.json.JSONException;
 
 public class Main {
 	
-	public static Integer numVersions;
-	private static Logger LOGGER;
+	static Integer numVersions;
+	
+	private static Logger LOGGER = Logger.getLogger(Main.class.getName());
 
 	public static void main(String[] args) throws JSONException, IOException {
-		
-		LOGGER = Logger.getLogger(Main.class.getName());
 	
 		GetReleaseInfo.getRelease();
 		
@@ -54,7 +53,6 @@ public class Main {
 		     }
 		     
 		     fileWriter.flush();
-	         fileWriter.close();
 
 		 } catch (Exception e) {
 			 
