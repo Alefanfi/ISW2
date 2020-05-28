@@ -12,18 +12,14 @@ public class Main {
 	public static void main(String[] args) throws JSONException, IOException {
 	
 		GetReleaseInfo.getRelease();
-		
-		FileWriter fileWriter = null;
 		 
 		 try {
-			 
-			 fileWriter = null;
 		     
 			 String outname = GetReleaseInfo.projName + "VersionInfo.csv";
 		        
 		     //Name of CSV for output
 		     
-		     fileWriter = new FileWriter(outname);
+		     FileWriter fileWriter = new FileWriter(outname);
 		     
 		     fileWriter.append("Index,Version ID,Version Name,Date");
 		     
@@ -54,25 +50,15 @@ public class Main {
 		        fileWriter.append("\n");
 		      
 		     }
+		     
+		     fileWriter.flush();
+	         fileWriter.close();
 
 		 } catch (Exception e) {
 			 
 			 System.out.println("Error in csv writer");
 		     e.printStackTrace();
 		     
-		 } finally {
-			 
-			 try {
-				 
-				 //fileWriter.flush();
-		         fileWriter.close();
-		         
-		     } catch (IOException e) {
-		    	 
-		    	 System.out.println("Error while flushing/closing fileWriter !!!");
-		         e.printStackTrace();
-		     }
-			 
 		 }
 	}
 

@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,8 +24,8 @@ public class GetReleaseInfo {
 
 	private GetReleaseInfo() {}
 	
-	public static HashMap<LocalDateTime, String> releaseNames;
-	public static HashMap<LocalDateTime, String> releaseID;
+	public static Map<LocalDateTime, String> releaseNames;
+	public static Map<LocalDateTime, String> releaseID;
 	public static List<LocalDateTime> releases;
 	
 	public static String projName ="AVRO";
