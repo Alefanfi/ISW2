@@ -10,19 +10,15 @@
     <property name="source" value="9"/>
     <path id="ISW2.classpath">
         <pathelement location="bin"/>
-        <pathelement location="json-20190722.jar"/>
     </path>
     <path id="run.Main (7).classpath">
         <path refid="ISW2.classpath"/>
-        <pathelement location="json-20190722.jar"/>
     </path>
     <path id="run.GetReleaseInfo.classpath">
         <path refid="ISW2.classpath"/>
-        <pathelement location="json-20190722.jar"/>
     </path>
     <path id="run.Main (9).classpath">
         <path refid="ISW2.classpath"/>
-        <pathelement location="json-20190722.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
