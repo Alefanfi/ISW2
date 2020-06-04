@@ -33,8 +33,6 @@ public class GetReleaseInfo {
 	static Integer numVersions;
 	
 	private static Logger logger = Logger.getLogger(GetReleaseInfo.class.getName());
-	
-	//static String projName ="AVRO";
 
 	public static List<LocalDateTime> getRelease(String projName) throws JSONException, IOException{
 		
@@ -127,7 +125,7 @@ public class GetReleaseInfo {
 		     
 		     fileWriter.flush();
 		     
-		     logger.info("File " + outname + " has been created");
+		     logger.info(String.format("File [%s] been created", outname));
 
 		 } catch (Exception e) {
 			 
