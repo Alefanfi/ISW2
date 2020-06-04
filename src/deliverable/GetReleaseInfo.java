@@ -125,7 +125,7 @@ public class GetReleaseInfo {
 		     
 		     fileWriter.flush();
 		     
-		     logger.info(String.format("File [%s] been created", outname));
+		     logger.log(Level.INFO, "File {0} has been created", outname);
 
 		 } catch (Exception e) {
 			 
