@@ -124,34 +124,35 @@ public final class Find {
 	}
    
 	public static JSONArray readJsonArrayFromUrl(String url, String token) throws IOException, JSONException {
-       URL url2 = new URL(url);
-       HttpURLConnection urlConnection = (HttpURLConnection)  url2.openConnection();
-
-       //Setting the requirements to access the github api
        
-       urlConnection.setRequestProperty("Accept", "application/vnd.github.cloak-preview");
-       urlConnection.setRequestProperty("Authorization", "token "+ token);
+		URL url2 = new URL(url);
+        HttpURLConnection urlConnection = (HttpURLConnection)  url2.openConnection();
 
-       BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8));
-       String jsonText = readAll(rd);
-       JSONArray json = new JSONArray(jsonText);
+        //Setting the requirements to access the github api
+       
+        urlConnection.setRequestProperty("Accept", "application/vnd.github.cloak-preview");
+        urlConnection.setRequestProperty("Authorization", "token "+ token);
 
-       urlConnection.disconnect();
+        BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8));
+        String jsonText = readAll(rd);
+        JSONArray json = new JSONArray(jsonText);
 
-       return json;
+        urlConnection.disconnect();
+
+        return json;
    
 	}
 
 	public static List<Commit> getAllCommits() throws JSONException, IOException, InterruptedException, ParseException{
 	   
-	   //Searchs for all the commits for the specified commit id
+	  //Searchs for all the commits for the specified commit id
 	   
-	   commits = new ArrayList<>();
+	  commits = new ArrayList<>();
 	   
-	   Integer page=0;
-	   JSONArray comm;
-	   String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
-	   String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
+	  Integer page=0;
+	  JSONArray comm;
+	  String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
+	  String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 	   
 	  while(true) {
 		   
@@ -202,13 +203,9 @@ public final class Find {
 		   		 
 	   } 
 
-	   return commits;
-	   
+	   return commits; 
   
 	}
-
-
-
 
 	public static void sortCommits(List<Ticket> tickets2, List<Commit> commits2) throws FileNotFoundException {
 	   

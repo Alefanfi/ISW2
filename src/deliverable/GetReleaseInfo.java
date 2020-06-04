@@ -1,6 +1,7 @@
 package deliverable;
 
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,11 +11,13 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,10 +30,13 @@ public class GetReleaseInfo {
 	static Map<LocalDateTime, String> releaseNames;
 	static Map<LocalDateTime, String> releaseID;
 	static List<LocalDateTime> releases;
+	static Integer numVersions;
 	
-	static String projName ="AVRO";
+	private static Logger logger = Logger.getLogger(GetReleaseInfo.class.getName());
+	
+	//static String projName ="AVRO";
 
-	public static List<LocalDateTime> getRelease() throws JSONException, IOException{
+	public static List<LocalDateTime> getRelease(String projName) throws JSONException, IOException{
 		
 		//Fills the arraylist with releases dates and orders them
 		   
@@ -72,17 +78,10 @@ public class GetReleaseInfo {
 		}
 		   
 		// order releases by date
-		   
-		Collections.sort(releases, new Comparator<LocalDateTime>(){
-		   
-			//@Override
-			public int compare(LocalDateTime o1, LocalDateTime o2) {
-			
-				return o1.compareTo(o2);
-		     
-			}
-		 
-		});
+		
+		Comparator<LocalDateTime> timeComparator = (o1,o2) -> o1.compareTo(o2);
+		
+		releases.sort(timeComparator);
 		   
 		 if (releases.size() < 6) {
 		    	
@@ -90,8 +89,53 @@ public class GetReleaseInfo {
 		    
 		 }
 		 
+		 String outname = projName + "VersionInfo.csv";
+		 
+		 try (FileWriter fileWriter = new FileWriter(outname)) {
+		        
+		     //Name of CSV for output
+		     
+		     fileWriter.append("Index,Version ID,Version Name,Date");
+		     
+		     fileWriter.append("\n");
+		        
+		     numVersions = releases.size();
+		     
+		     int i1;
+		        
+		     for ( i1 = 0; i1 < releases.size(); i1++) {
+		        	
+		        Integer index = i1 + 1;
+		        
+		        fileWriter.append(index.toString());
+		        
+		        fileWriter.append(",");
+		        
+		        fileWriter.append(GetReleaseInfo.releaseID.get(GetReleaseInfo.releases.get(i1)));
+		        
+		        fileWriter.append(",");
+		        
+		        fileWriter.append(GetReleaseInfo.releaseNames.get(GetReleaseInfo.releases.get(i1)));
+		        
+		        fileWriter.append(",");
+		        
+		        fileWriter.append(GetReleaseInfo.releases.get(i1).toString());
+		        
+		        fileWriter.append("\n");
+		      
+		     }
+		     
+		     fileWriter.flush();
+		     
+		     logger.info("File " + outname + " has been created");
+
+		 } catch (Exception e) {
+			 
+			 logger.log(Level.SEVERE, "Error in csv writer", e);
+		     
+		 }
+		 
 		 return releases;
-		
 	}
 
 	public static void addRelease(String strDate, String name, String id) {
