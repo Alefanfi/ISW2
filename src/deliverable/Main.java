@@ -6,12 +6,12 @@ import org.json.JSONException;
 public class Main {
 	
 	private static final String PROJECT = "AVRO";
-	private static final String project = "BOOKKEEPER";
+	private static final String PROJECT2  = "BOOKKEEPER";
 	
 	public static void main(String[] args) throws JSONException, IOException {
 	
 		GetReleaseInfo.getRelease(PROJECT);
-		GetReleaseInfo.getRelease(project);
+		GetReleaseInfo.getRelease(PROJECT2);
 	
 	}
 
