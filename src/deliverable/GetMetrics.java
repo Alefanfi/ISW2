@@ -69,7 +69,8 @@ public class GetMetrics {
 				   //Adds the new commit to the list
 				   
 				   commits.add(c);	
-				   System.out.println(author);
+				   
+				   //System.out.println(author);
 				   
 				   i++;
 			            
