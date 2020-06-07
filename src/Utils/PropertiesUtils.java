@@ -1,4 +1,4 @@
-package milestone;
+package Utils;
 
 import java.io.IOException;
 import java.util.Properties;

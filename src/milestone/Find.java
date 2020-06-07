@@ -1,14 +1,7 @@
 package milestone;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +11,10 @@ import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import Utils.Connection;
+import Utils.PropertiesUtils;
+import Utils.ReadPropertyFile;
 
 public final class Find {
 	
@@ -30,48 +27,7 @@ public final class Find {
 	static List<Commit> commits;	
 	
 	private static final Logger LOGGER = Logger.getLogger(Find.class.getName());
-	
-   
-	private static String readAll(Reader rd) throws IOException {
-	      StringBuilder sb = new StringBuilder();
-	      int cp;
-	      while ((cp = rd.read()) != -1) {
-	         sb.append((char) cp);
-	      }
-	      return sb.toString();
-	   }
-
-	public static JSONObject connectionGetTictets(String url) throws IOException, JSONException {
-	      
-	   java.io.InputStream is = new URL(url).openStream();
-	      try (BufferedReader rd = new BufferedReader(new InputStreamReader(is,StandardCharsets.UTF_8))) {
-	    	  
-	    	 JSONObject json = new JSONObject(readAll(rd)); 
-	    	 
-	    	 is.close();
-	      
-	         return json;
-	       } 
-	
-	}
-   
-	public static JSONObject readJsonFromUrl(String url, String accept) throws IOException, JSONException {
-	   
-	   URL url2 = new URL(url);
-	   HttpURLConnection urlConnection = (HttpURLConnection)  url2.openConnection();
-	   urlConnection.setRequestProperty("Accept", accept);
-      
-	   try (BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8))) {
-        
-         JSONObject json = new JSONObject(readAll(rd));
-         
-         urlConnection.disconnect();
-         
-         return json;
-       } 
-   
-	}
-   
+     
 	public static List<Ticket> getTickets() throws JSONException, IOException{
 	 
 	   //Searchs for all the tickets of type 'Tickets' which have been resolved/closed
@@ -95,7 +51,7 @@ public final class Find {
 		             + i.toString() + "&maxResults=" + j.toString();
 	         
 	         
-	         JSONObject json = connectionGetTictets(url);
+	         JSONObject json = Connection.readJsonFromUrl(url);
 	         JSONArray issues = json.getJSONArray("issues");
 	         total = json.getInt("total");
 	         
@@ -122,26 +78,6 @@ public final class Find {
 	      return tickets;
 	   
 	}
-   
-	public static JSONArray readJsonArrayFromUrl(String url, String token) throws IOException, JSONException {
-       
-		URL url2 = new URL(url);
-        HttpURLConnection urlConnection = (HttpURLConnection)  url2.openConnection();
-
-        //Setting the requirements to access the github api
-       
-        urlConnection.setRequestProperty("Accept", "application/vnd.github.cloak-preview");
-        urlConnection.setRequestProperty("Authorization", "token "+ token);
-
-        BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8));
-        String jsonText = readAll(rd);
-        JSONArray json = new JSONArray(jsonText);
-
-        urlConnection.disconnect();
-
-        return json;
-   
-	}
 
 	public static List<Commit> getAllCommits() throws JSONException, IOException, InterruptedException, ParseException{
 	   
@@ -162,7 +98,7 @@ public final class Find {
 		  
 		  try{
 			  
-	    	   comm = readJsonArrayFromUrl(url, token);
+	    	   comm = Connection.readJsonArrayFromUrl(url, token);
 	    	   
 	       
 		  }catch(Exception e) {
@@ -186,10 +122,11 @@ public final class Find {
 			   
 			   String message = commit.get("message").toString();
 			   String date = commit.getJSONObject("committer").get("date").toString();
+			   String author = commit.getJSONObject("author").get("name").toString();
 		        	 
 			   String formattedDate = date.substring(0,9)+" "+date.substring(11,19);
 			   
-			   Commit c = new Commit(message,formattedDate);
+			   Commit c = new Commit(message,formattedDate, author);
 			   
 			   //Adds the new commit to the list
 			   

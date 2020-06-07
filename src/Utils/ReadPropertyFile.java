@@ -1,4 +1,4 @@
-package milestone;
+package Utils;
 
 public final class ReadPropertyFile {
 	

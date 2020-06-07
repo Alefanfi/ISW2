@@ -12,13 +12,26 @@ public class Commit {
 	
 	private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
 	
-	public Commit(String message, String date) throws ParseException{
+	private String auth;
+	
+	public Commit(String message, String date, String auth) throws ParseException{
 		
 		this.message = message;
 		
 		this.date = formatter.parse(date);
+		
+		this.auth = auth;
 			
 	}
+	
+	public String getAuth() {
+		return auth;
+	}
+	
+	public void setAuth(String auth) {
+		this.auth = auth;
+	}
+	
 	public String getMessage() {
 		return message;
 	}
