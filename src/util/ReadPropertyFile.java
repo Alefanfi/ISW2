@@ -1,4 +1,4 @@
-package Utils;
+package util;
 
 public final class ReadPropertyFile {
 	

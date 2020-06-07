@@ -10,10 +10,12 @@ import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import Utils.Connection;
 import milestone.Commit;
+import util.Connection;
 
-public class GetMetrics {
+public final class GetMetrics {
+	
+	private GetMetrics() {}
 
 	private static final Logger LOGGER = Logger.getLogger(GetMetrics.class.getName());
 	static List<Commit> commits;

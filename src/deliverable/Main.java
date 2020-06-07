@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 
 import org.json.JSONException;
 
-import Utils.PropertiesUtils;
-import Utils.ReadPropertyFile;
+import util.PropertiesUtils;
+import util.ReadPropertyFile;
 
 public class Main {
 	

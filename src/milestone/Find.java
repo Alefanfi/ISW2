@@ -12,9 +12,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import Utils.Connection;
-import Utils.PropertiesUtils;
-import Utils.ReadPropertyFile;
+import util.Connection;
+import util.PropertiesUtils;
+import util.ReadPropertyFile;
 
 public final class Find {
 	

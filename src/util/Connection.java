@@ -1,4 +1,4 @@
-package Utils;
+package util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +13,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Connection {
+public final class Connection {
+	
+	private Connection() {}
 	
 	public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
 		   
