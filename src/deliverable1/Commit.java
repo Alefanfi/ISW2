@@ -1,6 +1,7 @@
-package milestone;
+package deliverable1;
 
 import java.util.Date;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -14,14 +15,26 @@ public class Commit {
 	
 	private String auth;
 	
-	public Commit(String message, String date, String auth) throws ParseException{
+	private String sha;
+	
+	public Commit(String message, String date, String auth, String sha) throws ParseException{
 		
 		this.message = message;
 		
 		this.date = formatter.parse(date);
 		
 		this.auth = auth;
+		
+		this.sha = sha;
 			
+	}
+	
+	public String getSha() {
+		return sha;
+	}
+	
+	public void setSha(String sha) {
+		this.sha = sha;
 	}
 	
 	public String getAuth() {

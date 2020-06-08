@@ -1,4 +1,4 @@
-package milestone;
+package deliverable1;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -126,7 +126,9 @@ public final class Find {
 		        	 
 			   String formattedDate = date.substring(0,9)+" "+date.substring(11,19);
 			   
-			   Commit c = new Commit(message,formattedDate, author);
+			   String sha = commit.getJSONObject("tree").get("sha").toString();
+			   
+			   Commit c = new Commit(message,formattedDate, author, sha);
 			   
 			   //Adds the new commit to the list
 			   

@@ -1,4 +1,4 @@
-package deliverable;
+package deliverable2;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import milestone.Commit;
+import deliverable1.Commit;
 import util.Connection;
 
 public final class GetMetrics {
@@ -23,11 +23,10 @@ public final class GetMetrics {
 	public static List<Commit> getAuthor(String projName, String token) throws IOException, ParseException {
 		
 		commits = new ArrayList<>();
-		
-		   
+	   
 		Integer page=0;
 		JSONArray comm;
-		
+		JSONObject conn = null;
 		   
 		while(true) {
 			   
@@ -63,27 +62,50 @@ public final class GetMetrics {
 				   String author = commit.getJSONObject("author").get("name").toString();
 				   String message = commit.get("message").toString();
 				   String date = commit.getJSONObject("committer").get("date").toString();
+				   String sha = comm.getJSONObject(i).get("sha").toString();
+				   
+				   System.out.println(sha);
 				   
 				   String formattedDate = date.substring(0,9)+" "+date.substring(11,19);
 				   
-				   Commit c = new Commit(message, formattedDate, author);
+				   String url1 = "https://api.github.com/repos/apache/"+ projName +"/commits/"+ sha;
+					   
+				   try {
+							
+					   conn = Connection.jsonFromUrl(url1, token);
+											
+				   }catch(Exception e) {
+							  					
+					   LOGGER.log(Level.SEVERE, "[ERROR]", e);
+							  
+				   }
+												
+				   JSONArray file = conn.getJSONArray("files");
+				   
+				   for(int j=0; j<file.length(); j++) {
+					
+					   String filename = file.getJSONObject(j).get("filename").toString();
+							 
+					   System.out.println(filename);
+					   
+				   }
+				   
+				   Commit c = new Commit(message, formattedDate, author, sha);
 				   
 				   //Adds the new commit to the list
 				   
 				   commits.add(c);	
-				   
-				   //System.out.println(author);
-				   
+
 				   i++;
 			            
 			   }
 			 
 			 page++;
-			
+		
 		}
 		
 		return commits;
 		
 	}
-
+	
 }

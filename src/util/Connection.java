@@ -32,6 +32,29 @@ public final class Connection {
 		} 
 	   
 	}
+	
+	public static JSONObject jsonFromUrl(String url, String token) throws IOException {
+		
+		URL url2 = new URL(url);
+        HttpURLConnection urlConnection = (HttpURLConnection)  url2.openConnection();
+
+        //Setting the requirements to access the github api
+       
+        urlConnection.setRequestProperty("Accept", "application/vnd.github.cloak-preview");
+        urlConnection.setRequestProperty("Authorization", "token "+ token);
+        
+        BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8));
+        
+        String jsonText = Connection.readAll(rd);
+        JSONObject json = new JSONObject(jsonText);
+
+        urlConnection.disconnect();
+
+        return json;
+		
+	}
+	
+	
 	   
 	public static String readAll(Reader rd) throws IOException {
 		   
