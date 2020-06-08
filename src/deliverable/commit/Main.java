@@ -1,4 +1,4 @@
-package deliverable1;
+package deliverable.commit;
 
 import java.io.File;
 import java.io.IOException;

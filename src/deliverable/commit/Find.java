@@ -1,4 +1,4 @@
-package deliverable1;
+package deliverable.commit;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

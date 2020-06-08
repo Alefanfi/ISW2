@@ -1,4 +1,4 @@
-package deliverable2;
+package deliverable.metrics;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,6 +24,7 @@ public class Main {
 		
 		GetReleaseInfo.getRelease(project);
 		GetMetrics.getAuthor(project, token);
+		GetMetrics.getFile(GetMetrics.commits, project, token);
 		
 		String outname = project + "VersionInfo.csv";
 		 

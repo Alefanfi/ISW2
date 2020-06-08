@@ -1,4 +1,4 @@
-package deliverable2;
+package deliverable.metrics;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import deliverable1.Commit;
+import deliverable.commit.Commit;
 import util.Connection;
 
 public final class GetMetrics {
@@ -26,7 +26,6 @@ public final class GetMetrics {
 	   
 		Integer page=0;
 		JSONArray comm;
-		JSONObject conn = null;
 		   
 		while(true) {
 			   
@@ -64,31 +63,7 @@ public final class GetMetrics {
 				   String date = commit.getJSONObject("committer").get("date").toString();
 				   String sha = comm.getJSONObject(i).get("sha").toString();
 				   
-				   System.out.println(sha);
-				   
 				   String formattedDate = date.substring(0,9)+" "+date.substring(11,19);
-				   
-				   String url1 = "https://api.github.com/repos/apache/"+ projName +"/commits/"+ sha;
-					   
-				   try {
-							
-					   conn = Connection.jsonFromUrl(url1, token);
-											
-				   }catch(Exception e) {
-							  					
-					   LOGGER.log(Level.SEVERE, "[ERROR]", e);
-							  
-				   }
-												
-				   JSONArray file = conn.getJSONArray("files");
-				   
-				   for(int j=0; j<file.length(); j++) {
-					
-					   String filename = file.getJSONObject(j).get("filename").toString();
-							 
-					   System.out.println(filename);
-					   
-				   }
 				   
 				   Commit c = new Commit(message, formattedDate, author, sha);
 				   
@@ -105,6 +80,41 @@ public final class GetMetrics {
 		}
 		
 		return commits;
+		
+	}
+	
+	public static void getFile(List<Commit> commits, String projName, String token) {
+		
+		JSONObject conn = null;
+		String sha;
+		
+		for(int i = 0; i<commits.size(); i++) {
+			
+			sha = commits.get(i).getSha();
+				
+			String url1 = "https://api.github.com/repos/apache/"+ projName +"/commits/"+ sha;
+			   
+			   try {
+						
+				   conn = Connection.jsonFromUrl(url1, token);
+					
+			   }catch(Exception e) {
+						  					
+				   LOGGER.log(Level.SEVERE, "[ERROR]", e);
+				   break;
+						  
+			   }
+											
+			   JSONArray file = conn.getJSONArray("files");
+			   
+			   for(int j=0; j<file.length(); j++) {
+				
+				   String filename = file.getJSONObject(j).get("filename").toString();
+						 
+				   System.out.println(filename);
+				   
+			   }
+		}
 		
 	}
 	

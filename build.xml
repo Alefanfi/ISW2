@@ -61,17 +61,17 @@
         <antcall target="build"/>
     </target>
     <target name="Main (7)">
-        <java classname="deliverable1.Main" failonerror="true" fork="yes">
+        <java classname="deliverable.commit.Main" failonerror="true" fork="yes">
             <classpath refid="run.Main (7).classpath"/>
         </java>
     </target>
     <target name="GetReleaseInfo">
-        <java classname="deliverable2.GetReleaseInfo" failonerror="true" fork="yes">
+        <java classname="deliverable.metrics.GetReleaseInfo" failonerror="true" fork="yes">
             <classpath refid="run.GetReleaseInfo.classpath"/>
         </java>
     </target>
     <target name="Main (9)">
-        <java classname="deliverable2.Main" failonerror="true" fork="yes">
+        <java classname="deliverable.metrics.Main" failonerror="true" fork="yes">
             <classpath refid="run.Main (9).classpath"/>
         </java>
     </target>
