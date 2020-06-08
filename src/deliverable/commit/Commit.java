@@ -1,6 +1,9 @@
 package deliverable.commit;
 
 import java.util.Date;
+import java.util.List;
+
+import deliverable.metrics.File;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,6 +20,8 @@ public class Commit {
 	
 	private String sha;
 	
+	private List<File> commitFile;
+
 	public Commit(String message, String date, String auth, String sha) throws ParseException{
 		
 		this.message = message;
@@ -27,6 +32,14 @@ public class Commit {
 		
 		this.sha = sha;
 			
+	}
+	
+	public List<File> getCommitFile() {
+		return commitFile;
+	}
+
+	public void setCommitFile(List<File> commitFile) {
+		this.commitFile = commitFile;
 	}
 	
 	public String getSha() {

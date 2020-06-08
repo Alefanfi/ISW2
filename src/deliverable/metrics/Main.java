@@ -22,7 +22,9 @@ public class Main {
 		String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
 		String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 		
+		
 		GetReleaseInfo.getRelease(project);
+		GetMetrics.getTickets(project);
 		GetMetrics.getAuthor(project, token);
 		GetMetrics.getFile(GetMetrics.commits, project, token);
 		

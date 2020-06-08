@@ -137,8 +137,9 @@ public final class Find {
 			   i++;
 		            
 		   }
-
-		   page++;	//Going to the next page
+	    
+	      //Going to the next page	   
+	      page++;	
 		   		 
 	   } 
 
