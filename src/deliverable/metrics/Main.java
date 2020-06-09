@@ -27,7 +27,7 @@ public class Main {
 		GetReleaseInfo.getRelease(project);
 		GetMetrics.getTickets(project);
 		GetMetrics.getCommits(project, token);
-		//GetMetrics.associatingCommitToTickets(GetMetrics.tickets, GetMetrics.commits);
+		GetMetrics.associatingCommitToTickets(GetMetrics.tickets, GetMetrics.commits);
 		GetMetrics.getFile(GetMetrics.commits, project, newToken);
 		GetMetrics.checkFile(GetMetrics.commitFile);
 		

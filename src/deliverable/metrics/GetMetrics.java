@@ -181,7 +181,6 @@ public final class GetMetrics {
 		
 	}
 	
-	/*
 	public static void associatingCommitToTickets(List<Ticket> tickets, List<Commit> commits) {
 	
 		String message = null;
@@ -206,7 +205,7 @@ public final class GetMetrics {
 	
 		   }
 		   
-	}*/
+	}
 	
 	public static List<File> getFile(List<Commit> commits, String projName, String token) {
 		
@@ -279,51 +278,36 @@ public final class GetMetrics {
 	public static List<File> checkFile(List<File> commitFile) {
 		
 		checkedFile = new ArrayList<>();
-		String filename;
-		String checkedFilename;
-		File checkFile;
-		File file;
-		Date date;
-		Date checkDate;
 		
 		for(int i=0; i<commitFile.size(); i++) {
 			
 			System.out.println("Sono qui");
 			
-			filename = commitFile.get(i).getFilename();
-			file = commitFile.get(i);
-			
-			if(checkedFile.size() == 0) {
+			String filename = commitFile.get(i).getFilename();
+			File file = commitFile.get(i);
 				
-				checkedFile.add(file);
+			for (int j=0; j<checkedFile.size() && checkedFile.size() == 0; j++) {
+		
+				String checkedFilename = checkedFile.get(j).getFilename();	
 			
-			}else {	
+				File checkFile = checkedFile.get(j);
+					
+				Date date = commitFile.get(i).getDate();
 				
-				for (int j=0; j<checkedFile.size(); j++) {
-					
-					checkedFilename = checkedFile.get(j).getFilename();	
-					
-					checkFile = checkedFile.get(j);
-					
-					if(filename.equals(checkedFilename)) {
+				Date checkDate = checkedFile.get(j).getDate();
+			
+				if(filename.equals(checkedFilename) && checkDate.after(date)){
 						
-						date = commitFile.get(i).getDate();
-						checkDate = checkedFile.get(j).getDate();
+					checkedFile.remove(file);
 						
-						if(checkDate.after(date)) {
+					checkedFile.add(checkFile);
+										
+				} 
 							
-							checkedFile.remove(file);
-							checkedFile.add(checkFile);
-							
-						}
-							
-					} else {
-						checkedFile.add(file);
-					}
-								
-				}
 			}
-					
+			
+			checkedFile.add(file);
+			
 		}
 		
 		System.out.println(checkedFile.size());
