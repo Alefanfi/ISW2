@@ -40,6 +40,8 @@ public class Ticket {
 	public void setCommitsTicket(List<Commit> commitsTicket) {
 		this.commitsTicket = commitsTicket;
 	}
+	
+	//function to retrive the tickets with the latest date
 
 	public Date findDate() {
 		

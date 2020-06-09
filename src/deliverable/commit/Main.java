@@ -32,10 +32,14 @@ public class Main {
 	    String tkt = null;
 	    Date d = null;
 	    LocalDateTime ld = null;
+	    
+	    //Print tickets and date in the file output.csv
 	       
 	    for(int i=0;i<Find.tickets.size();i++) {
 	    	   
 	    	tkt=Find.tickets.get(i).getId(); 
+	    	
+	    	//find tickets with latest date
 	    	  
 	    	d = Find.tickets.get(i).findDate();
 	    	   
@@ -50,8 +54,7 @@ public class Main {
 	    	printer.println(tkt + "," + ld.getMonthValue() + "/" + ld.getYear());
 	       
 	    }
-	       
-	       
+	       	       
 	    printer.flush();
 	       
 	    printer.close();

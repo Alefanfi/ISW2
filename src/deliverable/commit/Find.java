@@ -38,6 +38,8 @@ public final class Find {
 	   Integer total = 1;
 	   String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 	   
+	   LOGGER.info("Searching for tickets...");
+	   
 	      do {
 	         //Only gets a max of 1000 at a time, so must do this multiple times if >1000
 	        
@@ -55,25 +57,21 @@ public final class Find {
 	         JSONArray issues = json.getJSONArray("issues");
 	         total = json.getInt("total");
 	         
+	         //Add the tickets in the list of tickets from the project
+	         
 	         for (; i < total && i < j; i++) {
 	        	 
 	        	 String key = issues.getJSONObject(i%1000).get("key").toString();
 	        	 
 	        	 Ticket t = new Ticket(key);
-	        	
-	        	 //Adds the new ticket to the list
 	        	 
 	        	 tickets.add(t);	
 	            
 	         }
 	         
 	      } while (i < total);
-	     
-	      for(i=0;i<tickets.size();i++) {
-	    	  
-	    	  LOGGER.info(tickets.get(i).getId());
-	    	 
-	      }	
+	      
+	      LOGGER.info(tickets.size() + " tickets found!");
 	      
 	      return tickets;
 	   
@@ -89,6 +87,8 @@ public final class Find {
 	  JSONArray comm;
 	  String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
 	  String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
+	  
+	  LOGGER.info("Searching for all commits...");
 	   
 	  while(true) {
 		   
@@ -120,6 +120,8 @@ public final class Find {
 		        	
 			   JSONObject commit = comm.getJSONObject(i).getJSONObject("commit");
 			   
+			   //Retrieve info from commits
+			   
 			   String message = commit.get("message").toString();
 			   String date = commit.getJSONObject("committer").get("date").toString();
 			   String author = commit.getJSONObject("author").get("name").toString();
@@ -139,9 +141,12 @@ public final class Find {
 		   }
 	    
 	      //Going to the next page	   
+	      
 	      page++;	
 		   		 
 	   } 
+	  
+	  LOGGER.info(commits.size()+" commits found.");
 
 	   return commits; 
   
@@ -165,8 +170,6 @@ public final class Find {
 					   (message.contains(tickets2.get(j).getId()))){	
 				   
 				   tickets2.get(j).addCommit(commits2.get(i));
-				   
-				   LOGGER.info(message);
 				   
 				   break;
 			   }

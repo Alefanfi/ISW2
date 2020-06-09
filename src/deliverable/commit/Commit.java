@@ -61,17 +61,19 @@ public class Commit {
 	public String getMessage() {
 		return message;
 	}
+	
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
 	public Date getDate() {
 		return date;
 	}
+	
 	public void setDate(String date) throws ParseException {
 		
 		this.date = formatter.parse(date);
-		
-		
+				
 	}
 
 }

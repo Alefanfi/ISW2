@@ -21,12 +21,18 @@ public class Main {
 		
 		String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
 		String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
+		String newToken = PropertiesUtils.getProperty(ReadPropertyFile.NEWTOKEN);
 		
 		
 		GetReleaseInfo.getRelease(project);
 		GetMetrics.getTickets(project);
-		GetMetrics.getAuthor(project, token);
-		GetMetrics.getFile(GetMetrics.commits, project, token);
+		GetMetrics.getCommits(project, token);
+		//GetMetrics.associatingCommitToTickets(GetMetrics.tickets, GetMetrics.commits);
+		GetMetrics.getFile(GetMetrics.commits, project, newToken);
+		GetMetrics.checkFile(GetMetrics.commitFile);
+		
+		
+		logger.info("Done");
 		
 		String outname = project + "VersionInfo.csv";
 		 
