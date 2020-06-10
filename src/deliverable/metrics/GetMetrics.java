@@ -2,11 +2,11 @@ package deliverable.metrics;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,6 +33,63 @@ public final class GetMetrics {
 	static List<File> commitFile;
 	
 	static List<File> checkedFile;
+	
+	static List<Release> release;
+	
+	public static List<Release> getReleaseInfo(String projName) throws JSONException, IOException, ParseException{
+		
+		release = new ArrayList<>();
+		
+		LOGGER.info("Searching for release...");
+		
+		String url = "https://issues.apache.org/jira/rest/api/2/project/" + projName;
+		
+		JSONObject json = Connection.readJsonFromUrl(url);
+		
+		JSONArray versions = json.getJSONArray("versions");
+		
+		//Find info about the release
+		
+		for (int i = 0; i < versions.length(); i++ ) {
+			
+			if(versions.getJSONObject(i).has("releaseDate")) {
+				
+				String strdate = versions.getJSONObject(i).get("releaseDate").toString();
+				
+				String formattedDate = strdate.substring(0,10);
+				
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
+				
+				Date date = formatter.parse(formattedDate);
+				
+				String id = versions.getJSONObject(i).get("id").toString();
+				
+				String versionName = versions.getJSONObject(i).get("name").toString();
+				
+				
+				Release r = new Release(id, date, versionName);
+				
+				release.add(r);
+			
+			}
+		         
+		}
+		// order releases by date
+		
+		Collections.sort(release, (Release o1, Release o2) -> o1.getReleaseDate().compareTo(o2.getReleaseDate()));
+				   
+		if (release.size() < 6) {
+				    	
+			return release;
+				    	
+		}
+		
+		LOGGER.info(release.size()+" release found!");
+						
+		return release;
+		
+	}
+	
 	
 	public static List<Ticket> getTickets(String projName) throws JSONException, IOException{
 				  
@@ -179,6 +236,10 @@ public final class GetMetrics {
 		
 		LOGGER.info(commits.size()+" commits found!");
 		
+		//order commit by descending date
+		
+		Collections.sort(commits, Collections.reverseOrder((Commit o1, Commit o2) -> o1.getDate().compareTo(o2.getDate())));
+		
 		return commits;
 		
 	}
@@ -248,23 +309,9 @@ public final class GetMetrics {
 				   
 				   Date date = commits.get(i).getDate();
 				   
-				   //String url = file.getJSONObject(j).get("contents_url").toString();
-				   /*
-				   try{
-			    	   
-					   conn = Connection.jsonFromUrl(url, token);
-			       
-				   }catch(Exception e) {
-			    	   
-					   LOGGER.log(Level.SEVERE,"Exception occur ",e);
-			    	   break;
-			       
-				   }
-				   
-				   String content = conn.get("content").toString();
-				   int size = conn.getInt("size");*/
+				   String url = file.getJSONObject(j).get("contents_url").toString();
 
-				   File f = new File(filename, change, delete, addLine, /*content, size,*/ date);
+				   File f = new File(filename, change, delete, addLine, /*content, size,*/ date, url);
 				  
 				   commitFile.add(f);
 				   
@@ -281,51 +328,76 @@ public final class GetMetrics {
 		
 		checkedFile = new ArrayList<>();
 		
-		// order File by date	
+		List<String> filenameChecked = new ArrayList<>();
 		
-		Collections.sort(commitFile, Collections.reverseOrder(new Comparator<File>() {
-		    public int compare(File o1, File o2) {
-		        return o1.getDate().compareTo(o2.getDate());
-		    }
-		}));
+		// order File by descending date	
 		
-		System.out.println("I'm here");
+		Collections.sort(commitFile, Collections.reverseOrder((File o1, File o2) -> o1.getDate().compareTo(o2.getDate())));	
 		
-		for(int i=0; i<10; i++) {
+		//Take only one copy for the file with the latest date, so i can do size request only for this.
+		
+		for(int i=0; i<commitFile.size(); i++) {
 			
 			if(checkedFile.size() == 0) {
 				
 				checkedFile.add(commitFile.get(i));
 				
-				System.out.println("I'm here2");
+				filenameChecked.add(commitFile.get(i).getFilename());
 			
 			}else {
 				
 				String filename = commitFile.get(i).getFilename();
-				
-				System.out.println("filename: " + filename);
-				
-				for(int j=0; j<checkedFile.size(); j++) {
-				
-					String checkedFilename = checkedFile.get(j).getFilename();
-					
-					System.out.println("checkedFilename: " + checkedFilename);
-					
-					if(filename.compareTo(checkedFilename) != 0) {
 						
-						checkedFile.add(commitFile.get(i));
+				if(!filenameChecked.contains(filename)) {
+						
+					checkedFile.add(commitFile.get(i));
+						
+					filenameChecked.add(commitFile.get(i).getFilename());
 					
-					}
 				}
-				
-				System.out.println(checkedFile.size());
+
 			}
 			
 		}	
 		
-		//System.out.println(checkedFile.size());
+		for(int j=0; j<checkedFile.size(); j++) {
+			
+			System.out.println(checkedFile.get(j).getFilename());
+		}
+		
+		System.out.println(checkedFile.size());
 		
 		return checkedFile;
+		
+	}
+	
+	public static void getSize(List<File> checkedFile, String projName, String token) {
+		
+		JSONObject conn = null;
+	
+		LOGGER.info("Searching size for committed file...");
+		
+		for(int i = 0; i<checkedFile.size(); i++) {
+				
+			String url1 = checkedFile.get(i).getUrl();
+			   
+			   try {
+						
+				   conn = Connection.jsonFromUrl(url1, token);
+					
+			   }catch(Exception e) {
+						  					
+				   LOGGER.log(Level.SEVERE, "[ERROR]", e);
+				   break;
+						  
+			   }
+			   
+			   String content = conn.get("content").toString();
+			   int size = conn.getInt("size");
+			   
+			   System.out.println(content);
+			   System.out.println(size);
+		}
 		
 	}
 					

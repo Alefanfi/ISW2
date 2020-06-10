@@ -12,13 +12,15 @@ public class File {
 	
 	private Integer lineAdded;
 	
-	//private String content;
+	private String content;
 
-	//private Integer size;
+	private Integer size;
 	
 	private Date date;
+	
+	private String url;
 
-	public File(String filename, Integer lineChange, Integer lineDelete, Integer lineAdded, /*String content, Integer size,*/ Date date) {
+	public File(String filename, Integer lineChange, Integer lineDelete, Integer lineAdded, Date date, String url) {
 		
 		this.filename = filename;
 		
@@ -28,14 +30,20 @@ public class File {
 		
 		this.lineAdded = lineAdded;
 		
-		//this.content = content;
-		
-		//this.size = size;
-		
 		this.date = date;
+		
+		this.url = url;
 		
 	}
 	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	public Date getDate() {
 		return date;
 	}
@@ -43,7 +51,7 @@ public class File {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	/*
+	
 	public Integer getSize() {
 		return size;
 	}
@@ -58,7 +66,7 @@ public class File {
 
 	public void setContent(String context) {
 		this.content = context;
-	}*/
+	}
 	
 	public Integer getLineChange() {
 		return lineChange;

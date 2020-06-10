@@ -24,12 +24,14 @@ public class Main {
 		String newToken = PropertiesUtils.getProperty(ReadPropertyFile.NEWTOKEN);
 		
 		
-		GetReleaseInfo.getRelease(project);
+		GetMetrics.getReleaseInfo(project);
 		GetMetrics.getTickets(project);
 		GetMetrics.getCommits(project, token);
 		GetMetrics.associatingCommitToTickets(GetMetrics.tickets, GetMetrics.commits);
 		GetMetrics.getFile(GetMetrics.commits, project, newToken);
 		GetMetrics.checkFile(GetMetrics.commitFile);
+		
+		GetMetrics.getSize(GetMetrics.checkedFile, project, token);
 		
 		
 		logger.info("Done");
@@ -44,7 +46,7 @@ public class Main {
 		     
 		     fileWriter.append("\n");
 		        
-		     numVersions = GetReleaseInfo.releases.size();
+		     numVersions = GetMetrics.release.size();
 		     
 		     int i;
 		        
@@ -56,15 +58,15 @@ public class Main {
 		        
 		        fileWriter.append(",");
 		        
-		        fileWriter.append(GetReleaseInfo.releaseID.get(GetReleaseInfo.releases.get(i)));
+		        fileWriter.append(GetMetrics.release.get(i).getId());
 		        
 		        fileWriter.append(",");
 		        
-		        fileWriter.append(GetReleaseInfo.releaseNames.get(GetReleaseInfo.releases.get(i)));
+		        fileWriter.append(GetMetrics.release.get(i).getVersion());
 		        
 		        fileWriter.append(",");
 		        
-		        fileWriter.append(GetReleaseInfo.releases.get(i).toString());
+		        fileWriter.append(GetMetrics.release.get(i).toString());
 		        
 		        //fileWriter.append(",");
 		        
@@ -83,7 +85,6 @@ public class Main {
 			 logger.log(Level.SEVERE, "Error in csv writer", e);
 		     
 		 }
-
 	
 	}
 
