@@ -2,7 +2,6 @@ package deliverable.metrics;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -36,6 +35,9 @@ public final class GetMetrics {
 	
 	static List<Release> release;
 	
+	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	
+	
 	public static List<Release> getReleaseInfo(String projName) throws JSONException, IOException, ParseException{
 		
 		release = new ArrayList<>();
@@ -58,9 +60,7 @@ public final class GetMetrics {
 				
 				String formattedDate = strdate.substring(0,10);
 				
-				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
-				
-				Date date = formatter.parse(formattedDate);
+				Date date = (Date) formatter.parse(formattedDate);
 				
 				String id = versions.getJSONObject(i).get("id").toString();
 				
@@ -185,7 +185,6 @@ public final class GetMetrics {
 		       
 			  }catch(Exception e) {
 				  
-				  LOGGER.log(Level.SEVERE, "[ERROR]", e);
 		    	  return commits;
 				  
 			  }
@@ -209,8 +208,6 @@ public final class GetMetrics {
 				   String sha = comm.getJSONObject(i).get("sha").toString();
 				   
 				   String formattedDate = strdate.substring(0,10);
-					
-				   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");	
 					
 				   LocalDate date = LocalDate.parse(formattedDate, formatter);					
 					
