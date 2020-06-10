@@ -5,6 +5,8 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -279,38 +281,49 @@ public final class GetMetrics {
 		
 		checkedFile = new ArrayList<>();
 		
-		for(int i=0; i<commitFile.size(); i++) {
-			
-			System.out.println("Sono qui");
-			
-			String filename = commitFile.get(i).getFilename();
-			File file = commitFile.get(i);
-				
-			for (int j=0; j<checkedFile.size() && checkedFile.size() == 0; j++) {
+		// order File by date	
 		
-				String checkedFilename = checkedFile.get(j).getFilename();	
+		Collections.sort(commitFile, Collections.reverseOrder(new Comparator<File>() {
+		    public int compare(File o1, File o2) {
+		        return o1.getDate().compareTo(o2.getDate());
+		    }
+		}));
+		
+		System.out.println("I'm here");
+		
+		for(int i=0; i<10; i++) {
 			
-				File checkFile = checkedFile.get(j);
-					
-				Date date = commitFile.get(i).getDate();
+			if(checkedFile.size() == 0) {
 				
-				Date checkDate = checkedFile.get(j).getDate();
+				checkedFile.add(commitFile.get(i));
+				
+				System.out.println("I'm here2");
 			
-				if(filename.equals(checkedFilename) && checkDate.after(date)){
+			}else {
+				
+				String filename = commitFile.get(i).getFilename();
+				
+				System.out.println("filename: " + filename);
+				
+				for(int j=0; j<checkedFile.size(); j++) {
+				
+					String checkedFilename = checkedFile.get(j).getFilename();
+					
+					System.out.println("checkedFilename: " + checkedFilename);
+					
+					if(filename.compareTo(checkedFilename) != 0) {
 						
-					checkedFile.remove(file);
-						
-					checkedFile.add(checkFile);
-										
-				} 
-							
+						checkedFile.add(commitFile.get(i));
+					
+					}
+				}
+				
+				System.out.println(checkedFile.size());
 			}
 			
-			checkedFile.add(file);
-			
-		}
+		}	
 		
-		System.out.println(checkedFile.size());
+		//System.out.println(checkedFile.size());
 		
 		return checkedFile;
 		

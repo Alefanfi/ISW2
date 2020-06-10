@@ -72,6 +72,7 @@
     </target>
     <target name="Main (9)">
         <java classname="deliverable.metrics.Main" failonerror="true" fork="yes">
+            <jvmarg line="-Xms512M -Xmx2G"/>
             <classpath refid="run.Main (9).classpath"/>
         </java>
     </target>
