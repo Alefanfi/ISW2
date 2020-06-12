@@ -128,7 +128,7 @@ public final class Find {
 			   String date = commit.getJSONObject("committer").get("date").toString();
 			   String author = commit.getJSONObject("author").get("name").toString();
 		        	 
-			   String formattedDate = date.substring(0,9)+" "+date.substring(11,19);
+			   String formattedDate = date.substring(0,10);
 			   
 			   String sha = commit.getJSONObject("tree").get("sha").toString();
 			   
@@ -154,7 +154,7 @@ public final class Find {
   
 	}
 
-	public static void sortCommits(List<Ticket> tickets2, List<Commit> commits2) throws FileNotFoundException {
+	public static void associatingCommitToTickets(List<Ticket> tickets2, List<Commit> commits2) throws FileNotFoundException {
 	   
 	//Associating commits to tickets
 	   

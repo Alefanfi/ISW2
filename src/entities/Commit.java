@@ -1,17 +1,17 @@
 package entities;
 
-import java.util.Date;
 import java.util.List;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Commit {
 	
 	private String message;
 	
-	private Date date;
+	private LocalDate date;
 	
-	private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
+	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
 	private String auth;
 	
@@ -23,7 +23,7 @@ public class Commit {
 		
 		this.message = message;
 		
-		this.date = formatter.parse(date);
+		this.date = LocalDate.parse(date, formatter);
 		
 		this.auth = auth;
 		
@@ -63,13 +63,13 @@ public class Commit {
 		this.message = message;
 	}
 	
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 	
 	public void setDate(String date) throws ParseException {
 		
-		this.date = formatter.parse(date);
+		this.date = LocalDate.parse(date, formatter);
 				
 	}
 

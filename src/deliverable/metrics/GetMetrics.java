@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,13 +37,12 @@ public final class GetMetrics {
 	static List<Release> release;
 	
 	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	
-	
+		
 	public static List<Release> getReleaseInfo(String projName) throws JSONException, IOException, ParseException{
 		
 		release = new ArrayList<>();
 		
-		LOGGER.info("Searching for release...");
+		LOGGER.info("Searching release...");
 		
 		String url = "https://issues.apache.org/jira/rest/api/2/project/" + projName;
 		
@@ -62,13 +60,12 @@ public final class GetMetrics {
 				
 				String formattedDate = strdate.substring(0,10);
 				
-				Date date = (Date) formatter.parse(formattedDate);
+				LocalDate date = LocalDate.parse(formattedDate, formatter);
 				
 				String id = versions.getJSONObject(i).get("id").toString();
 				
 				String versionName = versions.getJSONObject(i).get("name").toString();
-				
-				
+							
 				Release r = new Release(id, date, versionName);
 				
 				release.add(r);
@@ -86,7 +83,7 @@ public final class GetMetrics {
 				    	
 		}
 		
-		LOGGER.info(release.size()+" release found!");
+		LOGGER.info(release.size()/2 +" release found!");
 						
 		return release;
 		
@@ -122,7 +119,7 @@ public final class GetMetrics {
 		    
 			total = json.getInt("total");
 			
-			LOGGER.info("Searching for tickets...");
+			LOGGER.info("Searching tickets...");
 		    
 			for (; i < total && i < j; i++) {
 				
@@ -133,12 +130,10 @@ public final class GetMetrics {
 				String strdate = issues.getJSONObject(i%1000).getJSONObject("fields").get("resolutiondate").toString();
 				
 				String formattedDate = strdate.substring(0,10);
-						
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 				
 				LocalDate date = LocalDate.parse(formattedDate, formatter);
 				
-				LocalDate releaseDate = LocalDate.parse("2011-11-01", formatter);
+				LocalDate releaseDate = release.get((release.size()/2)-1).getReleaseDate();
 				
 				//compare the ticket's date to the release's date
 				
@@ -167,7 +162,7 @@ public final class GetMetrics {
 	
 	public static List<Commit> getCommits(String projName, String token) throws IOException, ParseException {
 		
-		LOGGER.info("Searching for commit...");
+		LOGGER.info("Searching commit...");
 		
 		commits = new ArrayList<>();
 	   
@@ -183,13 +178,14 @@ public final class GetMetrics {
 			try{
 				
 				comm = Connection.readJsonArrayFromUrl(url, token);
-		    	   
-		       
-			  }catch(Exception e) {
+		    	   	         
+			}catch(Exception e) {
+				
+				LOGGER.severe(e.toString());
 				  
-		    	  return commits;
-				  
-			  }
+				return commits;
+				    
+			}
 			
 			int total = comm.length();
 		    	
@@ -213,9 +209,8 @@ public final class GetMetrics {
 					
 				   LocalDate date = LocalDate.parse(formattedDate, formatter);					
 					
-				   LocalDate releaseDate = LocalDate.parse("2011-11-01", formatter);
-					
-					
+				   LocalDate releaseDate = release.get((release.size()/2)-1).getReleaseDate();
+										
 				   if(date.isBefore(releaseDate)) {
 				   
 					   Commit c = new Commit(message, formattedDate, author, sha);
@@ -223,6 +218,7 @@ public final class GetMetrics {
 					   //Adds the new commit to the list
 					   
 					   commits.add(c);
+
 				   }
 
 				   i++;
@@ -275,7 +271,7 @@ public final class GetMetrics {
 		String sha;
 		commitFile = new ArrayList<>();
 		
-		LOGGER.info("Searching for committed file...");
+		LOGGER.info("Searching committed file...");
 		
 		for(int i = 0; i<commits.size(); i++) {
 			
@@ -306,11 +302,11 @@ public final class GetMetrics {
 				   
 				   int addLine = file.getJSONObject(j).getInt("additions");	
 				   
-				   Date date = commits.get(i).getDate();
+				   LocalDate date = commits.get(i).getDate();
 				   
 				   String url = file.getJSONObject(j).get("contents_url").toString();
 
-				   File f = new File(filename, change, delete, addLine, /*content, size,*/ date, url);
+				   File f = new File(filename, change, delete, addLine, date, url);
 				  
 				   commitFile.add(f);
 				   
@@ -323,81 +319,86 @@ public final class GetMetrics {
 		
 	}
 	
-	public static List<File> checkFile(List<File> commitFile) {
+	public static void checkFile(List<File> commitFile, String token) {
 		
 		checkedFile = new ArrayList<>();
 		
 		List<String> filenameChecked = new ArrayList<>();
 		
-		// order File by descending date	
+		//order File by descending date	
 		
 		Collections.sort(commitFile, Collections.reverseOrder((File o1, File o2) -> o1.getDate().compareTo(o2.getDate())));	
 		
-		//Take only one copy for the file with the latest date, so i can do size request only for this.
+		//Take only one copy for the file with the latest date.
 		
-		for(int i=0; i<commitFile.size(); i++) {
-			
-			if(checkedFile.size() == 0) {
+		System.out.println((release.size()/2));
+		
+		for(int k=0; k<((release.size()/2)-1); k++) {
+		
+			for(int i=0; i<commitFile.size(); i++) {
 				
-				checkedFile.add(commitFile.get(i));
+				LocalDate checkDate = commitFile.get(i).getDate();
 				
-				filenameChecked.add(commitFile.get(i).getFilename());
-			
-			}else {
-				
-				String filename = commitFile.get(i).getFilename();
-						
-				if(!filenameChecked.contains(filename)) {
-						
-					checkedFile.add(commitFile.get(i));
-						
-					filenameChecked.add(commitFile.get(i).getFilename());
+				if(checkedFile.size() == 0 && checkDate.isBefore(release.get(k+1).getReleaseDate()) 
+						&& checkDate.isAfter(release.get(k).getReleaseDate())) {
 					
+					checkedFile.add(commitFile.get(i));
+					
+					filenameChecked.add(commitFile.get(i).getFilename());
+				
+				}else {
+					
+					String filename = commitFile.get(i).getFilename();
+							
+					if(!filenameChecked.contains(filename) && checkDate.isBefore(release.get(k+1).getReleaseDate()) 
+							&& checkDate.isAfter(release.get(k).getReleaseDate())) {
+							
+						checkedFile.add(commitFile.get(i));
+							
+						filenameChecked.add(commitFile.get(i).getFilename());
+
+					}
+	
 				}
+				
+			}
+			
+			JSONObject conn = null;
+			int sum = 0;
+		
+			LOGGER.info("Searching size for committed file...");
+			
+			for(int i = 0; i<checkedFile.size(); i++) {
+					
+				String url1 = checkedFile.get(i).getUrl();
+				   
+				   try {
+							
+					   conn = Connection.jsonFromUrl(url1, token);
+						
+				   }catch(Exception e) {
+							  					
+					   LOGGER.log(Level.SEVERE, "[ERROR]", e);
+					   break;
+							  
+				   }
+				   
+				   //String content = conn.get("content").toString();
+				   int size = conn.getInt("size");
+				   
+				   sum += size;
 
 			}
 			
-		}	
-		
-		for(int j=0; j<checkedFile.size(); j++) {
+			release.get(k).setSize(sum);
 			
-			System.out.println(checkedFile.get(j).getFilename());
-		}
-		
-		System.out.println(checkedFile.size());
-		
-		return checkedFile;
-		
-	}
-	
-	public static void getSize(List<File> checkedFile, String token) {
-		
-		JSONObject conn = null;
-	
-		LOGGER.info("Searching size for committed file...");
-		
-		for(int i = 0; i<checkedFile.size(); i++) {
-				
-			String url1 = checkedFile.get(i).getUrl();
-			   
-			   try {
-						
-				   conn = Connection.jsonFromUrl(url1, token);
-					
-			   }catch(Exception e) {
-						  					
-				   LOGGER.log(Level.SEVERE, "[ERROR]", e);
-				   break;
-						  
-			   }
-			   
-			   String content = conn.get("content").toString();
-			   int size = conn.getInt("size");
-			   
-			   System.out.println(content);
-			   System.out.println(size);
+			System.out.println("Somma finale " + sum);
+			
+			System.out.println(checkedFile.size());
+			
+			System.out.println(release.get(k).getSize());
+			
 		}
 		
 	}
-					
 }

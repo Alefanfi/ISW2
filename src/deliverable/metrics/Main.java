@@ -29,10 +29,7 @@ public class Main {
 		GetMetrics.getCommits(project, token);
 		GetMetrics.associatingCommitToTickets(GetMetrics.tickets, GetMetrics.commits);
 		GetMetrics.getFile(GetMetrics.commits, project, newToken);
-		GetMetrics.checkFile(GetMetrics.commitFile);
-		
-		GetMetrics.getSize(GetMetrics.checkedFile, token);
-		
+		GetMetrics.checkFile(GetMetrics.commitFile, token);
 		
 		logger.info("Done");
 		
@@ -50,7 +47,7 @@ public class Main {
 		     
 		     int i;
 		        
-		     for ( i = 0; i < numVersions; i++) {
+		     for ( i = 0; i < numVersions/2; i++) {
 		        	
 		        Integer index = i + 1;
 		        
@@ -66,7 +63,7 @@ public class Main {
 		        
 		        fileWriter.append(",");
 		        
-		        fileWriter.append(GetMetrics.release.get(i).toString());
+		        fileWriter.append(GetMetrics.release.get(i).getReleaseDate().toString());
 		        
 		        //fileWriter.append(",");
 		        

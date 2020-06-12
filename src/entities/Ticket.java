@@ -1,7 +1,7 @@
 package entities;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Ticket {
@@ -10,7 +10,7 @@ public class Ticket {
 	
 	private List<Commit> commitsTicket;
 	
-	private Date resolutionDate = null;
+	private LocalDate resolutionDate = null;
 
 	public Ticket(String id) {
 
@@ -43,7 +43,7 @@ public class Ticket {
 	
 	//function to retrive the tickets with the latest date
 
-	public Date findDate() {
+	public LocalDate findDate() {
 		
 		if(resolutionDate == null) {
 

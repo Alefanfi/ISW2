@@ -1,16 +1,18 @@
 package entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Release {
 	
-	private Date releaseDate; 
+	private LocalDate releaseDate; 
 	
 	private String id;
 	
 	private String version;
 	
-	public Release(String id, Date releaseDate, String version) {
+	private Integer size;
+
+	public Release(String id, LocalDate releaseDate, String version) {
 		
 		this.id = id;
 		
@@ -18,12 +20,20 @@ public class Release {
 		
 		this.version = version;
 	}
+	
+	public Integer getSize() {
+		return size;
+	}
 
-	public Date getReleaseDate() {
+	public void setSize(Integer size) {
+		this.size = size;
+	}
+
+	public LocalDate getReleaseDate() {
 		return releaseDate;
 	}
 
-	public void setReleaseDate(Date releaseDate) {
+	public void setReleaseDate(LocalDate releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 

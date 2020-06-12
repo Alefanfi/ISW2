@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class File {
 	
@@ -12,15 +12,11 @@ public class File {
 	
 	private Integer lineAdded;
 	
-	private String content;
-
-	private Integer size;
-	
-	private Date date;
+	private LocalDate date;
 	
 	private String url;
 
-	public File(String filename, Integer lineChange, Integer lineDelete, Integer lineAdded, Date date, String url) {
+	public File(String filename, Integer lineChange, Integer lineDelete, Integer lineAdded, LocalDate date, String url) {
 		
 		this.filename = filename;
 		
@@ -44,28 +40,12 @@ public class File {
 		this.url = url;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
-	}
-	
-	public Integer getSize() {
-		return size;
-	}
-
-	public void setSize(Integer size) {
-		this.size = size;
-	}
-	
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String context) {
-		this.content = context;
 	}
 	
 	public Integer getLineChange() {

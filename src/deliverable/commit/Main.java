@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.text.ParseException;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.logging.Logger;
 
 import org.json.JSONException;
@@ -19,7 +17,7 @@ public class Main {
 		
 		Find.getAllCommits();
 		
-		Find.sortCommits(Find.tickets, Find.commits);
+		Find.associatingCommitToTickets(Find.tickets, Find.commits);
 		
 		final Logger logger= Logger.getLogger(Main.class.getName());
 		
@@ -30,8 +28,7 @@ public class Main {
 		printer.println("Ticket,Date");
 
 	    String tkt = null;
-	    Date d = null;
-	    LocalDateTime ld = null;
+	    LocalDate d;
 	    
 	    //Print tickets and date in the file output.csv
 	       
@@ -48,10 +45,8 @@ public class Main {
 	    		continue;
 	    	  
 	    	}
-	    	    	   
-	    	ld = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
 	    	   
-	    	printer.println(tkt + "," + ld.getMonthValue() + "/" + ld.getYear());
+	    	printer.println(tkt + "," + d.getMonthValue() + "/" + d.getYear());
 	       
 	    }
 	       	       
