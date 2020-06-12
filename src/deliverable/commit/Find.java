@@ -12,6 +12,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import entities.Commit;
+import entities.Ticket;
 import util.Connection;
 import util.PropertiesUtils;
 import util.ReadPropertyFile;

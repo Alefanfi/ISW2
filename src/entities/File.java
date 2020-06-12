@@ -1,4 +1,4 @@
-package deliverable.metrics;
+package entities;
 
 import java.util.Date;
 

@@ -1,10 +1,7 @@
-package deliverable.commit;
+package entities;
 
 import java.util.Date;
 import java.util.List;
-
-import deliverable.metrics.File;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 

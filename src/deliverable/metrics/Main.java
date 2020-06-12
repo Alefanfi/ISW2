@@ -31,7 +31,7 @@ public class Main {
 		GetMetrics.getFile(GetMetrics.commits, project, newToken);
 		GetMetrics.checkFile(GetMetrics.commitFile);
 		
-		GetMetrics.getSize(GetMetrics.checkedFile, project, token);
+		GetMetrics.getSize(GetMetrics.checkedFile, token);
 		
 		
 		logger.info("Done");

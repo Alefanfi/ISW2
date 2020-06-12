@@ -15,8 +15,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import deliverable.commit.Commit;
-import deliverable.commit.Ticket;
+import entities.Commit;
+import entities.File;
+import entities.Release;
+import entities.Ticket;
 import util.Connection;
 
 public final class GetMetrics {
@@ -368,7 +370,7 @@ public final class GetMetrics {
 		
 	}
 	
-	public static void getSize(List<File> checkedFile, String projName, String token) {
+	public static void getSize(List<File> checkedFile, String token) {
 		
 		JSONObject conn = null;
 	
