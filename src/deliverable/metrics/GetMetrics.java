@@ -1,10 +1,12 @@
 package deliverable.metrics;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
@@ -32,9 +34,9 @@ public final class GetMetrics {
 	
 	static List<File> commitFile;
 	
-	static List<File> checkedFile;
-	
 	static List<Release> release;
+	
+	static List<File> checkedFile;
 	
 	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
@@ -111,7 +113,7 @@ public final class GetMetrics {
 			String url = "https://issues.apache.org/jira/rest/api/2/search?jql=project=%22"		    
 					+ projName + "%22AND%22issueType%22=%22Bug%22AND(%22status%22=%22closed%22OR"
 		            + "%22status%22=%22resolved%22)AND%22resolution%22=%22fixed%22&fields=key," 
-		            + "resolutiondate,versions,created&startAt=" + i.toString() + "&maxResults=" + j.toString();        
+		            + "resolutiondate,versions,fixVersions,created&startAt=" + i.toString() + "&maxResults=" + j.toString();        
 		         
 			JSONObject json = Connection.readJsonFromUrl(url);
 		    
@@ -124,10 +126,44 @@ public final class GetMetrics {
 			for (; i < total && i < j; i++) {
 				
 				//retrieve information from tickets
+				
+				JSONObject ticket = issues.getJSONObject(i%1000);
 	        	
 				String key = issues.getJSONObject(i%1000).get("key").toString();
 				
-				String strdate = issues.getJSONObject(i%1000).getJSONObject("fields").get("resolutiondate").toString();
+				List<String> versionList = new ArrayList<>();
+				
+				List<String> fixVersionList = new ArrayList<>();
+				
+				if(ticket.getJSONObject("fields").has("versions")) {
+					
+					JSONArray version = ticket.getJSONObject("fields").getJSONArray("versions");
+
+					for(int k=0; k<version.length(); k++) {
+						
+						String versionName = version.getJSONObject(k).get("name").toString();
+						
+						versionList.add(versionName);
+						
+					}	
+						
+				}
+				
+				if(ticket.getJSONObject("fields").has("fixVersions")) {
+					
+					JSONArray fixVersion = ticket.getJSONObject("fields").getJSONArray("fixVersions");
+					
+					for(int z=0; z<fixVersion.length(); z++) {
+						
+						String fixVersionName = fixVersion.getJSONObject(z).get("name").toString();
+						
+						fixVersionList.add(fixVersionName);
+											
+					}
+					
+				}
+				
+				String strdate = ticket.getJSONObject("fields").get("resolutiondate").toString();
 				
 				String formattedDate = strdate.substring(0,10);
 				
@@ -141,7 +177,7 @@ public final class GetMetrics {
 					
 					//if the ticket's date is previous than the release's date, the ticket is added to the list
 					
-					Ticket t = new Ticket(key);
+					Ticket t = new Ticket(key, versionList, fixVersionList); 
 
 					//Adds the new ticket to the list
 	    
@@ -210,6 +246,8 @@ public final class GetMetrics {
 				   LocalDate date = LocalDate.parse(formattedDate, formatter);					
 					
 				   LocalDate releaseDate = release.get((release.size()/2)-1).getReleaseDate();
+				   
+				   //Take the commit from the first half of the project
 										
 				   if(date.isBefore(releaseDate)) {
 				   
@@ -265,11 +303,12 @@ public final class GetMetrics {
 		   
 	}
 	
-	public static List<File> getFile(List<Commit> commits, String projName, String token) {
+	public static List<File> getFile(List<Commit> commits, String projName, String token) throws UnsupportedEncodingException {
 		
 		JSONObject conn = null;
 		String sha;
 		commitFile = new ArrayList<>();
+		JSONObject conn2 = null;
 		
 		LOGGER.info("Searching committed file...");
 		
@@ -296,20 +335,40 @@ public final class GetMetrics {
 				
 				   String filename = file.getJSONObject(j).get("filename").toString();
 				   
-				   int change = file.getJSONObject(j).getInt("changes");
-				   
-				   int delete = file.getJSONObject(j).getInt("deletions");
-				   
-				   int addLine = file.getJSONObject(j).getInt("additions");	
-				   
-				   LocalDate date = commits.get(i).getDate();
-				   
-				   String url = file.getJSONObject(j).get("contents_url").toString();
+				   if(filename.contains(".java")) {
+					   
+					   int change = file.getJSONObject(j).getInt("changes");
+					   
+					   int delete = file.getJSONObject(j).getInt("deletions");
+					   
+					   int addLine = file.getJSONObject(j).getInt("additions");	
+					   
+					   LocalDate date = commits.get(i).getDate();
+					   
+					   String url = file.getJSONObject(j).get("contents_url").toString();
+						
+					   try {
+												   
+							conn2 = Connection.jsonFromUrl(url, token);
+			   
+						}catch(Exception e) {
+							 LOGGER.log(Level.SEVERE, "[ERROR]", e);
+							   break;
+									  
+						}
+					
+					   String content = conn2.get("content").toString();
+					   
+					   byte[] contentByteArray = Base64.getMimeDecoder().decode(content);
+					   
+					   String contentString = new String(contentByteArray);
 
-				   File f = new File(filename, change, delete, addLine, date, url);
-				  
-				   commitFile.add(f);
+					   File f = new File(filename, change, delete, addLine, date, url, contentString);
+					  
+					   commitFile.add(f);
 				   
+				   }
+				      
 			   }
 		}
 		
@@ -319,11 +378,9 @@ public final class GetMetrics {
 		
 	}
 	
-	public static void checkFile(List<File> commitFile, String token) {
+	public static List<File> checkFile(List<File> commitFile) {
 		
 		checkedFile = new ArrayList<>();
-		
-		List<String> filenameChecked = new ArrayList<>();
 		
 		//order File by descending date	
 		
@@ -331,60 +388,29 @@ public final class GetMetrics {
 		
 		//Take only one copy for the file with the latest date, for each release
 		
-		for(int k=0; k<((release.size()/2)-1); k++) {
+		for(int k=0; k<(release.size()/2); k++) {
+			
+			List<String> filenameChecked = new ArrayList<>();
 		
 			for(int i=0; i<commitFile.size(); i++) {
 				
 				LocalDate checkDate = commitFile.get(i).getDate();
 				String filename = commitFile.get(i).getFilename();
 				
-				if((checkedFile.size() == 0 && checkDate.isBefore(release.get(k+1).getReleaseDate()) && checkDate.isAfter(release.get(k).getReleaseDate())) || 
-				(!filenameChecked.contains(filename) && checkDate.isBefore(release.get(k+1).getReleaseDate()) && checkDate.isAfter(release.get(k).getReleaseDate()))) {
+				if(!filenameChecked.contains(filename) && checkDate.isBefore(release.get(k+1).getReleaseDate()) 
+						&& checkDate.isAfter(release.get(k).getReleaseDate())){
 					
 					checkedFile.add(commitFile.get(i));
 					
 					filenameChecked.add(commitFile.get(i).getFilename());
-				
+	
 				}
 			
 			}
-			
-			JSONObject conn = null;
-			int sum = 0;
 		
-			LOGGER.info("Searching size for committed file...");
-			
-			for(int i = 0; i<checkedFile.size(); i++) {
-					
-				String url1 = checkedFile.get(i).getUrl();
-				   
-				   try {
-							
-					   conn = Connection.jsonFromUrl(url1, token);
-						
-				   }catch(Exception e) {
-							  					
-					   LOGGER.log(Level.SEVERE, "[ERROR]", e);
-					   break;
-							  
-				   }
-				   
-				   //String content = conn.get("content").toString();
-				   int size = conn.getInt("size");
-				   
-				   sum += size;
-
-			}
-			
-			release.get(k).setSize(sum);
-			
-			System.out.println("Somma finale " + sum);
-			
-			System.out.println(checkedFile.size());
-			
-			System.out.println(release.get(k).getSize());
-			
 		}
 		
+		return checkedFile;
 	}
+	
 }

@@ -1,7 +1,6 @@
 package entities;
 
 import java.util.List;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -19,7 +18,7 @@ public class Commit {
 	
 	private List<File> commitFile;
 
-	public Commit(String message, String date, String auth, String sha) throws ParseException{
+	public Commit(String message, String date, String auth, String sha){
 		
 		this.message = message;
 		
@@ -67,7 +66,7 @@ public class Commit {
 		return date;
 	}
 	
-	public void setDate(String date) throws ParseException {
+	public void setDate(String date) {
 		
 		this.date = LocalDate.parse(date, formatter);
 				

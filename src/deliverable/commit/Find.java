@@ -40,7 +40,7 @@ public final class Find {
 	   Integer total = 1;
 	   String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 	   
-	   LOGGER.info("Searching for tickets...");
+	   LOGGER.info("Searching tickets...");
 	   
 	      do {
 	         //Only gets a max of 1000 at a time, so must do this multiple times if >1000
@@ -65,7 +65,11 @@ public final class Find {
 	        	 
 	        	 String key = issues.getJSONObject(i%1000).get("key").toString();
 	        	 
-	        	 Ticket t = new Ticket(key);
+	        	 List<String> version = null;
+	        	 
+	        	 List<String> fixVersion = null;
+	        	 
+	        	 Ticket t = new Ticket(key, version, fixVersion);
 	        	 
 	        	 tickets.add(t);	
 	            
@@ -90,7 +94,7 @@ public final class Find {
 	  String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
 	  String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 	  
-	  LOGGER.info("Searching for all commits...");
+	  LOGGER.info("Searching all commits...");
 	   
 	  while(true) {
 		   

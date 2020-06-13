@@ -11,11 +11,17 @@ public class Ticket {
 	private List<Commit> commitsTicket;
 	
 	private LocalDate resolutionDate = null;
+	
+	private List<String> versions;
+	
+	private List<String> fixVersions;
 
-	public Ticket(String id) {
+	public Ticket(String id, List<String> versions, List<String> fixVersions) {
 
 		this.id = id;
 		this.commitsTicket = new ArrayList<>();
+		this.versions = new ArrayList<>();
+		this.fixVersions = new ArrayList<>();
 		
 	}
 
@@ -59,6 +65,22 @@ public class Ticket {
 
 		return resolutionDate;
 		
+	}
+
+	public List<String> getVersions() {
+		return versions;
+	}
+
+	public void setVersions(List<String> versions) {
+		this.versions = versions;
+	}
+
+	public List<String> getFixVersions() {
+		return fixVersions;
+	}
+
+	public void setFixVersions(List<String> fixVersions) {
+		this.fixVersions = fixVersions;
 	}
 	
 }

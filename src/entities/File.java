@@ -15,8 +15,10 @@ public class File {
 	private LocalDate date;
 	
 	private String url;
+	
+	private String content;
 
-	public File(String filename, Integer lineChange, Integer lineDelete, Integer lineAdded, LocalDate date, String url) {
+	public File(String filename, Integer lineChange, Integer lineDelete, Integer lineAdded, LocalDate date, String url, String content) {
 		
 		this.filename = filename;
 		
@@ -29,6 +31,8 @@ public class File {
 		this.date = date;
 		
 		this.url = url;
+		
+		this.content = content;
 		
 	}
 	
@@ -78,6 +82,14 @@ public class File {
 
 	public void setLineAdded(Integer lineAdded) {
 		this.lineAdded = lineAdded;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 	
 }

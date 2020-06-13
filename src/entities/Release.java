@@ -9,8 +9,6 @@ public class Release {
 	private String id;
 	
 	private String version;
-	
-	private Integer size;
 
 	public Release(String id, LocalDate releaseDate, String version) {
 		
@@ -19,14 +17,6 @@ public class Release {
 		this.releaseDate = releaseDate;
 		
 		this.version = version;
-	}
-	
-	public Integer getSize() {
-		return size;
-	}
-
-	public void setSize(Integer size) {
-		this.size = size;
 	}
 
 	public LocalDate getReleaseDate() {
