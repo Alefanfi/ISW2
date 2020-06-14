@@ -28,17 +28,23 @@ public final class GetMetrics {
 
 	private static final Logger LOGGER = Logger.getLogger(GetMetrics.class.getName());
 	
+	//list of commits
 	static List<Commit> commits;
 	
+	//list of tickets
 	static List<Ticket> tickets;
 	
+	//list of committed file
 	static List<File> commitFile;
 	
+	//list of release
 	static List<Release> release;
 	
 	static List<File> checkedFile;
 	
 	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	
+	/* function that retrieve information about the release of the project */
 		
 	public static List<Release> getReleaseInfo(String projName) throws JSONException, IOException, ParseException{
 		
@@ -46,15 +52,19 @@ public final class GetMetrics {
 		
 		LOGGER.info("Searching release...");
 		
+		//connection to jira
+		
 		String url = "https://issues.apache.org/jira/rest/api/2/project/" + projName;
 		
 		JSONObject json = Connection.readJsonFromUrl(url);
 		
 		JSONArray versions = json.getJSONArray("versions");
 		
-		//Find info about the release
+		//Find info about the release using the jira api
 		
 		for (int i = 0; i < versions.length(); i++ ) {
+			
+			//take information only for the release that have a releaseDate
 			
 			if(versions.getJSONObject(i).has("releaseDate")) {
 				
@@ -75,6 +85,7 @@ public final class GetMetrics {
 			}
 		         
 		}
+		
 		// order releases by date
 		
 		Collections.sort(release, (Release o1, Release o2) -> o1.getReleaseDate().compareTo(o2.getReleaseDate()));
@@ -90,6 +101,10 @@ public final class GetMetrics {
 		return release;
 		
 	}
+	
+	/* function that retrieve information about the ticket that have the date previous than 
+	 * 
+	 * the date of the release date (the first half of the project) */
 	
 	
 	public static List<Ticket> getTickets(String projName) throws JSONException, IOException{
@@ -135,35 +150,9 @@ public final class GetMetrics {
 				
 				List<String> fixVersionList = new ArrayList<>();
 				
-				if(ticket.getJSONObject("fields").has("versions")) {
-					
-					JSONArray version = ticket.getJSONObject("fields").getJSONArray("versions");
-
-					for(int k=0; k<version.length(); k++) {
-						
-						String versionName = version.getJSONObject(k).get("name").toString();
-						
-						versionList.add(versionName);
-						
-					}	
-						
-				}
+				JSONObject field =ticket.getJSONObject("fields");
 				
-				if(ticket.getJSONObject("fields").has("fixVersions")) {
-					
-					JSONArray fixVersion = ticket.getJSONObject("fields").getJSONArray("fixVersions");
-					
-					for(int z=0; z<fixVersion.length(); z++) {
-						
-						String fixVersionName = fixVersion.getJSONObject(z).get("name").toString();
-						
-						fixVersionList.add(fixVersionName);
-											
-					}
-					
-				}
-				
-				String strdate = ticket.getJSONObject("fields").get("resolutiondate").toString();
+				String strdate = field.get("resolutiondate").toString();
 				
 				String formattedDate = strdate.substring(0,10);
 				
@@ -175,15 +164,37 @@ public final class GetMetrics {
 				
 				if(date.isBefore(releaseDate)) {
 					
-					//if the ticket's date is previous than the release's date, the ticket is added to the list
-					
-					Ticket t = new Ticket(key, versionList, fixVersionList); 
+					/*if the ticket's date is previous than the release's date (the first half of the project), 
+					 * 
+					 * the fuction get all information about the ticket and it is added to the list*/
+						
+					JSONArray ticketVersion = field.getJSONArray("versions");
+	
+					for(int k=0; k<ticketVersion.length(); k++) {
+							
+						String versionName = ticketVersion.getJSONObject(k).get("name").toString();
+													
+						versionList.add(versionName);
+		
+					}	
+	
+					JSONArray fixVersion = field.getJSONArray("fixVersions");
+						
+					for(int z=0; z<fixVersion.length(); z++) {
 
-					//Adds the new ticket to the list
-	    
-					tickets.add(t);	
+						String fixVersionName = fixVersion.getJSONObject(z).get("name").toString();
+		
+						fixVersionList.add(fixVersionName);
+						
+					}
+										
+					Ticket t = new Ticket(key, versionList, fixVersionList); 
 					
-				}
+					//Adds the new ticket to the list
+
+					tickets.add(t);	
+						
+					}
 		               
 			}    
 		    
@@ -195,6 +206,9 @@ public final class GetMetrics {
 		  
 	}
 
+	/* fuction that retrieve the information about commits that have the date previous than 
+	 * 
+	 * the release's date (the first half of the project)*/
 	
 	public static List<Commit> getCommits(String projName, String token) throws IOException, ParseException {
 		
@@ -277,6 +291,8 @@ public final class GetMetrics {
 		
 	}
 	
+	/* if a ticket is found in the commit, the function add this commit in the list commitsTicket */
+	
 	public static void associatingCommitToTickets(List<Ticket> tickets, List<Commit> commits) {
 	
 		String message = null;
@@ -335,7 +351,11 @@ public final class GetMetrics {
 				
 				   String filename = file.getJSONObject(j).get("filename").toString();
 				   
+				   //Take only java file
+				   
 				   if(filename.contains(".java")) {
+					   
+					   LOGGER.info("File: " + filename);
 					   
 					   int change = file.getJSONObject(j).getInt("changes");
 					   
@@ -359,9 +379,13 @@ public final class GetMetrics {
 					
 					   String content = conn2.get("content").toString();
 					   
+					   //endecode content in Base64
+					   
 					   byte[] contentByteArray = Base64.getMimeDecoder().decode(content);
 					   
 					   String contentString = new String(contentByteArray);
+					   
+					   //add file to commitFile
 
 					   File f = new File(filename, change, delete, addLine, date, url, contentString);
 					  
@@ -372,7 +396,7 @@ public final class GetMetrics {
 			   }
 		}
 		
-		LOGGER.info(commitFile.size()+" committed files found!");
+		LOGGER.info(commitFile.size() + " committed files found!");
 		
 		return commitFile;
 		

@@ -20,8 +20,8 @@ public class Ticket {
 
 		this.id = id;
 		this.commitsTicket = new ArrayList<>();
-		this.versions = new ArrayList<>();
-		this.fixVersions = new ArrayList<>();
+		this.versions = versions;
+		this.fixVersions = fixVersions;
 		
 	}
 

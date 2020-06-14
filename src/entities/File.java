@@ -17,6 +17,8 @@ public class File {
 	private String url;
 	
 	private String content;
+	
+	private Integer size;
 
 	public File(String filename, Integer lineChange, Integer lineDelete, Integer lineAdded, LocalDate date, String url, String content) {
 		
@@ -90,6 +92,14 @@ public class File {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public Integer getSize() {
+		return size;
+	}
+
+	public void setSize(Integer size) {
+		this.size = size;
 	}
 	
 }

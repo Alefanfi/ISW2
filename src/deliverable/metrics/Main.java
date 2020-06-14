@@ -17,26 +17,29 @@ public class Main {
 	
 	public static void main(String[] args) throws JSONException, IOException, ParseException {
 		
-		String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
-		String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
-		String newToken = PropertiesUtils.getProperty(ReadPropertyFile.NEWTOKEN);
-		//String anotherToken = PropertiesUtils.getProperty(ReadPropertyFile.ANOTHERTOKEN);
+		//Get token and project name from conf.properties
 		
+		String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
+		
+		String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
+		
+		//String newToken = PropertiesUtils.getProperty(ReadPropertyFile.NEWTOKEN);
+		
+		/* Start to get information about project that will be used for calculating metrics */
 		
 		GetMetrics.getReleaseInfo(project);
 		GetMetrics.getTickets(project);
 		GetMetrics.getCommits(project, token);
 		GetMetrics.associatingCommitToTickets(GetMetrics.tickets, GetMetrics.commits);
-		GetMetrics.getFile(GetMetrics.commits, project, newToken);
+		GetMetrics.getFile(GetMetrics.commits, project, token);
 		GetMetrics.checkFile(GetMetrics.commitFile);
 		
-		Dataset.getLoc(GetMetrics.commitFile);
+		Dataset.getSize(GetMetrics.commitFile);
 		
 		logger.info("Done");
 		
 		//String outname = project + "VersionInfo.csv";
-		 
-	
+		 	
 	}
 
 }
