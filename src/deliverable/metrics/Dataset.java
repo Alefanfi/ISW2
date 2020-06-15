@@ -2,17 +2,22 @@ package deliverable.metrics;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.json.JSONException;
+
+import entities.Commit;
 import entities.FileCommitted;
+import entities.Release;
+import entities.Ticket;
 
 public class Dataset {
-	
-	private Dataset() {}
 	
     //Returns the number of LOC in a file
 	
@@ -91,7 +96,7 @@ public class Dataset {
 		
 	}
 	
-	public static void checkFile(List<FileCommitted> commitFile) {
+	public static void checkFile(List<FileCommitted> commitFile, List<Release> release) {
 		
 		//order File by descending date	
 		
@@ -99,7 +104,7 @@ public class Dataset {
 		
 		//Take only one copy for the file with the latest date, for each release
 		
-		for(int k=0; k<(GetMetrics.release.size()/2); k++) {
+		for(int k=0; k<(release.size()/2); k++) {
 			
 			List<String> filenameChecked = new ArrayList<>();
 			
@@ -110,8 +115,8 @@ public class Dataset {
 				LocalDate checkDate = commitFile.get(i).getDate();
 				String filename = commitFile.get(i).getFilename();
 				
-				if(!filenameChecked.contains(filename) && checkDate.isBefore(GetMetrics.release.get(k+1).getReleaseDate()) 
-						&& checkDate.isAfter(GetMetrics.release.get(k).getReleaseDate())){
+				if(!filenameChecked.contains(filename) && checkDate.isBefore(release.get(k+1).getReleaseDate()) 
+						&& checkDate.isAfter(release.get(k).getReleaseDate())){
 					
 					checkedFile.add(commitFile.get(i));
 					
@@ -152,5 +157,41 @@ public class Dataset {
 		
 		printer.close();
 	
+	}
+	
+	public static void retrieveInfo(String projName, String token) throws JSONException, IOException, ParseException {
+		
+		//List of tickets from the project	
+		List<Ticket> tickets = null;	
+		
+		//List of all the commits of the project
+		List<Commit> commits = null;	
+		
+		//List of all the release of the project
+		List<Release> release = null;
+		
+		//List of alla file committed
+		List<FileCommitted> commitFile = null;
+		
+		//retrieve info about releases
+		GetMetrics.getReleaseInfo(projName, release);
+		
+		//retrieve info about tickets
+		GetMetrics.getTickets(projName, tickets, release);
+		
+		//retrieve info about commits
+		GetMetrics.getCommits(projName, token, commits, release);
+		
+		//associating commit to tickets
+		GetMetrics.associatingCommitToTickets(tickets, commits);
+		
+		//retrieve info about files
+		GetMetrics.getFile(commits, projName, token, commitFile);
+		
+		//take size for committed files
+		checkFile(commitFile, release);
+		
+		
+		
 	}
 }

@@ -25,13 +25,7 @@ public class Main {
 		
 		/* Start to get information about project that will be used for calculating metrics */
 		
-		GetMetrics.getReleaseInfo(project);
-		GetMetrics.getTickets(project);
-		GetMetrics.getCommits(project, token);
-		GetMetrics.associatingCommitToTickets(GetMetrics.tickets, GetMetrics.commits);
-		GetMetrics.getFile(GetMetrics.commits, project, token);
-		
-		Dataset.getSize(GetMetrics.commitFile);
+		Dataset.retrieveInfo(project, token);
 		
 		logger.info("Done");
 		 	
