@@ -3,15 +3,25 @@ package deliverable.metrics;
 public class Result {
 	
 	private final Integer release;
+	
 	private final String file;
+	
 	private final Integer size;
+	
 	private final Integer locTouched;
+	
 	private final Integer locAdded;
+	
 	private final Integer maxLocAdded;
+	
 	private final Integer avgLocAdded;
+	
 	private final Integer nauth;
+	
 	private final Integer nfix;
+	
 	private final Integer nr;
+	
 	private final Integer chgSetSize;
 	
 	//use a builder patter instead of many costructor parameters
@@ -19,15 +29,25 @@ public class Result {
 	public Result(Builder builder) {
 		
 		this.release = builder.release;
+		
 		this.file = builder.file;
+		
 		this.size = builder.size;
+		
 		this.locTouched = builder.locTouched;
+		
 		this.locAdded = builder.locAdded;
+		
 		this.maxLocAdded = builder.maxLocAdded;
+		
 		this.avgLocAdded = builder.avgLocAdded;
+		
 		this.nauth = builder.nauth;
+		
 		this.nfix = builder.nfix;
+		
 		this.nr = builder.nr;
+		
 		this.chgSetSize = builder.chgSetSize;
 		
 	}
@@ -79,15 +99,25 @@ public class Result {
 	public static class Builder{
 		
 		private Integer release;
+		
 		private String file;
+		
 		private Integer size;
+		
 		private Integer locTouched;
+		
 		private Integer locAdded;
+		
 		private Integer maxLocAdded;
+		
 		private Integer avgLocAdded;
+		
 		private Integer nauth;
+		
 		private Integer nfix;
+		
 		private Integer nr;
+		
 		private Integer chgSetSize;
 		
 		public Result build() {

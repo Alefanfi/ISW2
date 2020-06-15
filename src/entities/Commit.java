@@ -34,8 +34,15 @@ public class Commit {
 		return commitFile;
 	}
 
-	public void setCommitFile(List<FileCommitted> commitFile) {
-		this.commitFile = commitFile;
+	public void setCommitFile(FileCommitted f) {
+		
+		commitFile.add(f);
+		
+		for(int i=0; i< commitFile.size(); i++) {
+			
+			System.out.println(commitFile.get(i));
+		
+		}
 	}
 	
 	public String getSha() {

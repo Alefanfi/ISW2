@@ -5,19 +5,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
 import org.json.JSONException;
-
 import entities.Commit;
 import entities.FileCommitted;
 import entities.Release;
 import entities.Ticket;
 
 public class Dataset {
+	
+	//private static final Logger LOGGER = Logger.getLogger(Dataset.class.getName());
 	
     //Returns the number of LOC in a file
 	
@@ -47,13 +44,13 @@ public class Dataset {
 		 
 		 String[] lines = content.split("\n");
 		 
-		 for(int j=0; j<=lines.length; j++) {
+		 for(int j=0; j < lines.length; j++) {
 			 
-			 if(lines[j].startsWith("//") || (lines[j].startsWith("/*") && lines[j].contains("*/"))) {
+			 if(lines[j].startsWith("//") || (lines[j].startsWith("/*") && lines[j].endsWith("*/"))) {
 				 
 				 count ++;
 				 	 
-			 } else if(lines[j].startsWith("/*") && !lines[j].contains("*/")) {
+			 } else if(lines[j].startsWith("/*") && !lines[j].endsWith("*/")) {
 				 
 				 int k = j;
 				 
@@ -63,74 +60,37 @@ public class Dataset {
 					 
 					 k++;
 				 
-				 }while (!lines[k].contains("*/")); 
+				 }while (!lines[k].endsWith("*/") && k<lines.length-1); 
 		
 			 }
 			 
 		 }
 		 
 		 System.out.println("count = " + count);
-		 
-		 System.out.println("\n");
 	 
 		 return count;
 	 
 	}	
 	
-	public static void getSize(List<FileCommitted> fileList) {
+	public static void countSize(List<FileCommitted> fileList) {
 		
-		for(int z=0; z<=fileList.size(); z++) {
+		for(int i=0; i < fileList.size(); i++) {
 			
-			System.out.println("File " + z);
+			System.out.println("File " + i);
 			
-			int loc = getLoc(fileList.get(z));
+			int loc = getLoc(fileList.get(i));
 			
-			int comment = countComment(fileList.get(z));
+			int comment = countComment(fileList.get(i));
 			
 			int size = loc - comment;
 			
-			fileList.get(z).setSize(size);			
+			//fileList.get(i).setSize(size);			
 			
 			System.out.println(size);
 		}
 		
 	}
 	
-	public static void checkFile(List<FileCommitted> commitFile, List<Release> release) {
-		
-		//order File by descending date	
-		
-		Collections.sort(commitFile, Collections.reverseOrder((FileCommitted o1, FileCommitted o2) -> o1.getDate().compareTo(o2.getDate())));	
-		
-		//Take only one copy for the file with the latest date, for each release
-		
-		for(int k=0; k<(release.size()/2); k++) {
-			
-			List<String> filenameChecked = new ArrayList<>();
-			
-			List<FileCommitted> checkedFile = new ArrayList<>();
-		
-			for(int i=0; i<commitFile.size(); i++) {
-				
-				LocalDate checkDate = commitFile.get(i).getDate();
-				String filename = commitFile.get(i).getFilename();
-				
-				if(!filenameChecked.contains(filename) && checkDate.isBefore(release.get(k+1).getReleaseDate()) 
-						&& checkDate.isAfter(release.get(k).getReleaseDate())){
-					
-					checkedFile.add(commitFile.get(i));
-					
-					filenameChecked.add(commitFile.get(i).getFilename());
-	
-				}
-			
-			}
-			
-			getSize(checkedFile);
-		
-		}
-
-	}
 	
 	//Write dataset
 	
@@ -171,7 +131,7 @@ public class Dataset {
 		List<Release> release = null;
 		
 		//List of alla file committed
-		List<FileCommitted> commitFile = null;
+		List<FileCommitted> commitedFile = null;
 		
 		//retrieve info about releases
 		release = GetMetrics.getReleaseInfo(projName);
@@ -186,12 +146,9 @@ public class Dataset {
 		GetMetrics.associatingCommitToTickets(tickets, commits);
 		
 		//retrieve info about files
-		commitFile = GetMetrics.getFile(commits, projName, token);
+		commitedFile = GetMetrics.getFile(commits, projName, token);
 		
-		//take size for committed files
-		checkFile(commitFile, release);
-		
-		
-		
+		countSize(commitedFile);
+	
 	}
 }

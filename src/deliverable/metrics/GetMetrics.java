@@ -130,7 +130,7 @@ public final class GetMetrics {
 	        	
 				String key = issues.getJSONObject(i%1000).get("key").toString();
 				
-				List<String> versionList = new ArrayList<>();
+				List<String> affectedVersionList = new ArrayList<>();
 				
 				List<String> fixVersionList = new ArrayList<>();
 				
@@ -152,13 +152,13 @@ public final class GetMetrics {
 					 * 
 					 * the fuction get all information about the ticket and it is added to the list*/
 						
-					JSONArray ticketVersion = field.getJSONArray("versions");
+					JSONArray affectedVersion = field.getJSONArray("versions");
 	
-					for(int k=0; k<ticketVersion.length(); k++) {
+					for(int k=0; k<affectedVersion.length(); k++) {
 							
-						String versionName = ticketVersion.getJSONObject(k).get("name").toString();
+						String versionName = affectedVersion.getJSONObject(k).get("name").toString();
 													
-						versionList.add(versionName);
+						affectedVersionList.add(versionName);
 		
 					}	
 	
@@ -172,7 +172,7 @@ public final class GetMetrics {
 						
 					}
 										
-					Ticket t = new Ticket(key, versionList, fixVersionList); 
+					Ticket t = new Ticket(key, affectedVersionList, fixVersionList); 
 					
 					//Adds the new ticket to the list
 
@@ -269,7 +269,7 @@ public final class GetMetrics {
 		
 		//order commit by descending date
 		
-		Collections.sort(commits, Collections.reverseOrder((Commit o1, Commit o2) -> o1.getDate().compareTo(o2.getDate())));
+		Collections.sort(commits, (Commit o1, Commit o2) -> o1.getDate().compareTo(o2.getDate()));
 		
 		return commits;
 		
@@ -303,12 +303,17 @@ public final class GetMetrics {
 		   
 	}
 	
+	//get info of the files for all commit
+	
 	public static List<FileCommitted> getFile(List<Commit> commits, String projName, String token) throws UnsupportedEncodingException {
 		
 		JSONObject conn = null;
-		String sha;
-		List<FileCommitted> commitFile = new ArrayList<>();
 		JSONObject conn2 = null;
+		String sha;
+		
+		List<FileCommitted> commitedFile = new ArrayList<>();
+		
+		List<FileCommitted> commitFile = new ArrayList<>();
 		
 		LOGGER.info("Searching committed file...");
 		
@@ -372,17 +377,19 @@ public final class GetMetrics {
 					   //add file to commitFile
 
 					   FileCommitted f = new FileCommitted(filename, change, delete, addLine, date, url, contentString);
+					   
+					   commits.get(i).setCommitFile(f);
 					  
-					   commitFile.add(f);
+					   commitedFile.add(f);
 				   
 				   }
 				      
 			   }
 		}
 		
-		LOGGER.info(commitFile.size() + " committed files found!");
+		LOGGER.info(commitedFile.size() + " committed files found!");
 		
-		return commitFile;
+		return commitedFile;
 		
 	}
 	
