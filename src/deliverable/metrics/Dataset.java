@@ -3,6 +3,9 @@ package deliverable.metrics;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import entities.FileCommitted;
@@ -87,20 +90,20 @@ public class Dataset {
 		}
 		
 	}
-	/*
-	public static List<File> checkFile(List<File> commitFile) {
-		
-		List<File> checkedFile = new ArrayList<>();
+	
+	public static void checkFile(List<FileCommitted> commitFile) {
 		
 		//order File by descending date	
 		
-		Collections.sort(commitFile, Collections.reverseOrder((File o1, File o2) -> o1.getDate().compareTo(o2.getDate())));	
+		Collections.sort(commitFile, Collections.reverseOrder((FileCommitted o1, FileCommitted o2) -> o1.getDate().compareTo(o2.getDate())));	
 		
 		//Take only one copy for the file with the latest date, for each release
 		
 		for(int k=0; k<(GetMetrics.release.size()/2); k++) {
 			
 			List<String> filenameChecked = new ArrayList<>();
+			
+			List<FileCommitted> checkedFile = new ArrayList<>();
 		
 			for(int i=0; i<commitFile.size(); i++) {
 				
@@ -121,9 +124,8 @@ public class Dataset {
 			getSize(checkedFile);
 		
 		}
-		
-		return checkedFile;
-	}*/
+
+	}
 	
 	//Write dataset
 	

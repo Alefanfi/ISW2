@@ -13,23 +13,8 @@ public class Result {
 	private final Integer nfix;
 	private final Integer nr;
 	private final Integer chgSetSize;
-	/*
-	public Result(Integer release, String file, Integer size, Integer locTouched, Integer locAdded, Integer maxLocAdded, 
-			Integer avgLocAdded, Integer nauth, Integer nfix, Integer nr, Integer chgSetSize) {
-
-		this.release = release;
-		this.file = file;
-		this.size = size;
-		this.locTouched = locTouched;
-		this.locAdded = locAdded;
-		this.maxLocAdded = maxLocAdded;
-		this.avgLocAdded = avgLocAdded;
-		this.nauth = nauth;
-		this.nfix = nfix;
-		this.nr = nr;
-		this.chgSetSize = chgSetSize;
-		
-	}*/
+	
+	//use a builder patter instead of many costructor parameters
 
 	public Result(Builder builder) {
 		
@@ -50,91 +35,47 @@ public class Result {
 	public Integer getRelease() {
 		return this.release;
 	}
-/*
-	public void setRelease(Integer release) {
-		this.release = release;
-	}*/
 
 	public String getFile() {
 		return this.file;
 	}
-/*
-	public void setFile(String file) {
-		this.file = file;
-	}*/
 	
 	public Integer getSize() {
 		return this.size;
 	}
-	/*
-	public void setSize(Integer size) {
-		this.size = size;
-	}*/
 
 	public Integer getLocTouched() {
 		return this.locTouched;
 	}
-	/*
-	public void setLocTouched(Integer locTouched) {
-		this.locTouched = locTouched;
-	}*/
 
 	public Integer getLocAdded() {
 		return this.locAdded;
 	}
-/*
-	public void setLocAdded(Integer locAdded) {
-		this.locAdded = locAdded;
-	}*/
 
 	public Integer getNauth() {
 		return this.nauth;
 	}
-/*
-	public void setNauth(Integer nauth) {
-		this.nauth = nauth;
-	}*/
 
 	public Integer getMaxLocAdded() {
 		return this.maxLocAdded;
 	}
-/*
-	public void setMaxLocAdded(Integer maxLocAdded) {
-		this.maxLocAdded = maxLocAdded;
-	}*/
 
 	public Integer getAvgLocAdded() {
 		return this.avgLocAdded;
 	}
-/*
-	public void setAvgLocAdded(Integer avgLocAdded) {
-		this.avgLocAdded = avgLocAdded;
-	}
-*/
+	
 	public Integer getNfix() {
 		return this.nfix;
 	}
-/*
-	public void setNfix(Integer nfix) {
-		this.nfix = nfix;
-	}
-*/
+
 	public Integer getNr() {
 		return this.nr;
 	}
-/*
-	public void setNr(Integer nr) {
-		this.nr = nr;
-	}
-*/
+
 	public Integer getChgSetSize() {
 		return this.chgSetSize;
 	}
-/*
-	public void setChgSetSize(Integer chgSetSize) {
-		this.chgSetSize = chgSetSize;
-	}*/
-	
+
 	public static class Builder{
 		
 		private Integer release;

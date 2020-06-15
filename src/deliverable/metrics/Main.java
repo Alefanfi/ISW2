@@ -23,8 +23,6 @@ public class Main {
 		
 		String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 		
-		//String newToken = PropertiesUtils.getProperty(ReadPropertyFile.NEWTOKEN);
-		
 		/* Start to get information about project that will be used for calculating metrics */
 		
 		GetMetrics.getReleaseInfo(project);

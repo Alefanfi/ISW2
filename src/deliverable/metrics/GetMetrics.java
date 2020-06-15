@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,8 +38,6 @@ public final class GetMetrics {
 	
 	//list of release
 	static List<Release> release;
-	
-	static List<FileCommitted> checkedFile;
 	
 	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
@@ -355,7 +352,7 @@ public final class GetMetrics {
 				   
 				   if(filename.contains(".java")) {
 					   
-					   LOGGER.info("File: " + filename);
+					   LOGGER.info(filename);
 					   
 					   int change = file.getJSONObject(j).getInt("changes");
 					   
