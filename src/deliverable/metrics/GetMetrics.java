@@ -22,6 +22,8 @@ import entities.Ticket;
 import util.Connection;
 
 public final class GetMetrics {
+	
+	private GetMetrics() {}
 
 	private static final Logger LOGGER = Logger.getLogger(GetMetrics.class.getName());
 
@@ -29,9 +31,9 @@ public final class GetMetrics {
 	
 	/* function that retrieve information about the release of the project */
 		
-	public static List<Release> getReleaseInfo(String projName, List<Release> release) throws JSONException, IOException, ParseException{
+	public static List<Release> getReleaseInfo(String projName) throws JSONException, IOException, ParseException{
 		
-		release = new ArrayList<>();
+		List<Release> release = new ArrayList<>();
 		
 		LOGGER.info("Searching release...");
 		
@@ -89,11 +91,11 @@ public final class GetMetrics {
 	 * 
 	 * the date of the release date (the first half of the project) */
 		
-	public static List<Ticket> getTickets(String projName, List<Ticket> tickets, List<Release> release) throws JSONException, IOException{
+	public static List<Ticket> getTickets(String projName, List<Release> release) throws JSONException, IOException{
 				  
 		//Searchs for all the tickets of type 'Bug' which have been resolved/closed
 		      
-		tickets = new ArrayList<>();
+		List<Ticket> tickets = new ArrayList<>();
 		
 		Integer j = 0;
 		Integer i = 0;
@@ -192,11 +194,11 @@ public final class GetMetrics {
 	 * 
 	 * the release's date (the first half of the project)*/
 	
-	public static List<Commit> getCommits(String projName, String token, List<Commit> commits, List<Release> release) throws IOException, ParseException {
+	public static List<Commit> getCommits(String projName, String token, List<Release> release) throws IOException, ParseException {
 		
 		LOGGER.info("Searching commit...");
 		
-		commits = new ArrayList<>();
+		List<Commit> commits = new ArrayList<>();
 	   
 		Integer page=0;
 		JSONArray comm;
@@ -301,11 +303,11 @@ public final class GetMetrics {
 		   
 	}
 	
-	public static List<FileCommitted> getFile(List<Commit> commits, String projName, String token, List<FileCommitted> commitFile) throws UnsupportedEncodingException {
+	public static List<FileCommitted> getFile(List<Commit> commits, String projName, String token) throws UnsupportedEncodingException {
 		
 		JSONObject conn = null;
 		String sha;
-		commitFile = new ArrayList<>();
+		List<FileCommitted> commitFile = new ArrayList<>();
 		JSONObject conn2 = null;
 		
 		LOGGER.info("Searching committed file...");

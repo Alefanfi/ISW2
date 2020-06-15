@@ -174,19 +174,19 @@ public class Dataset {
 		List<FileCommitted> commitFile = null;
 		
 		//retrieve info about releases
-		GetMetrics.getReleaseInfo(projName, release);
+		release = GetMetrics.getReleaseInfo(projName);
 		
 		//retrieve info about tickets
-		GetMetrics.getTickets(projName, tickets, release);
+		tickets = GetMetrics.getTickets(projName, release);
 		
 		//retrieve info about commits
-		GetMetrics.getCommits(projName, token, commits, release);
+		commits = GetMetrics.getCommits(projName, token, release);
 		
 		//associating commit to tickets
 		GetMetrics.associatingCommitToTickets(tickets, commits);
 		
 		//retrieve info about files
-		GetMetrics.getFile(commits, projName, token, commitFile);
+		commitFile = GetMetrics.getFile(commits, projName, token);
 		
 		//take size for committed files
 		checkFile(commitFile, release);
