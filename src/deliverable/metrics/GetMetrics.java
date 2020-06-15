@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import entities.Commit;
-import entities.File;
+import entities.FileCommitted;
 import entities.Release;
 import entities.Ticket;
 import util.Connection;
@@ -35,12 +35,12 @@ public final class GetMetrics {
 	static List<Ticket> tickets;
 	
 	//list of committed file
-	static List<File> commitFile;
+	static List<FileCommitted> commitFile;
 	
 	//list of release
 	static List<Release> release;
 	
-	static List<File> checkedFile;
+	static List<FileCommitted> checkedFile;
 	
 	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
@@ -319,7 +319,7 @@ public final class GetMetrics {
 		   
 	}
 	
-	public static List<File> getFile(List<Commit> commits, String projName, String token) throws UnsupportedEncodingException {
+	public static List<FileCommitted> getFile(List<Commit> commits, String projName, String token) throws UnsupportedEncodingException {
 		
 		JSONObject conn = null;
 		String sha;
@@ -387,7 +387,7 @@ public final class GetMetrics {
 					   
 					   //add file to commitFile
 
-					   File f = new File(filename, change, delete, addLine, date, url, contentString);
+					   FileCommitted f = new FileCommitted(filename, change, delete, addLine, date, url, contentString);
 					  
 					   commitFile.add(f);
 				   
@@ -400,41 +400,6 @@ public final class GetMetrics {
 		
 		return commitFile;
 		
-	}
-	
-	public static List<File> checkFile(List<File> commitFile) {
-		
-		checkedFile = new ArrayList<>();
-		
-		//order File by descending date	
-		
-		Collections.sort(commitFile, Collections.reverseOrder((File o1, File o2) -> o1.getDate().compareTo(o2.getDate())));	
-		
-		//Take only one copy for the file with the latest date, for each release
-		
-		for(int k=0; k<(release.size()/2); k++) {
-			
-			List<String> filenameChecked = new ArrayList<>();
-		
-			for(int i=0; i<commitFile.size(); i++) {
-				
-				LocalDate checkDate = commitFile.get(i).getDate();
-				String filename = commitFile.get(i).getFilename();
-				
-				if(!filenameChecked.contains(filename) && checkDate.isBefore(release.get(k+1).getReleaseDate()) 
-						&& checkDate.isAfter(release.get(k).getReleaseDate())){
-					
-					checkedFile.add(commitFile.get(i));
-					
-					filenameChecked.add(commitFile.get(i).getFilename());
-	
-				}
-			
-			}
-		
-		}
-		
-		return checkedFile;
 	}
 	
 }

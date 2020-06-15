@@ -2,9 +2,9 @@ package entities;
 
 import java.time.LocalDate;
 
-public class File {
+public class FileCommitted {
 	
-	private String filename;
+private String filename;
 	
 	private Integer lineChange;
 	
@@ -20,7 +20,7 @@ public class File {
 	
 	private Integer size;
 
-	public File(String filename, Integer lineChange, Integer lineDelete, Integer lineAdded, LocalDate date, String url, String content) {
+	public FileCommitted(String filename, Integer lineChange, Integer lineDelete, Integer lineAdded, LocalDate date, String url, String content) {
 		
 		this.filename = filename;
 		
@@ -101,5 +101,6 @@ public class File {
 	public void setSize(Integer size) {
 		this.size = size;
 	}
-	
+
+
 }

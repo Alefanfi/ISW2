@@ -16,7 +16,7 @@ public class Commit {
 	
 	private String sha;
 	
-	private List<File> commitFile;
+	private List<FileCommitted> commitFile;
 
 	public Commit(String message, String date, String auth, String sha){
 		
@@ -30,11 +30,11 @@ public class Commit {
 			
 	}
 	
-	public List<File> getCommitFile() {
+	public List<FileCommitted> getCommitFile() {
 		return commitFile;
 	}
 
-	public void setCommitFile(List<File> commitFile) {
+	public void setCommitFile(List<FileCommitted> commitFile) {
 		this.commitFile = commitFile;
 	}
 	

@@ -32,13 +32,10 @@ public class Main {
 		GetMetrics.getCommits(project, token);
 		GetMetrics.associatingCommitToTickets(GetMetrics.tickets, GetMetrics.commits);
 		GetMetrics.getFile(GetMetrics.commits, project, token);
-		GetMetrics.checkFile(GetMetrics.commitFile);
 		
 		Dataset.getSize(GetMetrics.commitFile);
 		
 		logger.info("Done");
-		
-		//String outname = project + "VersionInfo.csv";
 		 	
 	}
 
