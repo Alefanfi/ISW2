@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -24,6 +25,8 @@ public class Commit {
 		
 		this.date = LocalDate.parse(date, formatter);
 		
+		this.commitFile = new ArrayList<>();
+		
 		this.auth = auth;
 		
 		this.sha = sha;
@@ -33,16 +36,14 @@ public class Commit {
 	public List<FileCommitted> getCommitFile() {
 		return commitFile;
 	}
+	
+	public void setCommitFile(List<FileCommitted> commitFile) {
+		this.commitFile = commitFile;
+	}
 
-	public void setCommitFile(FileCommitted f) {
+	public void addCommitFile(FileCommitted f) {
 		
 		commitFile.add(f);
-		
-		for(int i=0; i< commitFile.size(); i++) {
-			
-			System.out.println(commitFile.get(i));
-		
-		}
 	}
 	
 	public String getSha() {

@@ -135,18 +135,18 @@ public final class GetMetrics {
 				List<String> fixVersionList = new ArrayList<>();
 				
 				JSONObject field =ticket.getJSONObject("fields");
+								
+				String strCreatedDate = field.get("created").toString();
+			
+				String formattedCreatedDate = strCreatedDate.substring(0,10);
 				
-				String strdate = field.get("resolutiondate").toString();
+				LocalDate createdDate = LocalDate.parse(formattedCreatedDate, formatter);
 				
-				String formattedDate = strdate.substring(0,10);
-				
-				LocalDate date = LocalDate.parse(formattedDate, formatter);
-				
-				LocalDate releaseDate = release.get((release.size()/2)-1).getReleaseDate();
+				LocalDate releaseDate = release.get((release.size()/2)+1).getReleaseDate();
 				
 				//compare the ticket's date to the release's date
 				
-				if(date.isBefore(releaseDate)) {
+				if(createdDate.isBefore(releaseDate)) {
 					
 					/*if the ticket's date is previous than the release's date (the first half of the project), 
 					 * 
@@ -172,7 +172,7 @@ public final class GetMetrics {
 						
 					}
 										
-					Ticket t = new Ticket(key, affectedVersionList, fixVersionList); 
+					Ticket t = new Ticket(key, affectedVersionList, fixVersionList, createdDate); 
 					
 					//Adds the new ticket to the list
 
@@ -183,6 +183,10 @@ public final class GetMetrics {
 			}    
 		    
 		} while (i < total);
+		
+		// order releases by date
+		
+		Collections.sort(tickets, (Ticket o1, Ticket o2) -> o1.getCreatedDate().compareTo(o2.getCreatedDate()));
 		
 		LOGGER.info(tickets.size()+" tickets found!");
 		     
@@ -243,7 +247,7 @@ public final class GetMetrics {
 					
 				   LocalDate date = LocalDate.parse(formattedDate, formatter);					
 					
-				   LocalDate releaseDate = release.get((release.size()/2)-1).getReleaseDate();
+				   LocalDate releaseDate = release.get((release.size()/2)+1).getReleaseDate();
 				   
 				   //Take the commit from the first half of the project
 										
@@ -292,6 +296,7 @@ public final class GetMetrics {
 				   if(message.contains(tickets.get(j).getId()+":")||(message.contains(tickets.get(j).getId()+"]"))||
 						   (message.contains(tickets.get(j).getId()))){	
 					   
+					   //add commit in the list of ticket's commit
 					   tickets.get(j).addCommit(commits.get(i1));
 					   
 					   break;
@@ -312,8 +317,6 @@ public final class GetMetrics {
 		String sha;
 		
 		List<FileCommitted> commitedFile = new ArrayList<>();
-		
-		List<FileCommitted> commitFile = new ArrayList<>();
 		
 		LOGGER.info("Searching committed file...");
 		
@@ -378,7 +381,7 @@ public final class GetMetrics {
 
 					   FileCommitted f = new FileCommitted(filename, change, delete, addLine, date, url, contentString);
 					   
-					   commits.get(i).setCommitFile(f);
+					   commits.get(i).addCommitFile(f);
 					  
 					   commitedFile.add(f);
 				   
@@ -391,6 +394,49 @@ public final class GetMetrics {
 		
 		return commitedFile;
 		
+	}
+	
+	
+	//associating opened version to the ticket
+	
+	public static void associatingReleaseToTickets(List<Release> release, List<Ticket> tickets) {
+		
+		LocalDate rd = null;
+		
+		LocalDate td = null;
+		
+		LocalDate dr = null;
+		
+		Collections.sort(tickets, (Ticket o1, Ticket o2) -> o1.getCreatedDate().compareTo(o2.getCreatedDate()));
+		
+		for (int i = 0; i <= release.size()/2-1; i++) {
+
+			rd = release.get(i).getReleaseDate();
+			
+			dr = release.get(i+1).getReleaseDate();
+			
+			for(int j = 0; j<tickets.size(); j++) {
+				
+				td = tickets.get(j).getCreatedDate();
+			
+				if(td.isBefore(release.get(0).getReleaseDate()) && !td.isAfter(release.get(0).getReleaseDate())) {
+										
+					tickets.get(j).setOpeningVersion(release.get(0).getVersion());
+												
+				} else if((td.isBefore(dr) && td.isAfter(rd)) || td.isAfter(release.get(release.size()/2-1).getReleaseDate()) || td.compareTo(rd) == 0 ) {
+					
+					tickets.get(j).setOpeningVersion(release.get(i+1).getVersion());
+				
+				}
+				
+			}
+			
+		}
+		/*
+		for(int k=0; k<tickets.size(); k++) {
+			
+			System.out.println ("Ticket " + k + " " + tickets.get(k).getInjectedVersion() + " " + tickets.get(k).getOpeningVersion());
+		}*/
 	}
 	
 }

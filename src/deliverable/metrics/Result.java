@@ -1,184 +1,207 @@
 package deliverable.metrics;
 
+import java.util.List;
+
 public class Result {
 	
-	private final Integer release;
+	private Integer release;
 	
-	private final String file;
+	private String file;
 	
-	private final Integer size;
+	private Integer size;
 	
-	private final Integer locTouched;
+	private Integer locTouched;
 	
-	private final Integer locAdded;
+	private Integer locAdded;
 	
-	private final Integer maxLocAdded;
+	private Integer maxLocAdded;
 	
-	private final Integer avgLocAdded;
+	private Integer avgLocAdded;
 	
-	private final Integer nauth;
-	
-	private final Integer nfix;
-	
-	private final Integer nr;
-	
-	private final Integer chgSetSize;
-	
-	//use a builder patter instead of many costructor parameters
+	private List<String> auth;
 
-	public Result(Builder builder) {
+	private Integer nFix;
+	
+	private Integer nR;
+	
+	private Integer chgSetSize;
+	
+	private String buggy;
+
+	public Result(Integer release, String file) {
 		
-		this.release = builder.release;
+		this.release = release;
+		this.file = file;
+	}
 		
-		this.file = builder.file;
-		
-		this.size = builder.size;
-		
-		this.locTouched = builder.locTouched;
-		
-		this.locAdded = builder.locAdded;
-		
-		this.maxLocAdded = builder.maxLocAdded;
-		
-		this.avgLocAdded = builder.avgLocAdded;
-		
-		this.nauth = builder.nauth;
-		
-		this.nfix = builder.nfix;
-		
-		this.nr = builder.nr;
-		
-		this.chgSetSize = builder.chgSetSize;
+	public void setRelease(Integer release) {
+	
+		this.release = release;
 		
 	}
-
+	
 	public Integer getRelease() {
-		return this.release;
+		return release;
 	}
 
 	public String getFile() {
-		return this.file;
+		return file;
 	}
-	
+
 	public Integer getSize() {
-		return this.size;
+		return size;
 	}
 
 	public Integer getLocTouched() {
-		return this.locTouched;
+		return locTouched;
 	}
 
 	public Integer getLocAdded() {
-		return this.locAdded;
-	}
-
-	public Integer getNauth() {
-		return this.nauth;
+		return locAdded;
 	}
 
 	public Integer getMaxLocAdded() {
-		return this.maxLocAdded;
+		return maxLocAdded;
 	}
 
 	public Integer getAvgLocAdded() {
-		return this.avgLocAdded;
-	}
-	
-	public Integer getNfix() {
-		return this.nfix;
+		return avgLocAdded;
 	}
 
-	public Integer getNr() {
-		return this.nr;
+	public Integer getnFix() {
+		return nFix;
+	}
+
+	public Integer getnR() {
+		return nR;
 	}
 
 	public Integer getChgSetSize() {
-		return this.chgSetSize;
+		return chgSetSize;
 	}
 
-	public static class Builder{
+	public String getBuggy() {
+		return buggy;
+	}
+
+	public void setFile(String file) {
+	
+		this.file = file;
 		
-		private Integer release;
-		
-		private String file;
-		
-		private Integer size;
-		
-		private Integer locTouched;
-		
-		private Integer locAdded;
-		
-		private Integer maxLocAdded;
-		
-		private Integer avgLocAdded;
-		
-		private Integer nauth;
-		
-		private Integer nfix;
-		
-		private Integer nr;
-		
-		private Integer chgSetSize;
-		
-		public Result build() {
-            return new Result(this);
-        }
-		
-		public Builder withRelease(Integer release) {
-			this.release = release;
-			return this;
-		}
-		
-		public Builder withFile(String file) {
-			this.file = file;
-			return this;
-		}
-		
-		public Builder withSize(Integer size) {
-			this.size = size;
-			return this;
-		}
-		
-		public Builder withLocTouched(Integer locTouched) {
-			this.locTouched = locTouched;
-			return this;
-		}
-		
-		public Builder withLocAdded(Integer locAdded) {
-			this.locAdded = locAdded;
-			return this;
-		}
-		
-		public Builder withMaxLocAdded(Integer maxLocAdded) {
-			this.maxLocAdded = maxLocAdded;
-			return this;
-		}
-		
-		public Builder withAvgLocAdded(Integer avgLocAdded) {
-			this.avgLocAdded = avgLocAdded;
-			return this;
-		}
-		
-		public Builder withNauth(Integer nauth) {
-			this.nauth = nauth;
-			return this;
-		}
-		
-		public Builder withNfix(Integer nfix) {
-			this.nfix = nfix;
-			return this;
-		}
-		
-		public Builder withNr(Integer nr) {
-			this.nr = nr;
-			return this;
-		}
-		
-		public Builder withChgSetSize(Integer chgSetSize) {
-			this.chgSetSize = chgSetSize;
-			return this;
-		}
+	}
+	
+	public void setSize(Integer size) {
+	
+		this.size = size;
 		
 	}
 
+	public void setLocTouched(Integer locTouched) {
+	
+		this.locTouched = locTouched;
+		
+	}
+
+	public void setLocAdded(Integer locAdded) {
+	
+		this.locAdded = locAdded;
+		
+	}
+
+	public void setMaxLocAdded(Integer maxLocAdded) {
+	
+		this.maxLocAdded = maxLocAdded;
+		
+	}
+
+	public void setAvgLocAdded(Integer avgLocAdded) {
+	
+		this.avgLocAdded = avgLocAdded;
+		
+	}
+
+	public void setnFix(Integer nFix) {
+	
+		this.nFix = nFix;
+		
+	}
+
+	public void setnR(Integer nR) {
+	
+		this.nR = nR;
+		
+	}
+	
+	public void setChgSetSize(Integer chgSetSize) {
+	
+		this.chgSetSize = chgSetSize;
+		
+	}
+	
+	public void setBuggy(String buggy) {
+	
+		this.buggy = buggy;
+		
+	}
+	
+	//Adds loc to the number of loc touched
+		
+	public void addLocTouched(int loc) {
+	
+		this.locTouched += loc;
+		
+	}
+
+	//Adds loc to the number of loc added
+	
+	public void addLocAdded(int loc) {
+	
+		this.locAdded += loc;
+		
+		//Updates the value of the max loc added
+		
+		if(this.maxLocAdded < loc) {
+		
+			this.maxLocAdded = loc;
+			
+		}
+		
+	}
+	
+	//Adds to the change set size the new number of files committed together
+		
+	public void addChgSetSize(int num) {
+	
+		this.chgSetSize += num;
+		
+	}
+	
+	//Adds a revision
+		
+	public void addRevision() {
+	
+		this.nR++;
+		
+	}
+	
+	//Adds an author to the list
+		
+	public void addAuth(String auth) {
+
+		if(!this.auth.contains(auth)) {
+		
+			this.auth.add(auth);
+			
+		}
+			
+	}
+	
+	public List<String> getAuth() {
+		return auth;
+	}
+
+	public void setAuth(List<String> auth) {
+		this.auth = auth;
+	}
+	
 }

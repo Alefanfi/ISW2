@@ -15,8 +15,16 @@ public class Ticket {
 	private List<String> affectedVersions;
 	
 	private List<String> fixVersions;
+	
+	private String openingVersion;
+	
+	private String injectedVersion;
+	
+	private LocalDate createdDate;
+	
+	private Commit commitFix;
 
-	public Ticket(String id, List<String> affectedVersions, List<String> fixVersions) {
+	public Ticket(String id, List<String> affectedVersions, List<String> fixVersions, LocalDate createdDate) {
 
 		this.id = id;
 		
@@ -25,6 +33,8 @@ public class Ticket {
 		this.affectedVersions = affectedVersions;
 		
 		this.fixVersions = fixVersions;
+		
+		this.createdDate = createdDate;
 		
 	}
 
@@ -48,6 +58,15 @@ public class Ticket {
 
 	public void setCommitsTicket(List<Commit> commitsTicket) {
 		this.commitsTicket = commitsTicket;
+	}
+	
+	public void setResolutionDate(LocalDate resolutionDate) {
+		this.resolutionDate = resolutionDate;		
+	}
+
+	
+	public LocalDate getResolutionDate() {
+		return this.resolutionDate;
 	}
 	
 	//function to retrive the tickets with the latest date
@@ -85,5 +104,51 @@ public class Ticket {
 	public void setFixVersions(List<String> fixVersions) {
 		this.fixVersions = fixVersions;
 	}
+
+	public LocalDate getCreatedDate() {
+		return createdDate;
+	}
 	
+	public void setCreatedDate(LocalDate createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getInjectedVersion() {
+		return injectedVersion;
+	}
+
+	public void setInjectedVersion(String injectedVersion) {
+		this.injectedVersion = injectedVersion;
+	}
+
+	public String getOpeningVersion() {
+		return openingVersion;
+	}
+
+	public void setOpeningVersion(String openingVersion) {
+		this.openingVersion = openingVersion;
+	}
+
+	public Commit getCommitFix() {
+		return commitFix;
+	}
+
+	//find fix commit
+	public void setCommitFix(List<Commit> commitsTicket, Commit commitFix) {
+		
+		LocalDate resolutionDate = commitFix.getDate();
+		
+		for(int i = 0; i<commitsTicket.size(); i++) {
+					
+			if(this.resolutionDate == null || this.resolutionDate.compareTo(resolutionDate)>0) {
+				
+				setResolutionDate(resolutionDate);
+				this.commitFix = commitFix;
+								
+			}
+			
+		}
+
+	}
+
 }

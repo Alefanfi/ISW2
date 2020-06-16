@@ -3,6 +3,7 @@ package deliverable.commit;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -69,7 +70,9 @@ public final class Find {
 	        	 
 	        	 List<String> fixVersion = null;
 	        	 
-	        	 Ticket t = new Ticket(key, version, fixVersion);
+	        	 LocalDate createdDate = null;
+	        	 
+	        	 Ticket t = new Ticket(key, version, fixVersion, createdDate);
 	        	 
 	        	 tickets.add(t);	
 	            

@@ -5,7 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Logger;
 import org.json.JSONException;
 import entities.Commit;
 import entities.FileCommitted;
@@ -14,7 +17,27 @@ import entities.Ticket;
 
 public class Dataset {
 	
-	//private static final Logger LOGGER = Logger.getLogger(Dataset.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(Dataset.class.getName());
+	
+	private static Integer numBugs;
+
+	private static int p = 0;
+	
+	private static int numAnalyseBugs;
+	
+	//List of tickets from the project	
+	private static List<Ticket> tickets = null;	
+			
+	//List of all the commits of the project
+	private static List<Commit> commits = null;	
+			
+	//List of all the release of the project
+	private static List<Release> release = null;
+			
+	//List of all file committed
+	private static List<FileCommitted> commitedFile = null;
+	
+	private static int numAffected;
 	
     //Returns the number of LOC in a file
 	
@@ -27,8 +50,6 @@ public class Dataset {
 		lines = content.split("\n");
 		 
 		int loc = lines.length;
-
-		System.out.println("LOC " + loc);
 		
     	return loc;
 		
@@ -65,8 +86,6 @@ public class Dataset {
 			 }
 			 
 		 }
-		 
-		 System.out.println("count = " + count);
 	 
 		 return count;
 	 
@@ -84,17 +103,320 @@ public class Dataset {
 			
 			int size = loc - comment;
 			
-			//fileList.get(i).setSize(size);			
+			fileList.get(i).setSize(size);			
 			
-			System.out.println(size);
 		}
+		
+	}
+	
+	
+	//remove all tickets that don't have fixed version or commit associating
+	
+	public static List<Ticket> checkTickets(List<Ticket> tickets) {
+		
+		for(int i = 0; i<tickets.size(); i++) {
+			
+			List<String> versions = tickets.get(i).getFixVersions();
+			
+			List<Commit> commitList = tickets.get(i).getCommitsTicket();
+			
+			if(versions.size() == 0 || commitList.size() == 0) {
+				
+				tickets.remove(tickets.get(i));
+				
+			}
+			
+		}
+		
+		return tickets;
+	}
+	
+	public static int getReleaseId(List<Release> release, String version) {
+		
+		int id = 0;
+		
+		for(int j=0; j< release.size(); j++) {
+			
+			if(version.compareTo(release.get(j).getVersion()) == 0) {
+				
+				id = j;	
+				
+				break;
+				
+			}
+		}
+		
+		return id;
+		
+	}
+	
+	//comparing fix version of a tickets
+	
+	public static void compareReleaseVersion(List<Ticket> tickets, List<Release> release) {
+		
+		int idFix1;
+		int idFix2;
+		String fix1 = null;
+		String fix2 = null;
+		
+		for(int i=0; i<tickets.size(); i++) {
+			
+			List <String> fixVersion = tickets.get(i).getFixVersions();
+			
+			if(fixVersion.size()>1) {
+				
+				while(fixVersion.size() == 1) {
+							
+					fix1 = fixVersion.get(0);
+					
+					fix2 = fixVersion.get(1);
+					
+					idFix1 = getReleaseId(release, fix1);
+					
+					idFix2 = getReleaseId(release, fix2);
+					
+					if(idFix1 > idFix2) {
+						
+						fixVersion.remove(fix1);
+					
+					}else if(idFix1 < idFix2){
+					
+						fixVersion.remove(fix2);
+					
+					}
+					
+				}
+			}
+
+		}
+			
+	}
+	
+	//compare affected version to fix version
+	
+	public static void compareAffecteVersionToFixVersion(List<Ticket> tickets, List<Release> release) {
+		
+		String fix = null;
+		String affected = null;
+		
+		int idFix;
+		int idAffected;
+		
+		for(int i = 0; i < tickets.size(); i++) {
+			
+			List<String> affectedVersion = tickets.get(i).getAffectedVersions();
+			
+			List<String> fixVersion = tickets.get(i).getFixVersions();
+			
+			for(int j = 0; j < affectedVersion.size(); j++) {
+				
+				fix = fixVersion.get(0);
+				
+				affected = affectedVersion.get(j);
+				
+				idFix = getReleaseId(release, fix);
+				
+				idAffected = getReleaseId(release, affected);
+				
+				//if the affecte version is greater than the fix version, i have to use proportion, so i delete the affected versions' list 
+				
+				if(idAffected > idFix) {
+					
+					tickets.get(i).setAffectedVersions(new ArrayList<>());
+				
+				}
+			}
+			
+		}
+			
+	}
+	
+	public static String getVersionFromId(int id, List<Release> release) {
+		
+		Release r = release.get(id);
+		
+		String version = r.getVersion();
+		
+		return version;
+		
+	}
+	
+	public static int findProportion(Ticket t, int p) {
+		
+		String fixVersion = t.getFixVersions().get(0);
+		
+		String openingVersion = t.getOpeningVersion();
+		
+		int fv = getReleaseId(release, fixVersion);
+		
+		int ov = getReleaseId(release, openingVersion);
+		
+		int iv = fv-(fv-ov)*p;
+		
+		return iv;
+		
+	}
+	
+	public static int proportionFunction(Ticket t) {
+		
+		numAffected += t.getAffectedVersions().size();
+		
+		numAnalyseBugs ++;
+		
+		if(numAnalyseBugs>=numBugs) {
+			
+			p = numAffected/numAnalyseBugs;
+			
+			numAnalyseBugs = 0;
+			
+		}
+		
+		return p;
+			
+	}
+	
+	public static void creatingResultList(List<Release> release, List<Ticket> tickets, List<Commit> commits, String projName) throws FileNotFoundException {
+		
+		List<Result> result = new ArrayList<>();
+		
+		Result r = null;
+		
+		Commit c = null;
+	
+		List<FileCommitted> fileList = null;
+		
+		FileCommitted f = null;
+		
+		int numVersion = release.size()/2;
+		
+		List<HashMap<String,Result>> maps = new ArrayList<>();
+		
+		for(int i = 0; i < numVersion; i++){
+			
+			while(commits.size()>0){
+				
+				c = commits.get(0);
+				
+				fileList = c.getCommitFile();
+				
+				for(int j = 0; j < fileList.size(); j++) {
+					
+					f = fileList.get(j);
+					
+					r = maps.get(i).get(f.getFilename());
+					
+					if(r == null) {
+						
+						r = new Result(i+1, f.getFilename());
+						
+						maps.get(i).put(f.getFilename(), r);
+						
+						result.add(r);
+				
+					}
+					
+					r.setSize(f.getSize());
+					r.addLocTouched(f.getLineChange());
+					r.addLocAdded(f.getLineAdded());
+					r.addAuth(c.getAuth());
+					r.addRevision();
+					r.addChgSetSize(fileList.size()-1);
+		
+				}
+				
+				commits.remove(0);
+			}
+				
+		}
+		
+		List<String> version = null;
+		int id;
+		
+		//check tickets
+		
+		List<Ticket> newTicketList = checkTickets(tickets);
+		compareReleaseVersion(newTicketList, release);
+		compareAffecteVersionToFixVersion(newTicketList, release);
+		
+		numBugs = tickets.size()/100;
+		
+		numAnalyseBugs = 0;
+		
+		int iv;
+		
+		//for the remaing tickets determine if they are buggy
+		
+		for(int k=0; k<newTicketList.size(); k ++) {
+			
+			c = newTicketList.get(k).getCommitFix();
+			version = newTicketList.get(k).getAffectedVersions();
+			
+			if(version == null) {
+				
+				//Use proportion
+				
+				p = proportionFunction(newTicketList.get(k));
+				
+				iv = findProportion(newTicketList.get(k), p);
+				
+				if(iv>0 && fileList != null) { 
+					
+					for(int w=0; w<fileList.size(); w++) {
+						
+						r = maps.get(iv).get(fileList.get(w).getFilename());
+						
+						if(r != null) {
+							
+							r.setBuggy("Si");
+							
+						}
+					}
+				}
+				
+			}else {
+				
+				numAnalyseBugs ++;
+				
+				for(int j=0; j<version.size(); j++) {
+					
+					id = getReleaseId(release, version.get(j));
+					
+					fileList = c.getCommitFile();
+					
+					//Checks if the version is between the ones beeing considered
+					
+					if(id !=-1 && fileList != null) { 
+						
+						for(int w=0; w<fileList.size(); w++) {
+							
+							r = maps.get(id).get(fileList.get(w).getFilename());
+							
+							if(r != null) {
+								
+								r.setBuggy("Si");
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+			
+		}
+			
+		//Write the dataset in the file .csv
+		writeDataset(projName, result);
 		
 	}
 	
 	
 	//Write dataset
 	
-	public void writeDataset(String project, List<Result> resultList) throws FileNotFoundException{
+	public static void writeDataset(String project, List<Result> resultList) throws FileNotFoundException{
 		
 		String outname = project + "DatasetInfo.csv";
 		
@@ -102,7 +424,7 @@ public class Dataset {
 		
 		PrintStream printer = new PrintStream(new File(outname));
 		  
-		printer.println("Release, File, Size, LocTouched, LocAdded, MaxLocAdded, AvgLocAdded, Nauth, Nfix, Nr, ChgSetSize");
+		printer.println("Release, File, Size, LocTouched, LocAdded, MaxLocAdded, AvgLocAdded, Nauth, Nfix, Nr, ChgSetSize, Buggy");
 		
 		for(int i=0; i<resultList.size(); i++) {
 			
@@ -110,7 +432,8 @@ public class Dataset {
 			
 			printer.println(result.getRelease() + "," + result.getFile() + "," + result.getSize() + "," + result.getLocTouched() 
 					+ "," + result.getLocAdded()  + "," + result.getMaxLocAdded() + "," + result.getAvgLocAdded() + "," 
-					+ result.getAvgLocAdded() + "," + result.getNauth() + "," + result.getNfix() + "," + result.getLocAdded());
+					+ result.getAuth() + "," + result.getnFix() + "," + result.getnR() + "," + result.getChgSetSize() 
+					+ "," + result.getBuggy());
 		}
 		
 		printer.flush();
@@ -121,24 +444,14 @@ public class Dataset {
 	
 	public static void retrieveInfo(String projName, String token) throws JSONException, IOException, ParseException {
 		
-		//List of tickets from the project	
-		List<Ticket> tickets = null;	
-		
-		//List of all the commits of the project
-		List<Commit> commits = null;	
-		
-		//List of all the release of the project
-		List<Release> release = null;
-		
-		//List of alla file committed
-		List<FileCommitted> commitedFile = null;
-		
 		//retrieve info about releases
 		release = GetMetrics.getReleaseInfo(projName);
 		
 		//retrieve info about tickets
 		tickets = GetMetrics.getTickets(projName, release);
-		
+				
+		//associating release to tickets
+		GetMetrics.associatingReleaseToTickets(release, tickets);
 		//retrieve info about commits
 		commits = GetMetrics.getCommits(projName, token, release);
 		
@@ -148,7 +461,13 @@ public class Dataset {
 		//retrieve info about files
 		commitedFile = GetMetrics.getFile(commits, projName, token);
 		
+		//evaluation of the files' size
 		countSize(commitedFile);
+			
+		//Create list of result
+		creatingResultList(release, tickets, commits, projName);
+		
+		LOGGER.info("Done!");
 	
 	}
 }

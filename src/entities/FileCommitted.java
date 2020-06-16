@@ -36,6 +36,8 @@ private String filename;
 		
 		this.content = content;
 		
+		this.size = 0;
+		
 	}
 	
 	public String getUrl() {
