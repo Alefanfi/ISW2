@@ -17,27 +17,29 @@ import entities.Ticket;
 
 public class Dataset {
 	
+	private Dataset() {}
+	
 	private static final Logger LOGGER = Logger.getLogger(Dataset.class.getName());
 	
-	private static Integer numBugs;
+	static Integer numBugs;
 
-	private static int p = 0;
+	static int p = 0;
 	
-	private static int numAnalyseBugs;
+	static int numAnalyseBugs;
 	
 	//List of tickets from the project	
-	private static List<Ticket> tickets = null;	
+	static List<Ticket> tickets = null;	
 			
 	//List of all the commits of the project
-	private static List<Commit> commits = null;	
+	static List<Commit> commits = null;	
 			
 	//List of all the release of the project
-	private static List<Release> release = null;
+	static List<Release> release = null;
 			
 	//List of all file committed
-	private static List<FileCommitted> commitedFile = null;
+	static List<FileCommitted> commitedFile = null;
 	
-	private static int numAffected;
+	static int numAffected;
 	
     //Returns the number of LOC in a file
 	
@@ -48,10 +50,8 @@ public class Dataset {
 		String content = file.getContent();
 		
 		lines = content.split("\n");
-		 
-		int loc = lines.length;
 		
-    	return loc;
+    	return lines.length;
 		
 	}
 	
@@ -95,8 +95,6 @@ public class Dataset {
 		
 		for(int i=0; i < fileList.size(); i++) {
 			
-			System.out.println("File " + i);
-			
 			int loc = getLoc(fileList.get(i));
 			
 			int comment = countComment(fileList.get(i));
@@ -120,7 +118,7 @@ public class Dataset {
 			
 			List<Commit> commitList = tickets.get(i).getCommitsTicket();
 			
-			if(versions.size() == 0 || commitList.size() == 0) {
+			if(versions.isEmpty() || commitList.isEmpty()) {
 				
 				tickets.remove(tickets.get(i));
 				
@@ -231,16 +229,6 @@ public class Dataset {
 			
 	}
 	
-	public static String getVersionFromId(int id, List<Release> release) {
-		
-		Release r = release.get(id);
-		
-		String version = r.getVersion();
-		
-		return version;
-		
-	}
-	
 	public static int findProportion(Ticket t, int p) {
 		
 		String fixVersion = t.getFixVersions().get(0);
@@ -251,9 +239,7 @@ public class Dataset {
 		
 		int ov = getReleaseId(release, openingVersion);
 		
-		int iv = fv-(fv-ov)*p;
-		
-		return iv;
+		return fv-(fv-ov)*p;
 		
 	}
 	
@@ -452,6 +438,7 @@ public class Dataset {
 				
 		//associating release to tickets
 		GetMetrics.associatingReleaseToTickets(release, tickets);
+		
 		//retrieve info about commits
 		commits = GetMetrics.getCommits(projName, token, release);
 		

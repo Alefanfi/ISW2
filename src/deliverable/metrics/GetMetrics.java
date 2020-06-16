@@ -432,11 +432,7 @@ public final class GetMetrics {
 			}
 			
 		}
-		/*
-		for(int k=0; k<tickets.size(); k++) {
-			
-			System.out.println ("Ticket " + k + " " + tickets.get(k).getInjectedVersion() + " " + tickets.get(k).getOpeningVersion());
-		}*/
+	
 	}
 	
 }

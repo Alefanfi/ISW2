@@ -136,13 +136,13 @@ public class Ticket {
 	//find fix commit
 	public void setCommitFix(List<Commit> commitsTicket, Commit commitFix) {
 		
-		LocalDate resolutionDate = commitFix.getDate();
+		LocalDate fixCommitDate = commitFix.getDate();
 		
 		for(int i = 0; i<commitsTicket.size(); i++) {
 					
-			if(this.resolutionDate == null || this.resolutionDate.compareTo(resolutionDate)>0) {
+			if(this.resolutionDate == null || this.resolutionDate.compareTo(fixCommitDate)>0) {
 				
-				setResolutionDate(resolutionDate);
+				setResolutionDate(fixCommitDate);
 				this.commitFix = commitFix;
 								
 			}
