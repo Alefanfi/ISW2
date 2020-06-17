@@ -17,13 +17,11 @@ import entities.Ticket;
 
 public class Dataset {
 	
-	private Dataset() {}
-	
 	private static final Logger LOGGER = Logger.getLogger(Dataset.class.getName());
 	
 	static Integer numBugs;
 
-	static int p = 0;
+	static int p;
 	
 	static int numAnalyseBugs;
 	
@@ -40,6 +38,15 @@ public class Dataset {
 	static List<FileCommitted> commitedFile = null;
 	
 	static int numAffected;
+	
+	public Dataset() {
+		
+		this.p = 0;
+		this.numBugs = 0;
+		this.numAnalyseBugs = 0;
+		this.numAffected = 0;
+		
+	}
 	
     //Returns the number of LOC in a file
 	
@@ -175,11 +182,11 @@ public class Dataset {
 					
 					if(idFix1 > idFix2) {
 						
-						fixVersion.remove(fix1);
+						fixVersion.remove(fix2);
 					
 					}else if(idFix1 < idFix2){
 					
-						fixVersion.remove(fix2);
+						fixVersion.remove(fix1);
 					
 					}
 					
@@ -229,20 +236,28 @@ public class Dataset {
 			
 	}
 	
-	public static int findProportion(Ticket t, int p) {
+	
+	
+	public static void findProportion(Ticket t) {
 		
 		String fixVersion = t.getFixVersions().get(0);
 		
 		String openingVersion = t.getOpeningVersion();
 		
-		int fv = getReleaseId(release, fixVersion);
+		int fv = getReleaseId(release, fixVersion) + 1;
 		
-		int ov = getReleaseId(release, openingVersion);
+		int ov = getReleaseId(release, openingVersion) + 1;
 		
-		return fv-(fv-ov)*p;
+		int iv = (int) Math.floor(fv-(fv-ov)*p);
+		
+		for(int i=iv-1; i<ov; i++) {
+			
+			t.addAffectedVersion(release.get(i).getVersion());
+		}
 		
 	}
 	
+	//compute the proportional number
 	public static int proportionFunction(Ticket t) {
 		
 		numAffected += t.getAffectedVersions().size();
@@ -273,11 +288,11 @@ public class Dataset {
 		
 		FileCommitted f = null;
 		
-		int numVersion = release.size()/2;
-		
 		List<HashMap<String,Result>> maps = new ArrayList<>();
 		
-		for(int i = 0; i < numVersion; i++){
+		int numRelease = release.size()/2;
+		
+		for(int i = 0; i <= numRelease; i++){
 			
 			while(commits.size()>0){
 				
@@ -325,75 +340,56 @@ public class Dataset {
 		compareAffecteVersionToFixVersion(newTicketList, release);
 		
 		numBugs = tickets.size()/100;
-		
-		numAnalyseBugs = 0;
-		
-		int iv;
+		Ticket t = null;
 		
 		//for the remaing tickets determine if they are buggy
 		
 		for(int k=0; k<newTicketList.size(); k ++) {
 			
+			checkTicket(t);
+			
 			c = newTicketList.get(k).getCommitFix();
 			version = newTicketList.get(k).getAffectedVersions();
 			
-			if(version == null) {
+			for(int j=0; j<version.size(); j++) {
 				
-				//Use proportion
+				id = getReleaseId(release, version.get(j));
 				
-				p = proportionFunction(newTicketList.get(k));
+				fileList = c.getCommitFile();
 				
-				iv = findProportion(newTicketList.get(k), p);
+				//Checks release
 				
-				if(iv>0 && fileList != null) { 
+				if(id !=-1 && id<numRelease && !(fileList == null)) { 
 					
 					for(int w=0; w<fileList.size(); w++) {
 						
-						r = maps.get(iv).get(fileList.get(w).getFilename());
+						r = maps.get(id).get(fileList.get(w).getFilename());
 						
 						if(r != null) {
 							
 							r.setBuggy("Si");
-							
 						}
 					}
 				}
-				
-			}else {
-				
-				numAnalyseBugs ++;
-				
-				for(int j=0; j<version.size(); j++) {
-					
-					id = getReleaseId(release, version.get(j));
-					
-					fileList = c.getCommitFile();
-					
-					//Checks if the version is between the ones beeing considered
-					
-					if(id !=-1 && fileList != null) { 
-						
-						for(int w=0; w<fileList.size(); w++) {
-							
-							r = maps.get(id).get(fileList.get(w).getFilename());
-							
-							if(r != null) {
-								
-								r.setBuggy("Si");
-								
-							}
-							
-						}
-						
-					}
-					
-				}
-				
 			}
 			
+			id = getReleaseId(release, newTicketList.get(k).getFixVersions().get(0));
 			
+			if(id != -1 && id < numRelease && fileList != null) {
+				
+				for(int i = 0; i<fileList.size(); i++) {
+					
+					r = maps.get(id).get(fileList.get(i).getFilename());
+					
+					if( r!= null) {
+						
+						r.addFix();
+						r.setBuggy("Si");
+					}
+				}
+			}
 		}
-			
+					
 		//Write the dataset in the file .csv
 		writeDataset(projName, result);
 		
@@ -402,6 +398,22 @@ public class Dataset {
 	
 	//Write dataset
 	
+	private static void checkTicket(Ticket t) {
+		
+		List<String> affected = t.getAffectedVersions();
+		
+		//if there isn't affected version use proportion
+		
+		if(affected.isEmpty()) {
+			
+			findProportion(t);
+		}
+		
+		proportionFunction(t);
+		
+		
+	}
+
 	public static void writeDataset(String project, List<Result> resultList) throws FileNotFoundException{
 		
 		String outname = project + "DatasetInfo.csv";

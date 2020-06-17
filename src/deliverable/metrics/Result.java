@@ -204,4 +204,12 @@ public class Result {
 		this.auth = auth;
 	}
 	
+	//Adds a fix
+		
+	public void addFix() {
+	
+		this.nFix++;
+		
+	}
+	
 }

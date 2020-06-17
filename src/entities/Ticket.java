@@ -150,5 +150,22 @@ public class Ticket {
 		}
 
 	}
+	
+	//Adds affected version to the list
+		
+	public void addAffectedVersion(String affected) {
+	
+		if(this.affectedVersions == null) {
+		
+			this.affectedVersions = new ArrayList<>();
+			
+		}else if(!this.affectedVersions.contains(affected)) {
+		
+			this.affectedVersions.add(affected);
+			
+		}
+
+		
+	}
 
 }
