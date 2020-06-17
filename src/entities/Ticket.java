@@ -16,13 +16,11 @@ public class Ticket {
 	
 	private List<String> fixVersions;
 	
-	private String openingVersion;
-	
-	private String injectedVersion;
+	private String openingVersion = null;
 	
 	private LocalDate createdDate;
 	
-	private Commit commitFix;
+	private Commit commitFix = null;
 
 	public Ticket(String id, List<String> affectedVersions, List<String> fixVersions, LocalDate createdDate) {
 
@@ -30,9 +28,9 @@ public class Ticket {
 		
 		this.commitsTicket = new ArrayList<>();
 		
-		this.affectedVersions = affectedVersions;
+		this.affectedVersions = new ArrayList<>();
 		
-		this.fixVersions = fixVersions;
+		this.fixVersions = new ArrayList<>();
 		
 		this.createdDate = createdDate;
 		
@@ -112,15 +110,7 @@ public class Ticket {
 	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
-
-	public String getInjectedVersion() {
-		return injectedVersion;
-	}
-
-	public void setInjectedVersion(String injectedVersion) {
-		this.injectedVersion = injectedVersion;
-	}
-
+	
 	public String getOpeningVersion() {
 		return openingVersion;
 	}

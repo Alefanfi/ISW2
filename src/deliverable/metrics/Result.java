@@ -1,5 +1,6 @@
 package deliverable.metrics;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Result {
@@ -8,25 +9,25 @@ public class Result {
 	
 	private String file;
 	
-	private Integer size;
+	private Integer size = 0;
 	
-	private Integer locTouched;
+	private Integer locTouched = 0;
 	
-	private Integer locAdded;
+	private Integer locAdded = 0;
 	
-	private Integer maxLocAdded;
+	private Integer maxLocAdded = 0;
 	
-	private Integer avgLocAdded;
+	private Integer avgLocAdded = 0;
 	
-	private List<String> auth;
+	private List<String> auth = new ArrayList<>();
 
-	private Integer nFix;
+	private Integer nFix = 0;
 	
-	private Integer nR;
+	private Integer nR = 0;
 	
-	private Integer chgSetSize;
+	private Integer chgSetSize = 0;
 	
-	private String buggy;
+	private String buggy = "No";
 
 	public Result(Integer release, String file) {
 		
@@ -156,7 +157,7 @@ public class Result {
 	
 	public void addLocAdded(int loc) {
 	
-		this.locAdded += loc;
+		this.locAdded = this.locAdded + loc;
 		
 		//Updates the value of the max loc added
 		
@@ -172,7 +173,7 @@ public class Result {
 		
 	public void addChgSetSize(int num) {
 	
-		this.chgSetSize += num;
+		this.chgSetSize = this.chgSetSize + num - 1;
 		
 	}
 	

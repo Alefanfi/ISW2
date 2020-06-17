@@ -347,8 +347,6 @@ public final class GetMetrics {
 				   
 				   if(filename.contains(".java")) {
 					   
-					   LOGGER.info(filename);
-					   
 					   int change = file.getJSONObject(j).getInt("changes");
 					   
 					   int delete = file.getJSONObject(j).getInt("deletions");
@@ -388,9 +386,11 @@ public final class GetMetrics {
 				   }
 				      
 			   }
+			   
+			   LOGGER.info(commits.get(i).getCommitFile().size() + " committed files (.java) found for commit " + (i+1));
 		}
 		
-		LOGGER.info(commitedFile.size() + " committed files found!");
+		LOGGER.info(commitedFile.size() + " committed files found for all commits!");
 		
 		return commitedFile;
 		

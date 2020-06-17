@@ -251,6 +251,7 @@ public class Dataset {
 	}
 	
 	//compute the proportional number (calculate the moving window)
+	
 	public static int proportionFunction(Ticket t) {
 		
 		numAffected += t.getAffectedVersions().size();
@@ -285,36 +286,48 @@ public class Dataset {
 		
 		int numRelease = release.size()/2;
 		
-		for(int i = 0; i <= numRelease; i++){
+		LOGGER.info("Creating dataset...");
+		
+		for(int i = 0; i < numRelease; i++){
+			
+			maps.add(new HashMap<String,Result>());
 			
 			while(commits.size()>0){
 				
 				c = commits.get(0);
 				
+				//take the list of files associating to commit
+				
 				fileList = c.getCommitFile();
 				
-				for(int j = 0; j < fileList.size(); j++) {
-					
-					f = fileList.get(j);
-					
-					r = maps.get(i).get(f.getFilename());
-					
-					if(r == null) {
-						
-						r = new Result(i+1, f.getFilename());
-						
-						maps.get(i).put(f.getFilename(), r);
-						
-						result.add(r);
+				if(!fileList.isEmpty()) {
 				
-					}
+					for(int j = 0; j < fileList.size(); j++) {
 					
-					r.setSize(f.getSize());
-					r.addLocTouched(f.getLineChange());
-					r.addLocAdded(f.getLineAdded());
-					r.addAuth(c.getAuth());
-					r.addRevision();
-					r.addChgSetSize(fileList.size()-1);
+						f = fileList.get(j);
+						
+						r = maps.get(i).get(f.getFilename());
+						
+						if(r == null) {
+							
+							//add new result to the list
+							
+							r = new Result(i+1, f.getFilename());
+							
+							maps.get(i).put(f.getFilename(), r);
+							
+							result.add(r);
+					
+						}
+						
+						r.setSize(f.getSize());
+						r.addLocTouched(f.getLineChange());
+						r.addLocAdded(f.getLineAdded());
+						r.addAuth(c.getAuth());
+						r.addRevision();
+						r.addChgSetSize(fileList.size());
+					
+					}
 		
 				}
 				
@@ -326,30 +339,23 @@ public class Dataset {
 		List<String> version = null;
 		int id;
 		
-		//check tickets
-		
-		List<Ticket> newTicketList = checkTickets(tickets);
-		compareReleaseVersion(newTicketList, release);
-		compareAffecteVersionToFixVersion(newTicketList, release);
 		p=0;
 		numAffected = 0;
 		numBugs = Math.round(tickets.size()/100);
 		numAnalyseBugs = 0;
 		
+		//check tickets
+		
+		List<Ticket> newTicketList = checkTickets(tickets);
+		compareReleaseVersion(newTicketList, release);
+		compareAffecteVersionToFixVersion(newTicketList, release);
+		
 		//for the remaing tickets determine if they are buggy
 		
 		for(int k=0; k<newTicketList.size(); k ++) {
-			
-			try {
-				
-				checkTicket(newTicketList.get(k));
-			
-			}catch(Exception e) {
-			
-				e.printStackTrace();
-			
-			}
-			
+
+			checkTicket(newTicketList.get(k));
+	
 			c = newTicketList.get(k).getCommitFix();
 			version = newTicketList.get(k).getAffectedVersions();
 			
@@ -377,7 +383,7 @@ public class Dataset {
 			
 			id = getReleaseId(release, newTicketList.get(k).getFixVersions().get(0));
 			
-			if(id != -1 && id < numRelease && fileList != null) {
+			if(id != -1 && id < numRelease && !fileList.isEmpty()) {
 				
 				for(int i = 0; i<fileList.size(); i++) {
 					
