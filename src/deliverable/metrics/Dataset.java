@@ -39,14 +39,7 @@ public class Dataset {
 	
 	static int numAffected;
 	
-	public Dataset() {
-		
-		this.p = 0;
-		this.numBugs = 0;
-		this.numAnalyseBugs = 0;
-		this.numAffected = 0;
-		
-	}
+	private Dataset() {}
 	
     //Returns the number of LOC in a file
 	
@@ -155,7 +148,7 @@ public class Dataset {
 		
 	}
 	
-	//comparing fix version of a tickets
+	//comparing fix version of a tickets and take the fix versison that have the latest date
 	
 	public static void compareReleaseVersion(List<Ticket> tickets, List<Release> release) {
 		
@@ -236,7 +229,7 @@ public class Dataset {
 			
 	}
 	
-	
+	//function that compute the iv's value
 	
 	public static void findProportion(Ticket t) {
 		
@@ -244,11 +237,11 @@ public class Dataset {
 		
 		String openingVersion = t.getOpeningVersion();
 		
-		int fv = getReleaseId(release, fixVersion) + 1;
+		double fv = getReleaseId(release, fixVersion) + 1;
 		
-		int ov = getReleaseId(release, openingVersion) + 1;
+		double ov = getReleaseId(release, openingVersion) + 1;
 		
-		int iv = (int) Math.floor(fv-(fv-ov)*p);
+		int iv = (int) Math.round(fv-(fv-ov)*p);
 		
 		for(int i=iv-1; i<ov; i++) {
 			
@@ -257,7 +250,7 @@ public class Dataset {
 		
 	}
 	
-	//compute the proportional number
+	//compute the proportional number (calculate the moving window)
 	public static int proportionFunction(Ticket t) {
 		
 		numAffected += t.getAffectedVersions().size();
@@ -338,15 +331,24 @@ public class Dataset {
 		List<Ticket> newTicketList = checkTickets(tickets);
 		compareReleaseVersion(newTicketList, release);
 		compareAffecteVersionToFixVersion(newTicketList, release);
-		
-		numBugs = tickets.size()/100;
-		Ticket t = null;
+		p=0;
+		numAffected = 0;
+		numBugs = Math.round(tickets.size()/100);
+		numAnalyseBugs = 0;
 		
 		//for the remaing tickets determine if they are buggy
 		
 		for(int k=0; k<newTicketList.size(); k ++) {
 			
-			checkTicket(t);
+			try {
+				
+				checkTicket(newTicketList.get(k));
+			
+			}catch(Exception e) {
+			
+				e.printStackTrace();
+			
+			}
 			
 			c = newTicketList.get(k).getCommitFix();
 			version = newTicketList.get(k).getAffectedVersions();
@@ -359,7 +361,7 @@ public class Dataset {
 				
 				//Checks release
 				
-				if(id !=-1 && id<numRelease && !(fileList == null)) { 
+				if(id !=-1 && id<numRelease && fileList != null) { 
 					
 					for(int w=0; w<fileList.size(); w++) {
 						
@@ -396,7 +398,7 @@ public class Dataset {
 	}
 	
 	
-	//Write dataset
+	//Check ticket and if proportion must be used
 	
 	private static void checkTicket(Ticket t) {
 		
@@ -413,6 +415,8 @@ public class Dataset {
 		
 		
 	}
+	
+	//Write the dataset
 
 	public static void writeDataset(String project, List<Result> resultList) throws FileNotFoundException{
 		
@@ -439,6 +443,8 @@ public class Dataset {
 		printer.close();
 	
 	}
+	
+	//function that permitte to start retrieve information about the project
 	
 	public static void retrieveInfo(String projName, String token) throws JSONException, IOException, ParseException {
 		
