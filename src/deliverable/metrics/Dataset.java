@@ -68,11 +68,11 @@ public class Dataset {
 			
 			affectedVersion = tickets.get(i).getAffectedVersions();
 			
-			if(fixVersion.size() == 0 || commitList.size() == 0) {
+			if(fixVersion.isEmpty()|| commitList.isEmpty()) {
 				
 				tickets.remove(tickets.get(i));
 				
-			} else if(fixVersion.size() != 0) {
+			} else if(!fixVersion.isEmpty()) {
 				
 				while(fixVersion.size() > 1) {
 							
@@ -145,7 +145,7 @@ public class Dataset {
 			
 			List<String> fixVersion = tickets.get(i).getFixVersions();
 			
-			if(fixVersion.size() != 0) {
+			if(!fixVersion.isEmpty()) {
 			
 				for(int j = 0; j < affectedVersion.size(); j++) {
 					
@@ -278,24 +278,17 @@ public class Dataset {
 		numBugs = Math.round(tickets.size()/100);
 		numAnalyseBugs = 0;
 		
-		List<Ticket> ticketList = new ArrayList<>();
-		
-		ticketList = checkFixVersionTickets(tickets, release);
+		List<Ticket> ticketList = checkFixVersionTickets(tickets, release);
 		
 		compareAffecteVersionToFixVersion(ticketList, release);
 		
 		for(int i = 0; i < ticketList.size(); i++) {
 			
-			if(ticketList.get(i).getCommitFix() == null || ticketList.get(i).getFixVersions().size() == 0) {
-				
-				continue;
-			}
-			
 			c = ticketList.get(i).getCommitFix();
 			
 			version = tickets.get(i).getAffectedVersions();
 			
-			if(c == null) {
+			if(c == null || ticketList.get(i).getFixVersions().size() == 0) {
 				
 				continue;
 			
@@ -303,7 +296,7 @@ public class Dataset {
 				
 				fileList = c.getCommitFile();
 				
-				if(version.size() == 0) {
+				if(version.isEmpty()) {
 					
 					//if there isn't affected version use proportion
 					
@@ -318,7 +311,7 @@ public class Dataset {
 					
 						id = getReleaseId(release, version.get(j));
 						
-						checkVersion(version, fileList, maps, false, id);
+						checkVersion(fileList, maps, false, id);
 					
 					}
 					
@@ -332,7 +325,7 @@ public class Dataset {
 			
 			if(id < release.size()/2) {
 				
-				checkVersion(version, fileList, maps, true, id);
+				checkVersion(fileList, maps, true, id);
 					
 			}
 				
@@ -344,11 +337,11 @@ public class Dataset {
 	}
 		
 	
-	private static void checkVersion(List<String> version, List<FileCommitted> fileList, List<HashMap<String, Result>> maps, boolean updateFix, int id) {
+	private static void checkVersion(List<FileCommitted> fileList, List<HashMap<String, Result>> maps, boolean updateFix, int id) {
 		
 		Result r = null;
 					
-		if(/*fileList == null &&*/ fileList.size() != 0) {
+		//if(fileList == null && fileList.size() != 0) {
 				
 			//Checks release
 					
@@ -370,7 +363,7 @@ public class Dataset {
 						
 					}
 						
-				}	
+				//}	
 					
 			}
 			
@@ -411,7 +404,7 @@ public class Dataset {
 		}
 		
 	}
-/*
+
 	public static void creatingResultList(List<Release> release, List<Ticket> tickets, List<Commit> commits, String projName) throws FileNotFoundException {
 		
 		List<Result> result = new ArrayList<>();
@@ -524,10 +517,12 @@ public class Dataset {
 						
 						id = getReleaseId(release, version.get(j));
 						
-						if(/*fileList == null &&*/ //fileList.size() != 0) {
+						if(fileList == null && fileList.size() != 0) {
 							
 								//Checks release
-					/*
+							
+							System.out.println("Sono qui");
+					
 							if(id<numRelease && fileList != null) { 
 									
 								for(int w=0; w<fileList.size(); w++) {
@@ -574,22 +569,22 @@ public class Dataset {
 		//Write the dataset in the file .csv
 		writeDataset(projName, result);
 		
-	}*/
+	}
 	
 	
 	//Check ticket and if proportion must be used
-	/*
-	private static void checkTicket(Ticket t) {*/
+	
+	private static void checkTicket(Ticket t) {
 		
 		//if there isn't affected version use proportion
-		/*	
+		
 		findProportion(t);
 		
 		
 		proportionFunction(t);
 		
-		*/
-	//}
+		
+	}
 	
 	//Write the dataset
 
@@ -646,6 +641,8 @@ public class Dataset {
 			
 		//Create list of result
 		createDataset(release, tickets, commits, projName);
+		
+		//creatingResultList(release, tickets, commits, projName);
 		
 		LOGGER.info("Done!");
 	

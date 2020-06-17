@@ -19,7 +19,7 @@ public class Main {
 		
 		//Get token and project name from conf.properties
 		
-		String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
+		String token = PropertiesUtils.getProperty(ReadPropertyFile.NEWTOKEN);
 		
 		String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 		
