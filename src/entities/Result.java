@@ -1,4 +1,4 @@
-package deliverable.metrics;
+package entities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class Result {
 	
 	private Integer maxLocAdded = 0;
 	
-	private Integer avgLocAdded = 0;
+	private float avgLocAdded = 0;
 	
 	private List<String> auth = new ArrayList<>();
 
@@ -65,7 +65,7 @@ public class Result {
 		return maxLocAdded;
 	}
 
-	public Integer getAvgLocAdded() {
+	public float getAvgLocAdded() {
 		return avgLocAdded;
 	}
 
@@ -115,7 +115,7 @@ public class Result {
 		
 	}
 
-	public void setAvgLocAdded(Integer avgLocAdded) {
+	public void setAvgLocAdded(float avgLocAdded) {
 	
 		this.avgLocAdded = avgLocAdded;
 		
@@ -197,8 +197,8 @@ public class Result {
 			
 	}
 	
-	public List<String> getAuth() {
-		return auth;
+	public int getAuth() {
+		return auth.size();
 	}
 
 	public void setAuth(List<String> auth) {

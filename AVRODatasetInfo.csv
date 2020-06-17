@@ -1,0 +1,719 @@
+Release, File, Size, LocTouched, LocAdded, MaxLocAdded, AvgLocAdded, Nauth, Nfix, Nr, ChgSetSize, Buggy
+1,src/java/org/apache/avro/AvroRuntimeException.java,11,77,53,24,0,[Douglass Cutting],0,6,223,No
+1,src/java/org/apache/avro/AvroTypeException.java,11,91,60,28,0,[Douglass Cutting],0,6,245,No
+1,src/java/org/apache/avro/Protocol.java,357,1184,786,300,0,[Douglass Cutting],0,19,342,No
+1,src/java/org/apache/avro/Schema.java,879,2719,1816,451,0,[Douglass Cutting, Thiruvalluvan M. G],0,33,393,No
+1,src/java/org/apache/avro/SchemaParseException.java,8,74,50,24,0,[Douglass Cutting],0,5,216,No
+1,src/java/org/apache/avro/file/DataFileReader.java,130,921,535,208,0,[Douglass Cutting],0,11,312,No
+1,src/java/org/apache/avro/file/DataFileWriter.java,214,878,558,183,0,[Douglass Cutting],0,12,296,No
+1,src/java/org/apache/avro/file/SeekableFileInput.java,19,103,70,32,0,[Douglass Cutting],0,5,217,No
+1,src/java/org/apache/avro/file/SeekableInput.java,19,119,78,36,0,[Douglass Cutting],0,5,221,No
+1,src/java/org/apache/avro/generic/GenericArray.java,19,115,76,37,0,[Douglass Cutting],0,6,260,No
+1,src/java/org/apache/avro/generic/GenericData.java,472,1155,822,250,0,[Douglass Cutting],0,20,371,No
+1,src/java/org/apache/avro/generic/GenericDatumReader.java,458,1846,1161,265,0,[Douglass Cutting],0,25,405,No
+1,src/java/org/apache/avro/generic/GenericDatumWriter.java,180,820,509,164,0,[Douglass Cutting],0,15,320,No
+1,src/java/org/apache/avro/generic/GenericRecord.java,13,108,69,28,0,[Douglass Cutting],0,6,242,No
+1,src/java/org/apache/avro/generic/GenericRequestor.java,38,210,133,57,0,[Douglass Cutting],0,9,314,No
+1,src/java/org/apache/avro/generic/GenericResponder.java,37,195,125,53,0,[Douglass Cutting],0,7,267,No
+1,src/java/org/apache/avro/io/DatumReader.java,19,124,81,39,0,[Douglass Cutting],0,5,198,No
+1,src/java/org/apache/avro/io/DatumWriter.java,17,116,76,36,0,[Douglass Cutting],0,6,258,No
+1,src/java/org/apache/avro/io/ValueReader.java,436,905,688,418,0,[Douglass Cutting],0,5,173,No
+1,src/java/org/apache/avro/io/ValueWriter.java,387,710,565,383,0,[Douglass Cutting],0,4,171,No
+1,src/java/org/apache/avro/ipc/AvroRemoteException.java,23,137,89,44,0,[Douglass Cutting],0,5,238,No
+1,src/java/org/apache/avro/ipc/ByteBufferInputStream.java,69,261,174,69,0,[Douglass Cutting],0,7,234,No
+1,src/java/org/apache/avro/ipc/ByteBufferOutputStream.java,73,273,182,87,0,[Douglass Cutting],0,5,231,No
+1,src/java/org/apache/avro/ipc/ByteBufferValueReader.java,1,164,82,41,0,[Douglass Cutting],0,5,172,No
+1,src/java/org/apache/avro/ipc/ByteBufferValueWriter.java,1,176,88,44,0,[Douglass Cutting],0,5,172,No
+1,src/java/org/apache/avro/ipc/Requestor.java,212,586,408,105,0,[Douglass Cutting],0,14,351,No
+1,src/java/org/apache/avro/ipc/Responder.java,193,615,413,124,0,[Douglass Cutting],0,16,338,No
+1,src/java/org/apache/avro/ipc/SocketServer.java,93,421,266,118,0,[Douglass Cutting],0,8,263,No
+1,src/java/org/apache/avro/ipc/SocketTransceiver.java,80,292,195,87,0,[Douglass Cutting],0,7,239,No
+1,src/java/org/apache/avro/ipc/Transceiver.java,26,130,87,40,0,[Douglass Cutting],0,6,229,No
+1,src/java/org/apache/avro/reflect/ReflectData.java,396,1629,1021,194,0,[Douglass Cutting],0,25,423,No
+1,src/java/org/apache/avro/reflect/ReflectDatumReader.java,127,670,408,92,0,[Douglass Cutting],0,21,393,No
+1,src/java/org/apache/avro/reflect/ReflectDatumWriter.java,106,433,279,61,0,[Douglass Cutting],0,23,447,No
+1,src/java/org/apache/avro/reflect/ReflectRequestor.java,58,358,217,77,0,[Douglass Cutting],0,12,344,No
+1,src/java/org/apache/avro/reflect/ReflectResponder.java,30,520,284,118,0,[Douglass Cutting],0,15,397,No
+1,src/java/org/apache/avro/specific/ProtocolTask.java,62,324,202,84,0,[Douglass Cutting],0,6,240,No
+1,src/java/org/apache/avro/specific/SchemaTask.java,11,95,62,28,0,[Douglass Cutting],0,6,240,No
+1,src/java/org/apache/avro/specific/SpecificCompiler.java,403,1692,1058,225,0,[Douglass Cutting, Sharad Agarwal],1,29,376,Si
+1,src/java/org/apache/avro/specific/SpecificDatumReader.java,71,637,363,125,0,[Douglass Cutting],0,16,353,No
+1,src/java/org/apache/avro/specific/SpecificDatumWriter.java,40,192,125,43,0,[Douglass Cutting],0,11,318,No
+1,src/java/org/apache/avro/specific/SpecificRecord.java,10,98,63,30,0,[Douglass Cutting],0,6,260,No
+1,src/java/org/apache/avro/specific/SpecificRequestor.java,89,275,191,53,0,[Douglass Cutting],0,12,331,No
+1,src/java/org/apache/avro/specific/SpecificResponder.java,91,237,173,64,0,[Douglass Cutting],0,10,310,No
+1,src/java/org/apache/avro/util/Utf8.java,70,257,172,80,0,[Douglass Cutting],0,5,236,No
+1,src/test/java/org/apache/avro/RandomData.java,124,447,294,128,0,[Douglass Cutting],0,11,272,No
+1,src/test/java/org/apache/avro/TestDataFile.java,186,614,408,128,0,[Douglass Cutting, Sharad Agarwal],0,16,300,No
+1,src/test/java/org/apache/avro/TestFsData.java,123,598,299,134,0,[Douglass Cutting],0,8,218,No
+1,src/test/java/org/apache/avro/TestProtocolGeneric.java,181,574,385,144,0,[Douglass Cutting],0,15,332,No
+1,src/test/java/org/apache/avro/TestProtocolReflect.java,95,269,190,74,0,[Douglass Cutting],0,8,208,No
+1,src/test/java/org/apache/avro/TestProtocolSpecific.java,159,527,351,113,0,[Douglass Cutting, Sharad Agarwal],0,18,314,No
+1,src/test/java/org/apache/avro/TestReflect.java,402,772,595,147,0,[Douglass Cutting],0,22,330,No
+1,src/test/java/org/apache/avro/TestSchema.java,379,891,662,139,0,[Douglass Cutting, Thiruvalluvan M. G],0,30,386,No
+1,JsonSchema.java,136,544,272,136,0,[Douglass Cutting],0,4,53,No
+1,JsonSchemaWalker.java,112,448,224,112,0,[Douglass Cutting],0,4,1,No
+1,src/test/java/org/apache/avro/io/TestValueReader.java,62,178,128,73,0,[Douglass Cutting],0,4,54,No
+1,src/test/java/org/apache/avro/test/TestInvocationReporter.java,19,70,35,35,0,[Douglass Cutting],0,2,25,No
+1,src/test/java/org/apache/avro/test/TestOutputInterceptor.java,25,78,39,39,0,[Douglass Cutting],0,2,25,No
+1,src/test/java/org/apache/avro/test/TestSuiteInterceptor.java,25,78,39,39,0,[Douglass Cutting],0,2,25,No
+1,src/java/org/apache/avro/generic/GenericFixed.java,7,26,25,24,0,[Douglass Cutting],0,2,74,No
+1,src/java/org/apache/avro/reflect/FixedSize.java,17,43,40,30,0,[Douglass Cutting],0,3,81,No
+1,src/java/org/apache/avro/specific/SpecificFixed.java,10,30,29,28,0,[Douglass Cutting],0,3,89,No
+1,src/java/org/apache/avro/specific/SpecificExceptionBase.java,26,52,48,40,0,[Douglass Cutting],0,4,91,No
+1,src/java/org/apache/avro/specific/SpecificRecordBase.java,31,123,86,64,0,[Douglass Cutting],0,5,92,No
+1,src/java/org/apache/avro/io/BlockingValueWriter.java,600,622,622,622,0,[Douglass Cutting],0,1,17,No
+1,src/test/java/org/apache/avro/io/TestBlockingIO.java,459,587,531,450,0,[Douglass Cutting],0,5,78,No
+1,src/java/org/apache/avro/io/BinaryDecoder.java,271,315,308,305,0,[Douglass Cutting],0,4,95,No
+1,src/java/org/apache/avro/io/BinaryEncoder.java,217,287,269,266,0,[Douglass Cutting],0,3,93,No
+1,src/java/org/apache/avro/io/BlockingBinaryEncoder.java,596,29,13,5,0,[Douglass Cutting],0,4,104,No
+1,src/java/org/apache/avro/io/Decoder.java,250,293,51,36,0,[Douglass Cutting],0,5,118,No
+1,src/java/org/apache/avro/io/Encoder.java,237,231,41,29,0,[Douglass Cutting],0,4,95,No
+1,src/test/java/org/apache/avro/io/TestBinaryDecoder.java,62,58,29,10,0,[Douglass Cutting],0,3,57,No
+1,src/java/org/apache/avro/io/ParsingTable.java,364,766,383,383,0,[Douglass Cutting],0,2,36,No
+1,src/java/org/apache/avro/io/ResolvingDecoder.java,173,380,292,223,0,[Douglass Cutting],0,3,96,No
+1,src/java/org/apache/avro/io/ResolvingTable.java,458,978,489,489,0,[Douglass Cutting],0,2,36,No
+1,src/java/org/apache/avro/io/ValidatingDecoder.java,210,638,434,358,0,[Douglass Cutting],0,3,96,No
+1,src/java/org/apache/avro/io/ValidatingEncoder.java,183,413,308,225,0,[Douglass Cutting],0,3,96,No
+1,src/test/java/org/apache/avro/io/TestParsingTable.java,206,444,222,205,0,[Douglass Cutting],0,3,40,No
+1,src/test/java/org/apache/avro/io/TestResolvingIO.java,195,901,556,343,0,[Douglass Cutting],0,5,77,No
+1,src/test/java/org/apache/avro/io/TestResolvingTable.java,390,812,406,389,0,[Douglass Cutting],0,3,40,No
+1,src/test/java/org/apache/avro/io/TestValidatingIO.java,833,1347,1098,630,0,[Douglass Cutting],0,6,78,No
+1,src/java/org/apache/avro/io/JsonDecoder.java,406,504,464,397,0,[Douglass Cutting],0,5,103,No
+1,src/java/org/apache/avro/io/JsonEncoder.java,221,259,249,239,0,[Douglass Cutting],0,4,92,No
+1,src/java/org/apache/avro/io/ParsingDecoder.java,57,75,75,74,0,[Douglass Cutting],0,2,83,No
+1,src/java/org/apache/avro/io/ParsingEncoder.java,52,70,70,52,0,[Douglass Cutting],0,3,84,No
+1,src/java/org/apache/avro/io/parsing/JsonGrammarGenerator.java,82,106,104,102,0,[Douglass Cutting],0,3,87,No
+1,src/java/org/apache/avro/io/parsing/Parser.java,146,170,168,144,0,[Douglass Cutting],0,3,87,No
+1,src/java/org/apache/avro/io/parsing/ResolvingGrammarGenerator.java,318,340,339,337,0,[Douglass Cutting],0,3,88,No
+1,src/java/org/apache/avro/io/parsing/SkipParser.java,74,99,97,94,0,[Douglass Cutting],0,2,83,No
+1,src/java/org/apache/avro/io/parsing/Symbol.java,362,384,383,382,0,[Douglass Cutting],0,3,87,No
+1,src/java/org/apache/avro/io/parsing/ValidatingGrammarGenerator.java,120,141,140,138,0,[Douglass Cutting],0,3,88,No
+1,src/test/java/org/apache/avro/io/TestResolvingIO_resolving.java,104,120,120,103,0,[Douglass Cutting],0,2,15,No
+1,src/java/org/apache/avro/ipc/RPCContext.java,135,193,175,149,0,[Douglass Cutting],0,3,25,No
+1,src/java/org/apache/avro/ipc/RPCPlugin.java,53,82,78,74,0,[Douglass Cutting],0,2,22,No
+1,src/test/java/org/apache/avro/RPCMetaTestPlugin.java,155,215,196,176,0,[Douglass Cutting],0,3,25,No
+1,src/test/java/org/apache/avro/TestProtocolGenericMeta.java,26,42,42,42,0,[Douglass Cutting],0,1,11,No
+1,src/test/java/org/apache/avro/TestProtocolReflectMeta.java,29,45,45,45,0,[Douglass Cutting],0,1,11,No
+1,src/test/java/org/apache/avro/TestProtocolSpecificMeta.java,30,46,46,46,0,[Douglass Cutting],0,1,11,No
+1,src/test/java/org/apache/avro/GenerateBlockingData.java,62,89,87,85,0,[Douglass Cutting],0,2,25,No
+1,src/test/java/org/apache/avro/io/TestBlockingIO2.java,141,163,163,163,0,[Douglass Cutting],0,1,1,No
+1,src/test/java/org/apache/avro/BarRecord.java,35,65,58,35,0,[Douglass Cutting],0,5,49,No
+1,src/test/java/org/apache/avro/FooRecord.java,31,51,49,33,0,[Douglass Cutting],0,3,29,No
+1,src/test/java/org/apache/avro/TestDataFileReflect.java,169,385,285,142,0,[Douglass Cutting],0,9,118,No
+1,src/java/org/apache/avro/io/BinaryData.java,175,370,281,190,0,[Douglass Cutting],0,3,27,No
+1,src/test/java/org/apache/avro/TestCompare.java,224,334,287,160,0,[Douglass Cutting],0,7,93,No
+1,src/java/org/apache/avro/generic/GenericContainer.java,9,27,27,27,0,[Douglass Cutting],0,1,22,No
+1,src/java/org/apache/avro/specific/SpecificData.java,237,354,306,162,0,[Douglass Cutting],0,10,101,No
+1,src/java/org/apache/avro/ipc/DatagramServer.java,61,79,79,79,0,[Douglass Cutting],0,1,11,No
+1,src/java/org/apache/avro/ipc/DatagramTransceiver.java,67,84,84,84,0,[Douglass Cutting],0,1,11,No
+1,src/java/org/apache/avro/ipc/Server.java,12,29,29,29,0,[Douglass Cutting],0,1,11,No
+1,src/test/java/org/apache/avro/TestProtocolDatagram.java,26,42,42,42,0,[Douglass Cutting],0,1,11,No
+1,src/test/java/org/apache/avro/TestNamespaceReflect.java,23,39,39,39,0,[Douglass Cutting],0,1,24,No
+1,src/test/java/org/apache/avro/TestNamespaceSpecific.java,75,107,99,98,0,[Douglass Cutting],0,2,47,No
+1,src/java/org/apache/avro/ipc/HttpTransceiver.java,94,128,120,116,0,[Douglass Cutting],1,4,29,Si
+1,src/test/java/org/apache/avro/TestBulkData.java,99,123,119,110,0,[Douglass Cutting],0,2,25,No
+1,src/java/org/apache/avro/ipc/HttpServer.java,42,111,85,76,0,[Douglass Cutting],1,2,4,Si
+1,src/test/java/org/apache/avro/TestProtocolHttp.java,24,42,41,41,0,[Douglass Cutting],1,2,25,Si
+1,src/java/org/apache/avro/file/DataFileConstants.java,19,41,39,38,0,[Douglass Cutting],0,2,11,No
+1,src/java/org/apache/avro/ipc/ResponderServlet.java,38,56,56,56,0,[Douglass Cutting],0,1,2,No
+1,src/test/java/org/apache/avro/io/TestResolvingIOResolving.java,104,14,7,7,0,[Douglass Cutting],0,1,23,No
+1,src/test/java/org/apache/avro/specific/TestSpecificCompiler.java,225,287,264,73,0,[Douglass Cutting],0,5,14,No
+1,src/java/org/apache/avro/tool/Main.java,62,105,93,58,0,[Douglass Cutting],1,7,27,Si
+1,src/java/org/apache/avro/tool/Tool.java,32,63,57,34,0,[Douglass Cutting],1,4,11,Si
+1,src/java/org/apache/avro/specific/FixedSize.java,17,2,1,1,0,[Douglass Cutting],0,1,15,No
+1,src/java/org/apache/avro/util/WeakIdentityHashMap.java,138,338,169,169,0,[Douglass Cutting],0,2,17,No
+1,src/java/org/apache/avro/reflect/InduceSchemaTool.java,59,91,84,59,0,[Douglass Cutting],0,4,10,No
+1,src/java/org/apache/avro/reflect/Union.java,17,47,43,37,0,[Douglass Cutting],0,2,8,No
+1,src/java/org/apache/avro/reflect/Stringable.java,14,34,34,34,0,[Douglass Cutting],0,1,7,No
+1,src/java/org/apache/avro/tool/BinaryFragmentToJsonTool.java,67,84,84,84,0,[Douglass Cutting],0,1,10,No
+1,src/java/org/apache/avro/tool/DataFileGetSchemaTool.java,37,54,54,54,0,[Douglass Cutting],0,1,10,No
+1,src/java/org/apache/avro/tool/DataFileReadTool.java,61,82,80,79,0,[Douglass Cutting],0,2,19,No
+1,src/java/org/apache/avro/tool/DataFileWriteTool.java,65,86,84,82,0,[Douglass Cutting],0,2,19,No
+1,src/java/org/apache/avro/tool/JsonToBinaryFragmentTool.java,60,77,77,77,0,[Douglass Cutting],0,1,10,No
+1,src/java/org/apache/avro/tool/Util.java,40,57,57,39,0,[Douglass Cutting],0,2,15,No
+1,src/test/java/org/apache/avro/AvroTestUtil.java,15,32,32,32,0,[Douglass Cutting],0,1,10,No
+1,src/test/java/org/apache/avro/tool/TestDataFileTools.java,164,192,186,181,0,[Douglass Cutting],0,2,19,No
+1,src/test/java/org/apache/avro/tool/TestJsonToFromBinaryFragmentTools.java,47,66,66,66,0,[Douglass Cutting],0,1,10,No
+1,src/java/org/apache/avro/tool/RpcReceiveTool.java,121,140,140,140,0,[Douglass Cutting],0,1,5,No
+1,src/java/org/apache/avro/tool/RpcSendTool.java,80,98,98,98,0,[Douglass Cutting],0,1,5,No
+1,src/test/java/org/apache/avro/tool/TestRpcReceiveAndSendTools.java,42,58,58,58,0,[Douglass Cutting],0,1,5,No
+1,src/test/java/org/apache/avro/genavro/TestGenAvro.java,128,161,159,155,0,[Douglass Cutting],0,2,3,No
+1,src/java/org/apache/avro/tool/GenAvroTool.java,59,78,78,78,0,[Douglass Cutting],0,1,3,No
+1,src/java/org/apache/avro/file/DataFileStream.java,157,177,177,177,0,[Douglass Cutting],0,1,9,No
+1,src/java/org/apache/avro/ipc/LocalTransceiver.java,35,52,52,52,0,[Douglass Cutting],0,1,1,No
+1,src/test/java/org/apache/avro/ipc/TestLocalTransceiver.java,48,64,64,64,0,[Douglass Cutting],0,1,1,No
+1,src/test/java/org/apache/avro/TestProtocolParsing.java,26,42,42,42,0,[Douglass Cutting],0,1,8,No
+1,src/java/org/apache/avro/ipc/stats/FloatHistogram.java,34,54,54,54,0,[Douglass Cutting],0,1,9,No
+1,src/java/org/apache/avro/ipc/stats/Histogram.java,181,205,205,205,0,[Douglass Cutting],0,1,9,No
+1,src/java/org/apache/avro/ipc/stats/StatsPlugin.java,99,121,121,121,0,[Douglass Cutting],0,1,9,No
+1,src/java/org/apache/avro/ipc/stats/StatsServlet.java,84,107,107,107,0,[Douglass Cutting],0,1,9,No
+1,src/java/org/apache/avro/ipc/stats/Stopwatch.java,57,74,74,74,0,[Douglass Cutting],0,1,9,No
+1,src/test/java/org/apache/avro/ipc/stats/FakeTicks.java,18,35,35,35,0,[Douglass Cutting],0,1,9,No
+1,src/test/java/org/apache/avro/ipc/stats/StatsPluginOverhead.java,81,103,103,103,0,[Douglass Cutting],0,1,9,No
+1,src/test/java/org/apache/avro/ipc/stats/TestHistogram.java,78,94,94,94,0,[Douglass Cutting],0,1,9,No
+1,src/test/java/org/apache/avro/ipc/stats/TestStatsPluginAndServlet.java,164,180,180,180,0,[Douglass Cutting],0,1,9,No
+1,src/test/java/org/apache/avro/ipc/stats/TestStopwatch.java,64,80,80,80,0,[Douglass Cutting],0,1,9,No
+1,src/test/java/org/apache/avro/generic/TestGenericData.java,20,36,36,36,0,[Douglass Cutting],0,1,1,No
+1,lang/java/src/java/org/apache/avro/Schema.java,1297,657,544,196,0,[Douglass Cutting, Philip Zeyliger, Thiruvalluvan M. G, Doug Cutting],1,15,85,Si
+1,lang/java/src/java/org/apache/avro/AvroRuntimeException.java,11,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/AvroTypeException.java,11,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/Protocol.java,414,138,100,95,0,[Douglass Cutting, Thiruvalluvan M. G],0,4,93,No
+1,lang/java/src/java/org/apache/avro/SchemaParseException.java,8,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/file/DataFileConstants.java,20,9,5,4,0,[Douglass Cutting, Philip Zeyliger],0,3,57,No
+1,lang/java/src/java/org/apache/avro/file/DataFileReader.java,189,169,114,66,0,[Douglass Cutting, Doug Cutting],0,6,93,No
+1,lang/java/src/java/org/apache/avro/file/DataFileStream.java,321,312,238,66,0,[Douglass Cutting, Philip Zeyliger],0,10,130,No
+1,lang/java/src/java/org/apache/avro/file/DataFileWriter.java,347,280,206,76,0,[Douglass Cutting, Philip Zeyliger, Thiruvalluvan M. G, Doug Cutting],0,11,116,No
+1,lang/java/src/java/org/apache/avro/file/SeekableFileInput.java,19,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/file/SeekableInput.java,19,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/generic/GenericArray.java,15,18,7,4,0,[Douglass Cutting],0,3,59,No
+1,lang/java/src/java/org/apache/avro/generic/GenericContainer.java,9,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/generic/GenericData.java,542,206,138,28,0,[Douglass Cutting, Philip Zeyliger, Thiruvalluvan M. G, Scott Carey, Doug Cutting],0,14,159,No
+1,lang/java/src/java/org/apache/avro/generic/GenericDatumReader.java,364,426,166,63,0,[Douglass Cutting, Philip Zeyliger, Thiruvalluvan M. G],0,13,138,No
+1,lang/java/src/java/org/apache/avro/generic/GenericDatumWriter.java,185,99,52,37,0,[Douglass Cutting, Thiruvalluvan M. G],0,8,127,No
+1,lang/java/src/java/org/apache/avro/generic/GenericFixed.java,7,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/generic/GenericRecord.java,10,9,3,3,0,[Douglass Cutting],0,2,62,No
+1,lang/java/src/java/org/apache/avro/generic/GenericRequestor.java,56,26,22,14,0,[Douglass Cutting],0,4,91,No
+1,lang/java/src/java/org/apache/avro/generic/GenericResponder.java,39,6,4,4,0,[Douglass Cutting],0,2,60,No
+1,lang/java/src/java/org/apache/avro/io/BinaryData.java,277,168,135,107,0,[Douglass Cutting, Thiruvalluvan M. G],0,4,118,No
+1,lang/java/src/java/org/apache/avro/io/BinaryDecoder.java,956,1012,847,813,0,[Douglass Cutting, Thiruvalluvan M. G],0,4,74,No
+1,lang/java/src/java/org/apache/avro/io/BinaryEncoder.java,229,20,16,13,0,[Douglass Cutting, Thiruvalluvan M. G],0,3,58,No
+1,lang/java/src/java/org/apache/avro/io/BlockingBinaryEncoder.java,604,32,20,10,0,[Douglass Cutting, Thiruvalluvan M. G],0,3,57,No
+1,lang/java/src/java/org/apache/avro/io/DatumReader.java,19,2,1,1,0,[Douglass Cutting],0,2,52,No
+1,lang/java/src/java/org/apache/avro/io/DatumWriter.java,17,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/io/Decoder.java,257,9,8,8,0,[Douglass Cutting],0,2,73,No
+1,lang/java/src/java/org/apache/avro/io/Encoder.java,253,18,17,17,0,[Douglass Cutting],0,2,56,No
+1,lang/java/src/java/org/apache/avro/io/JsonDecoder.java,408,16,9,2,0,[Douglass Cutting, Thiruvalluvan M. G],0,6,107,No
+1,lang/java/src/java/org/apache/avro/io/JsonEncoder.java,232,37,24,12,0,[Douglass Cutting, Thiruvalluvan M. G],0,7,98,No
+1,lang/java/src/java/org/apache/avro/io/ParsingDecoder.java,57,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/io/ParsingEncoder.java,52,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/io/ResolvingDecoder.java,232,217,137,49,0,[Douglass Cutting, Thiruvalluvan M. G],0,13,138,No
+1,lang/java/src/java/org/apache/avro/io/ValidatingDecoder.java,218,18,13,6,0,[Douglass Cutting, Thiruvalluvan M. G],0,7,97,No
+1,lang/java/src/java/org/apache/avro/io/ValidatingEncoder.java,195,20,16,12,0,[Douglass Cutting, Thiruvalluvan M. G],0,6,92,No
+1,lang/java/src/java/org/apache/avro/io/parsing/JsonGrammarGenerator.java,80,24,11,4,0,[Douglass Cutting, Thiruvalluvan M. G],0,5,101,No
+1,lang/java/src/java/org/apache/avro/io/parsing/Parser.java,162,216,121,34,0,[Douglass Cutting, Thiruvalluvan M. G],0,6,94,No
+1,lang/java/src/java/org/apache/avro/io/parsing/ResolvingGrammarGenerator.java,452,240,187,113,0,[Douglass Cutting, Thiruvalluvan M. G],0,14,119,No
+1,lang/java/src/java/org/apache/avro/io/parsing/SkipParser.java,75,21,11,3,0,[Douglass Cutting, Thiruvalluvan M. G],0,6,94,No
+1,lang/java/src/java/org/apache/avro/io/parsing/Symbol.java,530,266,217,166,0,[Douglass Cutting, Thiruvalluvan M. G],0,10,105,No
+1,lang/java/src/java/org/apache/avro/io/parsing/ValidatingGrammarGenerator.java,118,20,9,4,0,[Douglass Cutting, Thiruvalluvan M. G],0,5,101,No
+1,lang/java/src/java/org/apache/avro/ipc/AvroRemoteException.java,23,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/ipc/ByteBufferInputStream.java,69,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/ipc/ByteBufferOutputStream.java,88,32,23,18,0,[Douglass Cutting],0,3,84,No
+1,lang/java/src/java/org/apache/avro/ipc/DatagramServer.java,62,5,3,2,0,[Douglass Cutting],0,3,75,No
+1,lang/java/src/java/org/apache/avro/ipc/DatagramTransceiver.java,68,3,2,2,0,[Douglass Cutting],0,2,54,No
+1,lang/java/src/java/org/apache/avro/ipc/HttpServer.java,55,29,21,21,0,[Douglass Cutting],0,2,71,No
+1,lang/java/src/java/org/apache/avro/ipc/HttpTransceiver.java,94,34,17,7,0,[Douglass Cutting, Doug Cutting],0,4,74,No
+1,lang/java/src/java/org/apache/avro/ipc/LocalTransceiver.java,35,0,0,0,0,[Douglass Cutting],0,1,50,No
+1,lang/java/src/java/org/apache/avro/ipc/RPCContext.java,171,90,64,41,0,[Douglass Cutting],0,5,97,No
+1,lang/java/src/java/org/apache/avro/ipc/RPCPlugin.java,55,10,6,6,0,[Douglass Cutting],0,2,56,No
+1,lang/java/src/java/org/apache/avro/specific/SpecificCompiler.java,365,342,152,102,0,[Douglass Cutting, Thiruvalluvan M. G, Doug Cutting],1,11,90,Si
+1,lang/java/src/java/org/apache/avro/tool/GenAvroTool.java,59,2,1,1,0,[Douglass Cutting],0,1,4,No
+1,lang/java/src/java/org/apache/avro/tool/Main.java,85,31,26,16,0,[Douglass Cutting, Philip Zeyliger, Doug Cutting],0,6,42,No
+1,lang/java/src/java/org/apache/avro/tool/Tool.java,32,2,1,1,0,[Douglass Cutting],0,1,4,No
+1,lang/java/src/test/java/org/apache/avro/ipc/stats/TestStatsPluginAndServlet.java,202,232,135,57,0,[Douglass Cutting, Philip Zeyliger],0,5,33,No
+1,lang/java/src/test/java/org/apache/avro/TestSchema.java,752,433,384,90,0,[Douglass Cutting, Philip Zeyliger, Thiruvalluvan M. G, Doug Cutting],1,18,118,Si
+1,lang/java/src/test/java/org/apache/avro/TestDataFile.java,258,130,101,55,0,[Douglass Cutting, Philip Zeyliger, Thiruvalluvan M. G, Doug Cutting],0,8,48,No
+1,lang/java/src/test/java/org/apache/avro/io/Perf.java,636,1213,934,220,0,[Douglass Cutting, Thiruvalluvan M. G],0,11,76,No
+1,lang/java/src/test/java/org/apache/avro/io/TestResolvingIOResolving.java,177,159,116,32,0,[Douglass Cutting, Thiruvalluvan M. G],0,7,28,No
+1,lang/java/src/test/java/org/apache/avro/genavro/TestGenAvro.java,130,2,1,1,0,[Thiruvalluvan M. G],0,1,3,No
+1,lang/java/src/test/java/org/apache/avro/tool/TestDataFileTools.java,202,62,50,21,0,[Thiruvalluvan M. G, Philip Zeyliger],0,5,27,No
+1,lang/java/src/test/java/org/apache/avro/tool/TestJsonToFromBinaryFragmentTools.java,48,7,4,3,0,[Thiruvalluvan M. G, Douglass Cutting],0,2,4,No
+1,lang/java/src/test/java/org/apache/avro/tool/TestRpcReceiveAndSendTools.java,42,30,15,12,0,[Thiruvalluvan M. G, Douglass Cutting],0,2,6,No
+1,lang/java/src/java/org/apache/avro/reflect/InduceSchemaTool.java,58,3,1,1,0,[Philip Zeyliger],0,1,2,No
+1,lang/java/src/test/java/org/apache/avro/tool/TestMain.java,19,35,35,35,0,[Philip Zeyliger],0,1,2,No
+1,lang/java/src/test/java/org/apache/avro/generic/TestGenericData.java,128,118,113,40,0,[Douglass Cutting, Thiruvalluvan M. G, Scott Carey, Doug Cutting],0,7,35,No
+1,lang/java/src/java/org/apache/avro/file/Codec.java,17,80,65,39,0,[Philip Zeyliger, Douglass Cutting],0,4,48,No
+1,lang/java/src/java/org/apache/avro/file/CodecFactory.java,59,76,76,70,0,[Philip Zeyliger, Douglass Cutting],0,2,18,No
+1,lang/java/src/java/org/apache/avro/file/DeflateCodec.java,120,319,232,104,0,[Philip Zeyliger, Douglass Cutting],0,6,56,No
+1,lang/java/src/java/org/apache/avro/file/LengthLimitedInputStream.java,68,85,85,85,0,[Philip Zeyliger],0,1,11,No
+1,lang/java/src/java/org/apache/avro/file/NullCodec.java,42,114,89,57,0,[Philip Zeyliger, Douglass Cutting],0,5,53,No
+1,lang/java/src/java/org/apache/avro/tool/DataFileWriteTool.java,120,79,67,46,0,[Philip Zeyliger],0,2,12,No
+1,lang/java/src/test/java/org/apache/avro/TestDataFileDeflate.java,47,64,64,64,0,[Philip Zeyliger],0,1,11,No
+1,lang/java/src/test/java/org/apache/avro/file/TestLengthLimitedInputStream.java,42,58,58,58,0,[Philip Zeyliger],0,1,11,No
+1,lang/java/src/test/java/org/apache/avro/TestDataFileMeta.java,63,81,80,61,0,[Philip Zeyliger, Douglass Cutting],0,3,13,No
+1,lang/java/src/test/java/org/apache/avro/io/TestEncoders.java,39,55,55,49,0,[Thiruvalluvan M. G],0,2,1,No
+1,lang/java/src/test/java/org/apache/avro/TestProtocolSpecific.java,205,60,53,18,0,[Philip Zeyliger, Douglass Cutting, Doug Cutting],0,7,88,No
+1,lang/java/src/test/java/org/apache/avro/io/parsing/TestResolvingGrammarGenerator.java,77,93,93,93,0,[Thiruvalluvan M. G],0,1,4,No
+1,lang/java/src/java/org/apache/avro/generic/IndexedRecord.java,13,34,32,26,0,[Douglass Cutting],0,2,40,No
+1,lang/java/src/java/org/apache/avro/specific/SpecificData.java,177,106,21,7,0,[Douglass Cutting],0,7,84,No
+1,lang/java/src/java/org/apache/avro/specific/SpecificDatumReader.java,89,60,39,22,0,[Douglass Cutting],0,4,50,No
+1,lang/java/src/java/org/apache/avro/specific/SpecificExceptionBase.java,26,2,1,1,0,[Douglass Cutting],0,1,12,No
+1,lang/java/src/java/org/apache/avro/specific/SpecificRecord.java,8,6,2,2,0,[Douglass Cutting],0,1,12,No
+1,lang/java/src/java/org/apache/avro/specific/SpecificRecordBase.java,36,7,6,6,0,[Douglass Cutting],0,1,12,No
+1,lang/java/src/test/java/org/apache/avro/specific/TestSpecificData.java,63,79,79,41,0,[Douglass Cutting],0,2,40,No
+1,lang/java/src/test/java/org/apache/avro/io/TestValidatingIO.java,836,7,5,3,0,[Thiruvalluvan M. G, Douglass Cutting],0,2,25,No
+1,lang/java/src/java/org/apache/avro/reflect/ReflectData.java,460,146,105,49,0,[Thiruvalluvan M. G, Douglass Cutting],0,9,71,No
+1,lang/java/src/java/org/apache/avro/reflect/ReflectDatumReader.java,121,48,21,10,0,[Thiruvalluvan M. G, Douglass Cutting],0,4,47,No
+1,lang/java/src/test/java/org/apache/avro/TestProtocolGeneric.java,200,50,35,19,0,[Thiruvalluvan M. G, Douglass Cutting],0,7,105,No
+1,lang/java/src/java/org/apache/avro/tool/RpcReceiveTool.java,159,66,52,46,0,[Douglass Cutting, Doug Cutting],0,3,28,No
+1,lang/java/src/java/org/apache/avro/tool/RpcSendTool.java,100,64,42,38,0,[Douglass Cutting, Doug Cutting],0,2,7,No
+1,lang/java/src/java/org/apache/avro/tool/Util.java,102,74,68,54,0,[Douglass Cutting],0,2,6,No
+1,lang/java/src/java/org/apache/avro/ipc/SocketServer.java,125,73,53,32,0,[Douglass Cutting, Doug Cutting],0,6,53,No
+1,lang/java/src/java/org/apache/avro/ipc/SocketTransceiver.java,100,32,27,16,0,[Douglass Cutting, Doug Cutting],0,5,34,No
+1,lang/java/src/java/org/apache/avro/util/Utf8.java,114,81,63,41,0,[Douglass Cutting],0,5,71,No
+1,lang/java/src/test/java/org/apache/avro/util/TestUtf8.java,16,32,32,32,0,[Douglass Cutting],0,1,1,No
+1,lang/java/src/java/org/apache/avro/specific/SpecificRequestor.java,100,37,24,8,0,[Thiruvalluvan M. G, Douglass Cutting, Doug Cutting],0,5,48,No
+1,lang/java/src/java/org/apache/avro/specific/SpecificResponder.java,86,21,8,4,0,[Thiruvalluvan M. G, Douglass Cutting],0,3,55,No
+1,lang/java/src/test/java/org/apache/avro/RandomData.java,124,6,3,2,0,[Thiruvalluvan M. G, Douglass Cutting],0,2,43,No
+1,lang/java/src/test/java/org/apache/avro/TestReflect.java,551,195,172,52,0,[Thiruvalluvan M. G, Douglass Cutting],0,8,61,No
+1,lang/java/src/test/java/org/apache/avro/generic/TestGenericDatumWriter.java,36,52,52,52,0,[Thiruvalluvan M. G],0,1,0,No
+1,lang/java/src/test/java/org/apache/avro/TestDataFileConcat.java,160,292,234,154,0,[Douglass Cutting],0,2,10,No
+1,lang/java/src/java/org/apache/avro/io/DecoderFactory.java,208,232,232,232,0,[Douglass Cutting],0,1,23,No
+1,lang/java/src/java/org/apache/avro/io/DirectBinaryDecoder.java,180,211,207,203,0,[Douglass Cutting, Doug Cutting],0,2,24,No
+1,lang/java/src/java/org/apache/avro/ipc/Requestor.java,254,120,81,25,0,[Douglass Cutting, Philip Zeyliger, Doug Cutting],0,9,105,No
+1,lang/java/src/java/org/apache/avro/ipc/Responder.java,231,116,77,28,0,[Douglass Cutting, Doug Cutting],0,8,92,No
+1,lang/java/src/java/org/apache/avro/tool/BinaryFragmentToJsonTool.java,68,5,3,3,0,[Douglass Cutting],0,1,23,No
+1,lang/java/src/test/java/org/apache/avro/io/TestBinaryDecoder.java,414,376,364,336,0,[Douglass Cutting, Doug Cutting],0,2,24,No
+1,lang/java/src/test/java/org/apache/avro/io/TestBlockingIO.java,459,2,1,1,0,[Douglass Cutting],0,1,23,No
+1,lang/java/src/test/java/org/apache/avro/io/TestBlockingIO2.java,138,5,1,1,0,[Douglass Cutting],0,1,23,No
+1,lang/java/src/test/java/org/apache/avro/io/TestResolvingIO.java,195,12,6,3,0,[Douglass Cutting, Thiruvalluvan M. G],0,3,27,No
+1,lang/java/src/test/java/org/apache/avro/SimpleError.java,5,22,22,22,0,[Douglass Cutting],0,1,10,No
+1,lang/java/src/test/java/org/apache/avro/TestProtocolReflect.java,129,54,44,17,0,[Douglass Cutting],0,6,71,No
+1,lang/java/src/java/org/apache/avro/reflect/Nullable.java,14,33,33,33,0,[Douglass Cutting],0,1,3,No
+1,lang/java/src/test/java/org/apache/avro/SimpleException.java,8,5,4,4,0,[Douglass Cutting],0,1,3,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroInputFormat.java,38,56,56,56,0,[Douglass Cutting],0,1,12,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroJob.java,150,317,242,104,0,[Douglass Cutting, Doug Cutting],0,6,81,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroKeyComparator.java,33,82,66,61,0,[Douglass Cutting],0,3,68,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroKeySerialization.java,127,162,153,148,0,[Douglass Cutting],0,2,40,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroMapper.java,21,111,76,66,0,[Douglass Cutting],0,2,40,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroOutputFormat.java,84,127,114,87,0,[Douglass Cutting],0,4,71,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroRecordReader.java,67,121,103,86,0,[Douglass Cutting, Doug Cutting],0,4,52,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroReducer.java,30,127,89,72,0,[Douglass Cutting],0,2,40,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroWrapper.java,37,58,56,54,0,[Douglass Cutting],0,2,40,No
+1,lang/java/src/java/org/apache/avro/mapred/FsInput.java,43,60,60,60,0,[Douglass Cutting],0,1,12,No
+1,lang/java/src/test/java/org/apache/avro/mapred/TestWordCountGeneric.java,121,318,159,101,0,[Douglass Cutting, Thiruvalluvan M. G],0,4,43,No
+1,lang/java/src/test/java/org/apache/avro/mapred/TestWordCountSpecific.java,87,193,148,97,0,[Douglass Cutting, Thiruvalluvan M. G],0,3,41,No
+1,lang/java/src/test/java/org/apache/avro/mapred/WordCountUtil.java,120,156,146,97,0,[Douglass Cutting],0,5,46,No
+1,lang/java/src/java/org/apache/avro/ipc/Transceiver.java,54,30,29,29,0,[Douglass Cutting],0,1,19,No
+1,lang/java/src/test/java/org/apache/avro/TestBulkData.java,101,10,6,4,0,[Douglass Cutting],0,3,53,No
+1,lang/java/src/test/java/org/apache/avro/TestNamespaceReflect.java,25,6,4,2,0,[Douglass Cutting],0,3,53,No
+1,lang/java/src/test/java/org/apache/avro/TestNamespaceSpecific.java,77,10,6,4,0,[Douglass Cutting],0,3,53,No
+1,lang/java/src/test/java/org/apache/avro/TestProtocolDatagram.java,28,6,4,2,0,[Douglass Cutting],0,3,53,No
+1,lang/java/src/test/java/org/apache/avro/TestProtocolGenericMeta.java,28,4,3,2,0,[Douglass Cutting],0,2,40,No
+1,lang/java/src/test/java/org/apache/avro/TestProtocolHttp.java,47,27,25,21,0,[Douglass Cutting, Doug Cutting],0,4,54,No
+1,lang/java/src/test/java/org/apache/avro/TestProtocolParsing.java,71,47,46,46,0,[Douglass Cutting],0,1,19,No
+1,lang/java/src/test/java/org/apache/avro/TestProtocolReflectMeta.java,31,6,4,2,0,[Douglass Cutting],0,3,53,No
+1,lang/java/src/test/java/org/apache/avro/TestProtocolSpecificMeta.java,31,7,4,2,0,[Douglass Cutting],0,3,53,No
+1,lang/java/src/test/java/org/apache/avro/specific/TestSpecificCompiler.java,262,79,58,36,0,[Douglass Cutting],1,3,31,Si
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetherPartitioner.java,43,0,0,0,0,[Douglass Cutting],0,1,0,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroUtf8InputFormat.java,98,117,117,98,0,[Douglass Cutting],0,2,5,No
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetherData.java,25,42,42,42,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetherInputFormat.java,40,58,58,58,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetherJob.java,139,160,158,154,0,[Douglass Cutting],0,2,56,No
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetherKeyComparator.java,44,61,61,61,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetherKeySerialization.java,74,91,91,91,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetherMapRunner.java,77,93,93,93,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetherOutputFormat.java,63,80,80,80,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetherOutputService.java,85,111,106,103,0,[Douglass Cutting],0,2,54,No
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetherPartitoner.java,43,59,59,59,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetherRecordReader.java,68,84,84,84,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetherReducer.java,66,82,82,82,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/tether/TetheredProcess.java,116,134,133,131,0,[Douglass Cutting],0,3,62,No
+1,lang/java/src/test/java/org/apache/avro/TestCompare.java,241,17,17,17,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/test/java/org/apache/avro/mapred/tether/TetherTask.java,184,209,206,204,0,[Douglass Cutting],0,3,67,No
+1,lang/java/src/test/java/org/apache/avro/mapred/tether/TetherTaskRunner.java,71,96,93,90,0,[Douglass Cutting],0,3,75,No
+1,lang/java/src/test/java/org/apache/avro/mapred/tether/WordCountTask.java,40,85,71,59,0,[Douglass Cutting],0,2,56,No
+1,lang/java/src/java/org/apache/avro/tool/IdlTool.java,60,25,13,7,0,[Douglass Cutting],0,2,3,No
+1,lang/java/src/test/java/org/apache/avro/idl/TestIdl.java,130,24,12,11,0,[Douglass Cutting],0,2,3,No
+1,lang/java/src/java/org/apache/avro/tool/FromTextTool.java,80,99,99,99,0,[Douglass Cutting],0,1,3,No
+1,lang/java/src/java/org/apache/avro/tool/ToTextTool.java,71,88,88,88,0,[Douglass Cutting],0,1,3,No
+1,lang/java/src/java/org/apache/avro/ipc/stats/Histogram.java,242,72,67,67,0,[Philip Zeyliger],0,1,2,No
+1,lang/java/src/java/org/apache/avro/ipc/stats/IntegerHistogram.java,35,55,55,55,0,[Philip Zeyliger],0,1,2,No
+1,lang/java/src/test/java/org/apache/avro/ipc/stats/TestHistogram.java,126,48,48,48,0,[Philip Zeyliger],0,1,2,No
+1,lang/java/src/test/java/org/apache/avro/RPCMetaTestPlugin.java,164,32,21,17,0,[Douglass Cutting],0,3,37,No
+1,lang/java/src/java/org/apache/avro/ipc/NettyServer.java,133,199,175,148,0,[Douglass Cutting],1,3,25,Si
+1,lang/java/src/java/org/apache/avro/ipc/NettyTransceiver.java,246,264,264,264,0,[Douglass Cutting],1,1,3,Si
+1,lang/java/src/java/org/apache/avro/ipc/NettyTransportCodec.java,165,183,183,165,0,[Douglass Cutting],1,2,6,Si
+1,lang/java/src/test/java/org/apache/avro/ipc/TestNettyServer.java,60,84,80,58,0,[Douglass Cutting],1,6,67,Si
+1,lang/java/src/java/org/apache/avro/ipc/Server.java,18,6,6,6,0,[Douglass Cutting],0,1,21,No
+1,lang/java/src/test/java/org/apache/avro/ipc/stats/StatsPluginOverhead.java,83,4,3,3,0,[Douglass Cutting],0,1,21,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroCollector.java,11,28,28,28,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroKey.java,8,25,25,25,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroSerialization.java,118,43,17,17,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/AvroValue.java,8,25,25,25,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/HadoopCombiner.java,44,62,62,62,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/HadoopMapper.java,65,83,83,83,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/HadoopReducer.java,43,60,60,60,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/HadoopReducerBase.java,47,63,63,63,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/java/org/apache/avro/mapred/Pair.java,435,486,469,453,0,[Douglass Cutting],0,2,54,No
+1,lang/java/src/java/org/apache/avro/specific/SpecificDatumWriter.java,38,10,4,4,0,[Douglass Cutting],0,1,28,No
+1,lang/java/src/test/java/org/apache/avro/mapred/TestWeather.java,127,146,145,144,0,[Douglass Cutting, Doug Cutting],0,2,30,No
+1,lang/java/src/test/java/org/apache/avro/mapred/TestWordCount.java,128,113,77,53,0,[Douglass Cutting],0,3,32,No
+1,lang/java/src/java/org/apache/avro/ipc/stats/StatsPlugin.java,203,387,246,117,0,[Douglass Cutting, Philip Zeyliger],0,3,8,No
+1,lang/java/src/java/org/apache/avro/ipc/stats/StatsServlet.java,223,739,449,206,0,[Douglass Cutting, Philip Zeyliger],0,3,8,No
+1,lang/java/src/java/org/apache/avro/reflect/ReflectResponder.java,43,18,15,14,0,[Douglass Cutting],0,2,31,No
+1,lang/java/src/java/org/apache/avro/ipc/stats/StaticServlet.java,28,46,46,28,0,[Philip Zeyliger],0,2,16,No
+1,lang/java/src/java/org/apache/avro/ipc/stats/StatsServer.java,31,54,54,54,0,[Philip Zeyliger],0,1,4,No
+1,lang/java/src/test/java/org/apache/avro/ipc/trace/TestSpanAggregation.java,210,232,230,220,0,[Douglass Cutting, Philip Zeyliger],0,3,18,No
+1,lang/java/src/java/org/apache/avro/ipc/trace/InMemorySpanStorage.java,56,80,79,68,0,[Philip Zeyliger],0,2,20,No
+1,lang/java/src/java/org/apache/avro/ipc/trace/SpanAggregator.java,157,185,183,155,0,[Philip Zeyliger, Douglass Cutting],0,3,30,No
+1,lang/java/src/java/org/apache/avro/ipc/trace/SpanStorage.java,35,57,57,46,0,[Philip Zeyliger],0,2,20,No
+1,lang/java/src/java/org/apache/avro/ipc/trace/Trace.java,223,253,248,245,0,[Philip Zeyliger, Douglass Cutting],0,3,51,No
+1,lang/java/src/java/org/apache/avro/ipc/trace/TraceClientServlet.java,237,277,265,198,0,[Philip Zeyliger],0,2,25,No
+1,lang/java/src/java/org/apache/avro/ipc/trace/TraceNode.java,120,153,146,94,0,[Philip Zeyliger],0,2,25,No
+1,lang/java/src/java/org/apache/avro/ipc/trace/TracePlugin.java,346,437,406,322,0,[Philip Zeyliger, Douglass Cutting],0,6,71,No
+1,lang/java/src/java/org/apache/avro/ipc/trace/TracePluginConfiguration.java,56,81,78,45,0,[Philip Zeyliger],0,4,38,No
+1,lang/java/src/java/org/apache/avro/ipc/trace/Util.java,203,250,236,169,0,[Philip Zeyliger],0,4,35,No
+1,lang/java/src/test/java/org/apache/avro/ipc/trace/TestBasicTracing.java,418,516,477,399,0,[Philip Zeyliger],0,4,34,No
+1,lang/java/src/test/java/org/apache/avro/ipc/trace/TestEndToEndTracing.java,242,266,263,245,0,[Philip Zeyliger],0,3,26,No
+1,lang/java/src/test/java/org/apache/avro/ipc/trace/TestSpanTraceFormation.java,263,279,279,279,0,[Philip Zeyliger],0,1,13,No
+1,lang/java/src/java/org/apache/avro/util/WeakIdentityHashMap.java,138,169,169,169,0,[Douglass Cutting],0,1,3,No
+1,lang/java/src/java/org/apache/avro/tool/JsonToBinaryFragmentTool.java,61,1,1,1,0,[Douglass Cutting],0,1,1,No
+1,lang/java/src/java/org/apache/avro/generic/GenericEnumSymbol.java,7,24,24,24,0,[Douglass Cutting],0,1,26,No
+1,lang/java/src/java/org/apache/avro/reflect/ReflectDatumWriter.java,90,22,3,3,0,[Douglass Cutting],0,3,38,No
+1,lang/java/src/java/org/apache/avro/ipc/trace/FileSpanStorage.java,338,359,359,359,0,[Philip Zeyliger],0,1,7,No
+1,lang/java/src/test/java/org/apache/avro/ipc/trace/TestFileSpanStorage.java,165,183,183,183,0,[Philip Zeyliger],0,1,7,No
+1,lang/java/src/java/org/apache/avro/ipc/trace/StaticServlet.java,32,50,50,50,0,[Philip Zeyliger],0,1,12,No
+1,lang/java/src/java/org/apache/avro/ipc/trace/TraceCollection.java,266,356,331,281,0,[Philip Zeyliger],0,2,15,No
+1,lang/java/src/test/java/org/apache/avro/ipc/trace/TestStaticServlet.java,16,32,32,32,0,[Philip Zeyliger],0,1,12,No
+1,lang/java/src/test/java/org/apache/avro/ipc/trace/TestTraceCollection.java,100,116,116,98,0,[Philip Zeyliger, Douglass Cutting],0,2,15,No
+1,lang/java/src/test/java/NoPackage.java,4,21,21,21,0,[Douglass Cutting],0,1,2,No
+1,lang/java/src/test/java/org/apache/avro/ipc/trace/SingletonTestingTracePlugin.java,22,38,38,38,0,[Philip Zeyliger],0,1,6,No
+1,lang/java/src/test/java/org/apache/avro/ipc/trace/TestTraceConfigurations.java,88,104,104,104,0,[Philip Zeyliger],0,1,6,No
+1,lang/java/src/test/java/org/apache/avro/ipc/trace/TestTraceSingletons.java,60,76,76,76,0,[Philip Zeyliger],0,1,6,No
+1,lang/java/src/test/java/org/apache/avro/ipc/trace/TestTracingUtil.java,29,46,46,29,0,[Douglass Cutting, Philip Zeyliger],0,2,3,No
+1,lang/java/src/java/org/apache/avro/file/FileReader.java,32,49,49,49,0,[Douglass Cutting],0,1,8,No
+1,lang/java/src/java/org/apache/avro/mapred/SequenceFileInputFormat.java,26,43,43,43,0,[Douglass Cutting],0,1,8,No
+1,lang/java/src/java/org/apache/avro/mapred/SequenceFileReader.java,230,247,247,247,0,[Douglass Cutting],0,1,8,No
+1,lang/java/src/java/org/apache/avro/mapred/SequenceFileRecordReader.java,18,36,36,36,0,[Douglass Cutting],0,1,8,No
+1,lang/java/src/java/org/apache/avro/tool/DataFileReadTool.java,62,5,3,2,0,[Douglass Cutting, Doug Cutting],0,2,12,No
+1,lang/java/src/test/java/org/apache/avro/mapred/TestSequenceFileReader.java,194,222,216,112,0,[Douglass Cutting, Doug Cutting],0,2,10,No
+1,lang/java/src/java/org/apache/avro/ipc/SaslSocketServer.java,85,102,102,102,0,[Douglass Cutting],0,1,4,No
+1,lang/java/src/java/org/apache/avro/ipc/SaslSocketTransceiver.java,371,389,389,389,0,[Douglass Cutting],0,1,4,No
+1,lang/java/src/test/java/org/apache/avro/ipc/TestSaslAnonymous.java,32,49,49,49,0,[Douglass Cutting],0,1,4,No
+1,lang/java/src/test/java/org/apache/avro/ipc/TestSaslDigestMd5.java,150,167,167,167,0,[Douglass Cutting],0,1,4,No
+1,lang/java/src/java/org/apache/avro/reflect/ReflectRequestor.java,60,14,8,8,0,[Douglass Cutting],0,1,13,No
+1,lang/java/src/test/java/org/apache/avro/specific/Avro14SpecificCompiler.java,249,277,277,277,0,[Douglass Cutting],0,1,4,No
+1,lang/java/src/test/java/org/apache/avro/specific/TestTemplatedCompilerFidelity.java,69,85,85,85,0,[Douglass Cutting],0,1,4,No
+1,lang/java/src/java/org/apache/avro/tool/RecodecTool.java,98,115,115,115,0,[Doug Cutting],0,1,3,No
+1,lang/java/src/test/java/org/apache/avro/tool/TestRecodecTool.java,-5,109,109,109,0,[Doug Cutting],0,1,3,No
+1,lang/java/src/java/org/apache/avro/ipc/Ipc.java,36,53,53,53,0,[Doug Cutting],0,1,4,No
+1,lang/java/src/java/org/apache/avro/file/DataFileReader12.java,204,221,221,221,0,[Doug Cutting],0,1,4,No
+1,lang/java/avro/src/main/java/org/apache/avro/AvroRuntimeException.java,11,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/AvroTypeException.java,11,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/Protocol.java,424,14,12,12,0,[Scott Carey, Doug Cutting],0,2,233,No
+1,lang/java/avro/src/main/java/org/apache/avro/Schema.java,1425,266,197,77,0,[Scott Carey, Doug Cutting],0,12,336,No
+1,lang/java/avro/src/main/java/org/apache/avro/SchemaParseException.java,8,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/Codec.java,30,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/CodecFactory.java,65,6,6,6,0,[Scott Carey, Doug Cutting],0,2,237,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/DataFileConstants.java,23,5,4,3,0,[Scott Carey, Doug Cutting],0,3,239,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/DataFileReader.java,227,50,44,33,0,[Scott Carey, Doug Cutting],0,4,270,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/DataFileReader12.java,210,8,7,7,0,[Scott Carey, Doug Cutting],0,2,266,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/DataFileStream.java,344,67,45,36,0,[Scott Carey, Doug Cutting],0,5,314,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/DataFileWriter.java,384,73,55,35,0,[Scott Carey, Doug Cutting],0,4,278,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/DeflateCodec.java,120,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/FileReader.java,32,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/LengthLimitedInputStream.java,68,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/NullCodec.java,47,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/SeekableFileInput.java,19,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/SeekableInput.java,20,3,2,2,0,[Scott Carey, Doug Cutting],0,2,232,No
+1,lang/java/avro/src/main/java/org/apache/avro/generic/GenericArray.java,15,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/generic/GenericContainer.java,9,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/generic/GenericData.java,878,410,373,149,0,[Scott Carey, Doug Cutting],0,14,358,No
+1,lang/java/avro/src/main/java/org/apache/avro/generic/GenericDatumReader.java,359,115,55,16,0,[Scott Carey, Doug Cutting],0,11,375,No
+1,lang/java/avro/src/main/java/org/apache/avro/generic/GenericDatumWriter.java,196,23,17,7,0,[Scott Carey, Doug Cutting],0,6,268,No
+1,lang/java/avro/src/main/java/org/apache/avro/generic/GenericEnumSymbol.java,7,2,1,1,0,[Scott Carey, Doug Cutting],0,2,250,No
+1,lang/java/avro/src/main/java/org/apache/avro/generic/GenericFixed.java,7,2,1,1,0,[Scott Carey, Doug Cutting],0,2,250,No
+1,lang/java/avro/src/main/java/org/apache/avro/generic/GenericRecord.java,10,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/generic/IndexedRecord.java,13,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/BinaryData.java,411,142,138,125,0,[Scott Carey, Doug Cutting],0,4,312,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/BinaryDecoder.java,953,140,68,53,0,[Scott Carey, Doug Cutting],0,4,301,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/BinaryEncoder.java,96,241,51,50,0,[Scott Carey],0,3,336,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/BlockingBinaryEncoder.java,529,227,81,80,0,[Scott Carey, Doug Cutting],0,3,309,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/DatumReader.java,19,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/DatumWriter.java,17,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/Decoder.java,251,33,15,7,0,[Scott Carey, Doug Cutting],0,5,350,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/DecoderFactory.java,292,280,182,177,0,[Scott Carey, Doug Cutting],0,4,315,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/DirectBinaryDecoder.java,181,9,5,3,0,[Scott Carey, Doug Cutting],0,3,328,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/Encoder.java,249,13,6,6,0,[Scott Carey, Doug Cutting],0,3,280,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/JsonDecoder.java,680,346,311,241,0,[Scott Carey, Doug Cutting, Thiruvalluvan M. G],0,5,311,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/JsonEncoder.java,277,86,69,56,0,[Scott Carey, Doug Cutting, Thiruvalluvan M. G],0,5,315,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/ParsingDecoder.java,59,4,3,3,0,[Scott Carey, Doug Cutting],0,2,266,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/ParsingEncoder.java,52,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/ResolvingDecoder.java,238,22,14,14,0,[Scott Carey, Doug Cutting],0,2,266,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/ValidatingDecoder.java,227,40,28,15,0,[Scott Carey, Doug Cutting],0,4,307,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/ValidatingEncoder.java,191,47,25,20,0,[Scott Carey, Doug Cutting],0,4,315,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/parsing/JsonGrammarGenerator.java,81,3,2,2,0,[Scott Carey, Thiruvalluvan M. G],0,2,235,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/parsing/Parser.java,172,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/parsing/ResolvingGrammarGenerator.java,457,25,15,10,0,[Scott Carey, Doug Cutting],0,4,329,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/parsing/SkipParser.java,75,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/parsing/Symbol.java,532,2,2,1,0,[Scott Carey, Doug Cutting, Thiruvalluvan M. G],0,3,236,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/parsing/ValidatingGrammarGenerator.java,118,2,1,1,0,[Scott Carey, Doug Cutting],0,2,250,No
+1,lang/java/avro/src/main/java/org/apache/avro/ipc/AvroRemoteException.java,23,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/ipc/ByteBufferInputStream.java,69,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/ipc/ByteBufferOutputStream.java,88,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/reflect/InduceSchemaTool.java,58,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/reflect/Nullable.java,14,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/reflect/ReflectData.java,457,63,30,10,0,[Scott Carey, Doug Cutting],0,9,316,No
+1,lang/java/avro/src/main/java/org/apache/avro/reflect/ReflectDatumReader.java,121,2,1,1,0,[Scott Carey, Doug Cutting],0,2,267,No
+1,lang/java/avro/src/main/java/org/apache/avro/reflect/ReflectDatumWriter.java,92,10,6,4,0,[Scott Carey, Doug Cutting],0,4,261,No
+1,lang/java/avro/src/main/java/org/apache/avro/reflect/Stringable.java,14,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/reflect/Union.java,17,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/specific/FixedSize.java,17,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/specific/SpecificData.java,254,97,87,48,0,[Scott Carey, Doug Cutting],0,10,337,No
+1,lang/java/avro/src/main/java/org/apache/avro/specific/SpecificDatumReader.java,58,79,24,14,0,[Scott Carey, Doug Cutting],0,4,270,No
+1,lang/java/avro/src/main/java/org/apache/avro/specific/SpecificDatumWriter.java,40,4,3,3,0,[Scott Carey, Doug Cutting],0,2,233,No
+1,lang/java/avro/src/main/java/org/apache/avro/specific/SpecificExceptionBase.java,42,18,17,16,0,[Scott Carey, Doug Cutting],0,3,329,No
+1,lang/java/avro/src/main/java/org/apache/avro/specific/SpecificFixed.java,15,7,6,5,0,[Scott Carey, Doug Cutting],0,3,286,No
+1,lang/java/avro/src/main/java/org/apache/avro/specific/SpecificRecord.java,8,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/specific/SpecificRecordBase.java,36,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/tool/Tool.java,32,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/main/java/org/apache/avro/util/Utf8.java,115,41,21,13,0,[Scott Carey, Doug Cutting],0,3,310,No
+1,lang/java/avro/src/main/java/org/apache/avro/util/WeakIdentityHashMap.java,138,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/test/java/NoPackage.java,4,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/test/java/org/apache/avro/AvroTestUtil.java,15,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/test/java/org/apache/avro/BarRecord.java,35,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/test/java/org/apache/avro/FooRecord.java,31,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/test/java/org/apache/avro/GenerateBlockingData.java,64,10,6,6,0,[Scott Carey],0,2,274,No
+1,lang/java/avro/src/test/java/org/apache/avro/RandomData.java,125,5,3,3,0,[Scott Carey, Doug Cutting],0,2,250,No
+1,lang/java/avro/src/test/java/org/apache/avro/TestDataFile.java,265,87,47,24,0,[Scott Carey, Doug Cutting],1,5,245,Si
+1,lang/java/avro/src/test/java/org/apache/avro/TestDataFileConcat.java,160,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/test/java/org/apache/avro/TestDataFileDeflate.java,47,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/test/java/org/apache/avro/TestDataFileMeta.java,63,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/test/java/org/apache/avro/TestDataFileReflect.java,169,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/test/java/org/apache/avro/TestReflect.java,582,59,45,10,0,[Scott Carey, Doug Cutting],0,7,314,No
+1,lang/java/avro/src/test/java/org/apache/avro/file/TestLengthLimitedInputStream.java,42,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/avro/src/test/java/org/apache/avro/generic/TestGenericData.java,315,193,190,58,0,[Scott Carey, Doug Cutting],0,8,301,No
+1,lang/java/avro/src/test/java/org/apache/avro/generic/TestGenericDatumWriter.java,36,7,4,2,0,[Scott Carey, Doug Cutting],0,3,309,No
+1,lang/java/avro/src/test/java/org/apache/avro/io/Perf.java,1274,1461,1051,837,0,[Scott Carey, Doug Cutting],0,5,309,No
+1,lang/java/avro/src/test/java/org/apache/avro/io/TestBinaryDecoder.java,416,54,30,23,0,[Scott Carey, Doug Cutting],0,4,371,No
+1,lang/java/avro/src/test/java/org/apache/avro/io/TestBlockingIO.java,461,6,4,3,0,[Scott Carey, Doug Cutting],0,3,309,No
+1,lang/java/avro/src/test/java/org/apache/avro/io/TestBlockingIO2.java,140,6,4,3,0,[Scott Carey, Doug Cutting],0,3,309,No
+1,lang/java/avro/src/test/java/org/apache/avro/io/TestEncoders.java,180,159,150,81,0,[Scott Carey, Thiruvalluvan M. G, Doug Cutting],0,4,280,No
+1,lang/java/avro/src/test/java/org/apache/avro/io/TestResolvingIO.java,195,2,1,1,0,[Scott Carey, Doug Cutting],0,2,266,No
+1,lang/java/avro/src/test/java/org/apache/avro/io/TestResolvingIOResolving.java,189,12,12,12,0,[Scott Carey, Doug Cutting],0,2,232,No
+1,lang/java/avro/src/test/java/org/apache/avro/io/TestValidatingIO.java,837,11,6,5,0,[Scott Carey, Doug Cutting],0,3,309,No
+1,lang/java/avro/src/test/java/org/apache/avro/io/parsing/TestResolvingGrammarGenerator.java,79,8,5,5,0,[Scott Carey],0,2,274,No
+1,lang/java/avro/src/test/java/org/apache/avro/util/TestUtf8.java,16,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/compiler/src/main/java/org/apache/avro/specific/ProtocolTask.java,62,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/compiler/src/main/java/org/apache/avro/specific/SchemaTask.java,11,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/compiler/src/main/java/org/apache/avro/specific/SpecificCompiler.java,449,90,87,87,0,[Scott Carey],0,1,231,No
+1,lang/java/compiler/src/test/java/org/apache/avro/idl/TestIdl.java,130,2,1,1,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/generic/GenericRequestor.java,56,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/generic/GenericResponder.java,39,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/DatagramServer.java,62,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/DatagramTransceiver.java,68,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/HttpServer.java,93,42,40,40,0,[Scott Carey, Bruce Mitchener Jr],0,2,232,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/HttpTransceiver.java,94,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/Ipc.java,36,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/LocalTransceiver.java,35,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/NettyServer.java,141,40,24,7,0,[Scott Carey, Doug Cutting, Stephen Gargan],0,6,251,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/NettyTransceiver.java,506,656,458,208,0,[Scott Carey, Doug Cutting, Stephen Gargan],0,7,259,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/NettyTransportCodec.java,165,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/RPCContext.java,191,68,44,31,0,[Scott Carey, Doug Cutting],0,3,270,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/RPCPlugin.java,55,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/Requestor.java,546,551,421,361,0,[Scott Carey, Doug Cutting],0,12,435,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/Responder.java,240,75,42,10,0,[Scott Carey, Doug Cutting],0,10,433,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/ResponderServlet.java,38,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/SaslSocketServer.java,85,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/SaslSocketTransceiver.java,385,20,17,16,0,[Scott Carey, Doug Cutting],0,3,294,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/Server.java,18,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/SocketServer.java,126,5,3,1,0,[Scott Carey, Stephen Gargan],0,4,293,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/SocketTransceiver.java,100,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/Transceiver.java,91,45,41,40,0,[Scott Carey, Doug Cutting],0,3,246,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/stats/FloatHistogram.java,34,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/stats/Histogram.java,242,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/stats/IntegerHistogram.java,35,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/stats/StaticServlet.java,28,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/stats/StatsPlugin.java,203,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/stats/StatsServer.java,31,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/stats/StatsServlet.java,223,4,4,4,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/stats/Stopwatch.java,57,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/trace/FileSpanStorage.java,338,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/trace/InMemorySpanStorage.java,56,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/trace/SpanAggregator.java,156,3,1,1,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/trace/SpanStorage.java,35,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/trace/StaticServlet.java,32,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/trace/Trace.java,223,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/trace/TraceClientServlet.java,238,7,4,4,0,[Scott Carey],0,2,293,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/trace/TraceCollection.java,266,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/trace/TraceNode.java,120,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/trace/TracePlugin.java,343,23,10,7,0,[Scott Carey, Doug Cutting],0,3,328,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/trace/TracePluginConfiguration.java,56,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/trace/Util.java,203,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/reflect/ReflectRequestor.java,60,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/reflect/ReflectResponder.java,43,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/specific/SpecificRequestor.java,100,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/main/java/org/apache/avro/specific/SpecificResponder.java,86,2,1,1,0,[Scott Carey, Doug Cutting],0,3,237,No
+1,lang/java/ipc/src/test/java/org/apache/avro/AvroTestUtil.java,15,32,32,32,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/test/java/org/apache/avro/RPCMetaTestPlugin.java,163,11,5,5,0,[Scott Carey, Doug Cutting],0,2,266,No
+1,lang/java/ipc/src/test/java/org/apache/avro/RandomData.java,125,146,144,141,0,[Scott Carey, Doug Cutting],0,2,250,No
+1,lang/java/ipc/src/test/java/org/apache/avro/SimpleException.java,8,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestBulkData.java,101,4,2,2,0,[Scott Carey],0,2,293,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestCompare.java,244,37,20,7,0,[Scott Carey, Doug Cutting],0,5,364,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestNamespaceReflect.java,25,4,2,2,0,[Scott Carey],0,2,293,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestNamespaceSpecific.java,71,18,6,3,0,[Scott Carey, Doug Cutting],0,4,364,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestProtocolDatagram.java,32,36,20,19,0,[Scott Carey, Doug Cutting],0,3,300,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestProtocolGeneric.java,249,61,55,46,0,[Scott Carey, Doug Cutting],0,5,324,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestProtocolGenericMeta.java,28,2,1,1,0,[Scott Carey],0,2,293,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestProtocolHttp.java,75,64,46,21,0,[Scott Carey, Doug Cutting],0,6,311,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestProtocolParsing.java,71,2,1,1,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestProtocolReflect.java,131,6,4,2,0,[Scott Carey, Doug Cutting],0,3,299,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestProtocolReflectMeta.java,31,4,2,2,0,[Scott Carey],0,2,293,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestProtocolSpecific.java,322,189,153,71,0,[Scott Carey, Doug Cutting],0,9,387,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestProtocolSpecificMeta.java,32,29,15,15,0,[Scott Carey, Doug Cutting],0,2,238,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestSchema.java,886,222,178,52,0,[Scott Carey, Doug Cutting],0,11,399,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/TestLocalTransceiver.java,51,9,6,3,0,[Scott Carey, Doug Cutting],0,3,300,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/TestNettyServer.java,123,155,109,83,0,[Scott Carey, Doug Cutting, Stephen Gargan],0,7,377,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/TestSaslAnonymous.java,59,29,28,26,0,[Scott Carey, Doug Cutting],0,4,300,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/TestSaslDigestMd5.java,151,3,2,1,0,[Scott Carey, Doug Cutting],0,3,299,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/stats/FakeTicks.java,18,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/stats/StatsPluginOverhead.java,83,6,3,3,0,[Scott Carey],0,2,293,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/stats/TestHistogram.java,126,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/stats/TestStatsPluginAndServlet.java,202,6,3,3,0,[Scott Carey],0,2,293,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/stats/TestStopwatch.java,64,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/trace/SingletonTestingTracePlugin.java,22,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/trace/TestBasicTracing.java,423,65,33,30,0,[Scott Carey, Doug Cutting],0,3,329,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/trace/TestEndToEndTracing.java,242,6,3,3,0,[Scott Carey],0,2,293,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/trace/TestFileSpanStorage.java,165,28,14,12,0,[Scott Carey, Doug Cutting, Thiruvalluvan M. G],0,4,329,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/trace/TestSpanAggregation.java,208,94,46,45,0,[Scott Carey, Doug Cutting],0,2,267,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/trace/TestSpanTraceFormation.java,263,140,70,70,0,[Scott Carey, Doug Cutting],0,2,267,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/trace/TestStaticServlet.java,16,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/trace/TestTraceCollection.java,101,25,13,12,0,[Scott Carey, Doug Cutting],0,3,293,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/trace/TestTraceConfigurations.java,88,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/trace/TestTraceSingletons.java,60,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/trace/TestTracingUtil.java,30,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/test/java/org/apache/avro/specific/Avro14SpecificCompiler.java,249,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/ipc/src/test/java/org/apache/avro/specific/TestSpecificCompiler.java,261,5,2,1,0,[Scott Carey, Doug Cutting],0,2,233,No
+1,lang/java/ipc/src/test/java/org/apache/avro/specific/TestSpecificData.java,66,21,12,8,0,[Scott Carey, Doug Cutting],0,5,407,No
+1,lang/java/ipc/src/test/java/org/apache/avro/specific/TestTemplatedCompilerFidelity.java,69,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroCollector.java,11,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroInputFormat.java,38,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroJob.java,177,27,27,20,0,[Scott Carey, Doug Cutting],0,3,246,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroKey.java,11,3,3,3,0,[Scott Carey, Doug Cutting],0,2,233,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroKeyComparator.java,33,6,3,2,0,[Scott Carey, Doug Cutting],0,3,243,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroMapper.java,35,20,17,17,0,[Scott Carey, Doug Cutting],0,2,235,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroOutputFormat.java,107,61,42,22,0,[Scott Carey, Doug Cutting],0,5,252,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroRecordReader.java,70,5,4,4,0,[Scott Carey, Doug Cutting],0,2,240,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroReducer.java,44,22,18,18,0,[Scott Carey, Doug Cutting],0,2,235,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroSerialization.java,123,35,20,8,0,[Scott Carey, Doug Cutting],0,5,318,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroUtf8InputFormat.java,98,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroValue.java,11,3,3,3,0,[Scott Carey, Doug Cutting],0,2,233,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroWrapper.java,40,3,3,3,0,[Scott Carey, Doug Cutting],0,2,233,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/FsInput.java,43,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/HadoopCombiner.java,44,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/HadoopMapper.java,71,10,8,8,0,[Scott Carey, Doug Cutting],0,2,235,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/HadoopReducer.java,43,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/HadoopReducerBase.java,52,5,5,5,0,[Scott Carey, Doug Cutting],0,2,235,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/Pair.java,505,74,72,70,0,[Scott Carey, Doug Cutting],0,4,276,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/SequenceFileInputFormat.java,26,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/SequenceFileReader.java,230,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/SequenceFileRecordReader.java,18,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/tether/TetherData.java,25,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/tether/TetherInputFormat.java,40,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/tether/TetherJob.java,108,121,45,29,0,[Scott Carey, Doug Cutting, Thiruvalluvan M. G],0,4,243,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/tether/TetherKeyComparator.java,44,4,2,2,0,[Scott Carey],0,2,234,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/tether/TetherKeySerialization.java,75,11,6,3,0,[Scott Carey, Doug Cutting],0,4,314,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/tether/TetherMapRunner.java,76,5,2,2,0,[Scott Carey, Doug Cutting],0,2,266,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/tether/TetherOutputFormat.java,63,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/tether/TetherOutputService.java,85,6,3,3,0,[Scott Carey, Doug Cutting],0,2,266,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/tether/TetherPartitioner.java,43,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/tether/TetherRecordReader.java,68,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/tether/TetherReducer.java,65,5,2,2,0,[Scott Carey, Doug Cutting],0,2,266,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/tether/TetheredProcess.java,157,77,59,53,0,[Scott Carey, Doug Cutting, Thiruvalluvan M. G],0,5,303,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/TestSequenceFileReader.java,234,42,41,41,0,[Scott Carey, Doug Cutting],0,2,231,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/TestWeather.java,175,64,56,50,0,[Scott Carey, Doug Cutting],0,3,241,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/TestWordCount.java,128,0,0,0,0,[Scott Carey],0,1,231,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/WordCountUtil.java,160,58,49,32,0,[Scott Carey, Doug Cutting],0,5,252,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/tether/TetherTask.java,187,23,13,5,0,[Scott Carey, Doug Cutting],0,5,406,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/tether/TetherTaskRunner.java,71,12,6,4,0,[Scott Carey, Doug Cutting],0,3,328,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/tether/WordCountTask.java,40,4,2,1,0,[Scott Carey, Doug Cutting, Thiruvalluvan M. G],0,3,240,No
+1,lang/java/maven-plugin/src/main/java/org/apache/avro/mojo/AbstractAvroMojo.java,133,157,154,143,0,[Scott Carey, Doug Cutting, Thiruvalluvan M. G],0,3,268,No
+1,lang/java/maven-plugin/src/main/java/org/apache/avro/mojo/IDLProtocolMojo.java,57,86,82,78,0,[Scott Carey, Doug Cutting],0,3,295,No
+1,lang/java/maven-plugin/src/main/java/org/apache/avro/mojo/ProtocolMojo.java,51,82,77,66,0,[Scott Carey, Doug Cutting, Thiruvalluvan M. G],0,5,332,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/TestReflectJob.java,143,161,160,159,0,[Doug Cutting, Scott Carey],0,2,52,No
+1,lang/java/ipc/src/test/java/org/apache/avro/specific/TestSpecificDatumWriter.java,39,69,62,55,0,[Doug Cutting, Scott Carey],0,4,100,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/TestAvroOutputFormat.java,20,36,36,36,0,[Doug Cutting],0,1,2,No
+1,lang/java/avro/src/main/java/org/apache/avro/UnresolvedUnionException.java,22,39,39,39,0,[Doug Cutting],0,1,6,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/TestRpcPluginOrdering.java,84,126,113,80,0,[Doug Cutting, Scott Carey, Stephen Gargan],1,6,141,Si
+1,lang/java/tools/src/main/java/org/apache/avro/tool/Main.java,82,7,2,1,0,[Scott Carey, Doug Cutting],0,3,67,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/TetherTool.java,78,100,97,78,0,[Scott Carey, Thiruvalluvan M. G],1,3,11,Si
+1,lang/java/tools/src/test/java/org/apache/avro/tool/TestDataFileTools.java,219,55,36,30,0,[Scott Carey, Doug Cutting],0,2,5,No
+1,lang/java/avro/src/main/java/org/apache/avro/AvroRemoteException.java,28,7,6,5,0,[Scott Carey, Doug Cutting],0,2,98,No
+1,lang/java/avro/src/main/java/org/apache/avro/util/ByteBufferInputStream.java,71,4,3,3,0,[Scott Carey],0,1,62,No
+1,lang/java/avro/src/main/java/org/apache/avro/util/ByteBufferOutputStream.java,90,4,3,3,0,[Scott Carey],0,1,62,No
+1,lang/java/compiler/src/main/java/org/apache/avro/compiler/specific/ProtocolTask.java,77,21,18,16,0,[Scott Carey, Doug Cutting],0,2,97,No
+1,lang/java/compiler/src/main/java/org/apache/avro/compiler/specific/SchemaTask.java,18,11,9,7,0,[Scott Carey, Doug Cutting],0,2,97,No
+1,lang/java/compiler/src/main/java/org/apache/avro/compiler/specific/SpecificCompiler.java,665,336,276,139,0,[Scott Carey, Doug Cutting],0,6,140,No
+1,lang/java/compiler/src/test/java/org/apache/avro/compiler/idl/TestIdl.java,135,7,6,5,0,[Scott Carey, Doug Cutting],0,2,64,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/generic/GenericRequestor.java,74,30,24,15,0,[Scott Carey, Doug Cutting],0,3,78,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/generic/GenericResponder.java,52,25,19,15,0,[Scott Carey, Doug Cutting],0,2,67,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/reflect/ReflectRequestor.java,63,11,7,5,0,[Scott Carey, Doug Cutting],0,2,68,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/reflect/ReflectResponder.java,46,11,7,5,0,[Scott Carey, Doug Cutting],0,2,67,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/specific/SpecificRequestor.java,143,83,63,31,0,[Scott Carey, Doug Cutting],0,4,83,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/specific/SpecificResponder.java,85,49,24,15,0,[Scott Carey, Doug Cutting],0,3,67,No
+1,lang/java/ipc/src/test/java/org/apache/avro/compiler/specific/Avro14SpecificCompiler.java,252,289,6,6,0,[Scott Carey, Doug Cutting],0,2,81,No
+1,lang/java/ipc/src/test/java/org/apache/avro/compiler/specific/TestSpecificCompiler.java,666,413,409,401,0,[Scott Carey, Doug Cutting],0,3,101,No
+1,lang/java/ipc/src/test/java/org/apache/avro/compiler/specific/TestTemplatedCompilerFidelity.java,68,87,1,1,0,[Scott Carey, Doug Cutting],0,2,81,No
+1,lang/java/maven-plugin/src/main/java/org/apache/avro/mojo/SchemaMojo.java,52,17,12,7,0,[Scott Carey, Doug Cutting, Thiruvalluvan M. G],0,4,101,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/IdlTool.java,60,2,1,1,0,[Scott Carey],0,1,62,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/InduceSchemaTool.java,58,4,2,2,0,[Scott Carey],0,1,62,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/RpcReceiveTool.java,161,8,5,3,0,[Scott Carey],0,2,105,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/RpcSendTool.java,100,6,3,2,0,[Scott Carey],0,2,105,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/SpecificCompilerTool.java,113,144,138,74,0,[Scott Carey, Doug Cutting],1,3,70,Si
+1,lang/java/tools/src/main/java/org/apache/avro/tool/Tool.java,32,0,0,0,0,[Scott Carey],0,1,62,No
+1,lang/java/ipc/src/test/java/org/apache/avro/DataFileInteropTest.java,78,103,103,103,0,[Scott Carey],1,1,4,Si
+1,lang/java/ipc/src/test/java/org/apache/avro/TestProtocolHttps.java,54,70,70,70,0,[Bruce Mitchener Jr],0,1,1,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/BufferedBinaryEncoder.java,170,207,206,205,0,[Doug Cutting, Scott Carey],0,2,78,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/EncoderFactory.java,306,370,353,334,0,[Doug Cutting, Scott Carey],0,3,84,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/BinaryFragmentToJsonTool.java,68,8,4,2,0,[Doug Cutting, Scott Carey],0,3,78,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/DataFileWriteTool.java,120,4,2,2,0,[Doug Cutting],0,1,35,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/JsonToBinaryFragmentTool.java,63,13,8,5,0,[Doug Cutting, Scott Carey],0,2,78,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/Util.java,94,38,15,9,0,[Doug Cutting, Thiruvalluvan M. G],0,2,37,No
+1,lang/java/avro/src/main/java/org/apache/avro/io/DirectBinaryEncoder.java,101,133,133,133,0,[Scott Carey],0,1,43,No
+1,lang/java/avro/src/test/java/org/apache/avro/io/LegacyBinaryEncoder.java,176,210,210,210,0,[Scott Carey],0,1,43,No
+1,lang/java/avro/src/test/java/org/apache/avro/io/TestBinaryEncoderFidelity.java,174,190,190,190,0,[Scott Carey],0,1,43,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/DataFileReadTool.java,58,16,6,3,0,[Scott Carey, Doug Cutting],0,2,45,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/SnappyCodec.java,66,157,120,81,0,[Doug Cutting],0,3,6,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/FromTextTool.java,114,72,53,45,0,[Doug Cutting, Thiruvalluvan M. G],0,2,4,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/ToTextTool.java,71,6,3,3,0,[Doug Cutting],0,1,2,No
+1,lang/java/tools/src/test/java/org/apache/avro/tool/TestTextFileTools.java,129,147,146,144,0,[Doug Cutting, Thiruvalluvan M. G],0,2,4,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroAsTextInputFormat.java,37,61,61,61,0,[Doug Cutting],0,1,3,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroAsTextRecordReader.java,82,98,98,98,0,[Doug Cutting],0,1,3,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/TestAvroAsTextInputFormat.java,45,61,61,61,0,[Doug Cutting],0,1,3,No
+1,lang/java/mapred/src/main/java/org/apache/avro/mapred/AvroTextOutputFormat.java,117,134,134,134,0,[Doug Cutting],0,1,4,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/TestAvroTextOutputFormat.java,74,90,90,90,0,[Doug Cutting],0,1,4,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/TestAvroTextSort.java,40,11,3,3,0,[Doug Cutting],0,1,4,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/CallFuture.java,144,162,162,162,0,[Doug Cutting],0,1,10,No
+1,lang/java/ipc/src/main/java/org/apache/avro/ipc/Callback.java,18,39,39,39,0,[Doug Cutting],0,1,10,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestProtocolNetty.java,29,49,48,47,0,[Doug Cutting],0,2,13,No
+1,lang/java/ipc/src/test/java/org/apache/avro/ipc/TestNettyServerWithCallbacks.java,527,589,567,345,0,[Doug Cutting],0,5,89,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/tether/TestWordCountTether.java,114,144,137,127,0,[Doug Cutting, Thiruvalluvan M. G],0,3,9,No
+1,lang/java/mapred/src/test/java/org/apache/avro/mapred/TestGenericJob.java,138,156,156,156,0,[Doug Cutting],0,1,1,No
+1,lang/java/tools/src/test/compiler/output/Player.java,263,339,303,235,0,[Doug Cutting],0,3,43,No
+1,lang/java/tools/src/test/compiler/output/Position.java,7,11,11,11,0,[Doug Cutting],0,1,4,No
+1,lang/java/tools/src/test/java/org/apache/avro/tool/TestSpecificCompilerTool.java,116,134,134,134,0,[Doug Cutting],0,1,4,No
+1,lang/java/avro/src/main/java/org/apache/avro/data/ErrorBuilder.java,30,47,47,47,0,[Doug Cutting],0,1,36,No
+1,lang/java/avro/src/main/java/org/apache/avro/data/RecordBuilder.java,13,30,30,30,0,[Doug Cutting],0,1,36,No
+1,lang/java/avro/src/main/java/org/apache/avro/data/RecordBuilderBase.java,203,230,225,215,0,[Doug Cutting],0,2,39,No
+1,lang/java/avro/src/main/java/org/apache/avro/generic/GenericRecordBuilder.java,243,288,274,260,0,[Doug Cutting],0,2,39,No
+1,lang/java/avro/src/main/java/org/apache/avro/specific/SpecificErrorBuilderBase.java,105,124,124,124,0,[Doug Cutting],0,1,36,No
+1,lang/java/avro/src/main/java/org/apache/avro/specific/SpecificRecordBuilderBase.java,34,53,53,53,0,[Doug Cutting],0,1,36,No
+1,lang/java/avro/src/test/java/org/apache/avro/data/RecordBuilderBaseTest.java,75,93,93,76,0,[Doug Cutting],0,2,40,No
+1,lang/java/avro/src/test/java/org/apache/avro/generic/TestGenericRecordBuilder.java,72,90,90,90,0,[Doug Cutting],0,1,36,No
+1,lang/java/ipc/src/test/java/org/apache/avro/generic/TestDeepCopy.java,84,121,111,102,0,[Doug Cutting],0,2,71,No
+1,lang/java/ipc/src/test/java/org/apache/avro/specific/TestSpecificErrorBuilder.java,55,73,73,73,0,[Doug Cutting],0,1,36,No
+1,lang/java/ipc/src/test/java/org/apache/avro/specific/TestSpecificRecordBuilder.java,129,147,147,147,0,[Doug Cutting],0,1,36,No
+1,lang/java/protobuf/src/main/java/org/apache/avro/protobuf/ProtobufData.java,307,358,341,310,0,[Doug Cutting],0,4,46,No
+1,lang/java/protobuf/src/main/java/org/apache/avro/protobuf/ProtobufDatumReader.java,64,94,88,87,0,[Doug Cutting],0,3,41,No
+1,lang/java/protobuf/src/main/java/org/apache/avro/protobuf/ProtobufDatumWriter.java,49,67,67,67,0,[Doug Cutting],0,1,6,No
+1,lang/java/protobuf/src/test/java/org/apache/avro/protobuf/TestProtobuf.java,63,83,81,77,0,[Doug Cutting],0,3,8,No
+1,lang/java/avro/src/main/java/org/apache/avro/file/SeekableByteArrayInput.java,25,42,42,42,0,[Doug Cutting],0,1,1,No
+1,lang/java/avro/src/test/java/org/apache/avro/file/TestSeekableByteArrayInput.java,70,86,86,86,0,[Doug Cutting],0,1,1,No
+1,lang/java/tools/src/main/java/org/apache/avro/tool/DataFileGetMetaTool.java,77,94,94,94,0,[Doug Cutting],0,1,2,No
+1,lang/java/ipc/src/test/java/org/apache/avro/TestDataFileSpecific.java,61,77,77,77,0,[Doug Cutting],0,1,2,No
+1,lang/java/archetypes/avro-service-archetype/src/main/resources/archetype-resources/src/main/java/service/SimpleOrderService.java,31,50,50,32,0,[Doug Cutting],0,2,7,No
+1,lang/java/archetypes/avro-service-archetype/src/main/resources/archetype-resources/src/main/java/transport/SimpleOrderServiceClient.java,60,79,79,61,0,[Doug Cutting],0,2,7,No
+1,lang/java/archetypes/avro-service-archetype/src/main/resources/archetype-resources/src/main/java/transport/SimpleOrderServiceEndpoint.java,48,67,67,49,0,[Doug Cutting],0,2,7,No
+1,lang/java/archetypes/avro-service-archetype/src/main/resources/archetype-resources/src/test/java/integration/SimpleOrderServiceIntegrationTest.java,68,87,87,69,0,[Doug Cutting],0,2,7,No
+1,lang/java/thrift/src/main/java/org/apache/avro/thrift/ThriftData.java,222,319,279,202,0,[Doug Cutting],0,4,52,No
+1,lang/java/thrift/src/main/java/org/apache/avro/thrift/ThriftDatumReader.java,74,101,96,96,0,[Doug Cutting],0,2,46,No
+1,lang/java/thrift/src/main/java/org/apache/avro/thrift/ThriftDatumWriter.java,40,58,58,58,0,[Doug Cutting],0,1,11,No
+1,lang/java/thrift/src/test/java/org/apache/avro/thrift/TestThrift.java,76,92,92,72,0,[Doug Cutting],0,2,13,No
+1,lang/java/thrift/src/test/java/org/apache/avro/thrift/test/E.java,43,47,47,47,0,[Doug Cutting],0,1,11,No
+1,lang/java/thrift/src/test/java/org/apache/avro/thrift/test/Error.java,311,316,316,316,0,[Doug Cutting],0,1,11,No
+1,lang/java/thrift/src/test/java/org/apache/avro/thrift/test/Foo.java,1563,1567,1567,1567,0,[Doug Cutting],0,1,11,No
+1,lang/java/thrift/src/test/java/org/apache/avro/thrift/test/Nested.java,311,316,316,316,0,[Doug Cutting],0,1,11,No
+1,lang/java/thrift/src/test/java/org/apache/avro/thrift/test/Test.java,1487,1544,1518,1489,0,[Doug Cutting],0,2,13,No
+1,lang/java/protobuf/src/test/java/org/apache/avro/protobuf/Test.java,1646,1648,1648,1648,0,[Doug Cutting],0,1,1,No
+1,lang/java/avro/src/main/java/org/apache/avro/data/Json.java,167,184,184,184,0,[Doug Cutting],0,1,1,No

@@ -17,15 +17,13 @@ public class Commit {
 	
 	private String sha;
 	
-	private List<FileCommitted> commitFile;
+	private List<FileCommitted> commitFile = new ArrayList<>();
 
 	public Commit(String message, String date, String auth, String sha){
 		
 		this.message = message;
 		
 		this.date = LocalDate.parse(date, formatter);
-		
-		this.commitFile = new ArrayList<>();
 		
 		this.auth = auth;
 		

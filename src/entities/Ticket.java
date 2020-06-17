@@ -124,19 +124,17 @@ public class Ticket {
 	}
 
 	//find fix commit
-	public void setCommitFix(List<Commit> commitsTicket, Commit commitFix) {
+	public void setCommitFix(Commit commitFix) {
 		
-		LocalDate fixCommitDate = commitFix.getDate();
+		LocalDate newDate = commitFix.getDate();
 		
-		for(int i = 0; i<commitsTicket.size(); i++) {
-					
-			if(this.resolutionDate == null || this.resolutionDate.compareTo(fixCommitDate)>0) {
-				
-				setResolutionDate(fixCommitDate);
-				this.commitFix = commitFix;
-								
-			}
+		//If there's no resolutionDate or this one is greater then the one we have the value is changed
+		if( this.resolutionDate == null || this.resolutionDate.compareTo(newDate) < 0) {
 			
+			setResolutionDate(newDate);
+			
+			this.commitFix = commitFix;
+		
 		}
 
 	}

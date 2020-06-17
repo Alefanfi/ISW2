@@ -142,11 +142,11 @@ public final class GetMetrics {
 				
 				LocalDate createdDate = LocalDate.parse(formattedCreatedDate, formatter);
 				
-				LocalDate releaseDate = release.get((release.size()/2)+1).getReleaseDate();
+				LocalDate releaseDate = release.get(release.size()/2).getReleaseDate();
 				
 				//compare the ticket's date to the release's date
 				
-				if(createdDate.isBefore(releaseDate)) {
+				if(createdDate.compareTo(releaseDate)<0) {
 					
 					/*if the ticket's date is previous than the release's date (the first half of the project), 
 					 * 
@@ -247,11 +247,11 @@ public final class GetMetrics {
 					
 				   LocalDate date = LocalDate.parse(formattedDate, formatter);					
 					
-				   LocalDate releaseDate = release.get((release.size()/2)+1).getReleaseDate();
+				   LocalDate releaseDate = release.get(release.size()/2).getReleaseDate();
 				   
 				   //Take the commit from the first half of the project
 										
-				   if(date.isBefore(releaseDate)) {
+				   if(date.compareTo(releaseDate)<0) {
 				   
 					   Commit c = new Commit(message, formattedDate, author, sha);
 					   
@@ -279,7 +279,7 @@ public final class GetMetrics {
 		
 	}
 	
-	/* if a ticket is found in the commit, the function add this commit in the list commitsTicket */
+	/* if a ticket is found in the commit, the function add this commit in the list commitsTicket and search the fix commit*/
 	
 	public static void associatingCommitToTickets(List<Ticket> tickets, List<Commit> commits) {
 	
@@ -299,7 +299,7 @@ public final class GetMetrics {
 					   //add commit in the list of ticket's commit
 					   tickets.get(j).addCommit(commits.get(i1));
 					   
-					   break;
+					   tickets.get(j).setCommitFix(commits.get(i1));
 				   }
 				   
 			   }
@@ -435,4 +435,72 @@ public final class GetMetrics {
 	
 	}
 	
+	//Returns the number of LOC in a file
+	
+	public static int getLoc(FileCommitted file) {
+		
+		String[] lines;
+				
+		String content = file.getContent();
+		
+		lines = content.split("\n");
+		
+    	return lines.length;
+		
+	}
+	
+	//Returns the number of comments in a file
+	
+	public static int countComment(FileCommitted file) {
+
+		 int count = 0;
+		 
+		 String content = file.getContent();
+		 
+		 String[] lines = content.split("\n");
+		 
+		 for(int j=0; j < lines.length; j++) {
+			 
+			 if(lines[j].startsWith("//") || (lines[j].startsWith("/*") && lines[j].endsWith("*/"))) {
+				 
+				 count ++;
+				 	 
+			 } else if(lines[j].startsWith("/*") && !lines[j].endsWith("*/")) {
+				 
+				 int k = j;
+				 
+				 do {
+					 
+					 count ++;
+					 
+					 k++;
+				 
+				 }while (!lines[k].endsWith("*/") && k<lines.length-1); 
+		
+			 }
+			 
+		 }
+	 
+		 return count;
+	 
+	}	
+	
+	// count the size of a file
+	
+	public static void countSize(List<FileCommitted> fileList) {
+		
+		for(int i=0; i < fileList.size(); i++) {
+			
+			int loc = getLoc(fileList.get(i));
+			
+			int comment = countComment(fileList.get(i));
+			
+			int size = loc - comment;
+			
+			fileList.get(i).setSize(size);			
+			
+		}
+		
+	}
+
 }
