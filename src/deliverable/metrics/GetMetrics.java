@@ -99,7 +99,7 @@ public final class GetMetrics {
 		
 		Integer j = 0;
 		Integer i = 0;
-		Integer total = 1;
+		int total = 1;
 	
 		do {
 		
@@ -211,7 +211,7 @@ public final class GetMetrics {
 			   
 			//Takes all commits
 			     
-			String url = "https://api.github.com/repos/apache/"+ projName +"/commits?&per_page=100&page="+page.toString();
+			String url = "https://api.github.com/repos/apache/"+ projName +"/commits?&per_page=100&page="+ page.toString();
 			  
 			try{
 				

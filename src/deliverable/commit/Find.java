@@ -38,7 +38,7 @@ public final class Find {
 	   tickets = new ArrayList<>();
 	   Integer j = 0;
 	   Integer i = 0;
-	   Integer total = 1;
+	   int total = 1;
 	   String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 	   
 	   LOGGER.info("Searching tickets...");

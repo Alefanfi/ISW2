@@ -5,43 +5,43 @@ import java.util.List;
 
 public class Result {
 	
-	private Integer release;
+	private int release;
 	
 	private String file;
 	
-	private Integer size = 0;
+	private int size = 0;
 	
-	private Integer locTouched = 0;
+	private int locTouched = 0;
 	
-	private Integer locAdded = 0;
+	private int locAdded = 0;
 	
-	private Integer maxLocAdded = 0;
+	private int maxLocAdded = 0;
 	
-	private float avgLocAdded = 0;
+	private int avgLocAdded = 0;
 	
 	private List<String> auth = new ArrayList<>();
 
-	private Integer nFix = 0;
+	private int nFix = 0;
 	
-	private Integer nR = 0;
+	private int nR = 0;
 	
-	private Integer chgSetSize = 0;
+	private int chgSetSize = 0;
 	
 	private String buggy = "No";
 
-	public Result(Integer release, String file) {
+	public Result(int release, String file) {
 		
 		this.release = release;
 		this.file = file;
 	}
 		
-	public void setRelease(Integer release) {
+	public void setRelease(int release) {
 	
 		this.release = release;
 		
 	}
 	
-	public Integer getRelease() {
+	public int getRelease() {
 		return release;
 	}
 
@@ -49,36 +49,36 @@ public class Result {
 		return file;
 	}
 
-	public Integer getSize() {
+	public int getSize() {
 		return size;
 	}
 
-	public Integer getLocTouched() {
+	public int getLocTouched() {
 		return locTouched;
 	}
 
-	public Integer getLocAdded() {
+	public int getLocAdded() {
 		return locAdded;
 	}
 
-	public Integer getMaxLocAdded() {
+	public int getMaxLocAdded() {
 		return maxLocAdded;
 	}
 
-	public float getAvgLocAdded() {
+	public int getAvgLocAdded() {
 		return avgLocAdded;
 	}
 
-	public Integer getnFix() {
+	public int getnFix() {
 		return nFix;
 	}
 
-	public Integer getnR() {
+	public int getnR() {
 		return nR;
 	}
 
-	public Integer getChgSetSize() {
-		return chgSetSize;
+	public int getChgSetSize() {
+		return (chgSetSize - 1);
 	}
 
 	public String getBuggy() {
@@ -91,49 +91,49 @@ public class Result {
 		
 	}
 	
-	public void setSize(Integer size) {
+	public void setSize(int size) {
 	
 		this.size = size;
 		
 	}
 
-	public void setLocTouched(Integer locTouched) {
+	public void setLocTouched(int locTouched) {
 	
 		this.locTouched = locTouched;
 		
 	}
 
-	public void setLocAdded(Integer locAdded) {
+	public void setLocAdded(int locAdded) {
 	
 		this.locAdded = locAdded;
 		
 	}
 
-	public void setMaxLocAdded(Integer maxLocAdded) {
+	public void setMaxLocAdded(int maxLocAdded) {
 	
 		this.maxLocAdded = maxLocAdded;
 		
 	}
 
-	public void setAvgLocAdded(float avgLocAdded) {
+	public void setAvgLocAdded(int avgLocAdded) {
 	
 		this.avgLocAdded = avgLocAdded;
 		
 	}
 
-	public void setnFix(Integer nFix) {
+	public void setnFix(int nFix) {
 	
 		this.nFix = nFix;
 		
 	}
 
-	public void setnR(Integer nR) {
+	public void setnR(int nR) {
 	
 		this.nR = nR;
 		
 	}
 	
-	public void setChgSetSize(Integer chgSetSize) {
+	public void setChgSetSize(int chgSetSize) {
 	
 		this.chgSetSize = chgSetSize;
 		
@@ -187,18 +187,18 @@ public class Result {
 	
 	//Adds an author to the list
 		
-	public void addAuth(String auth) {
+	public void addAuth(String author) {
 
-		if(!this.auth.contains(auth)) {
+		if(!this.auth.contains(author)){
 		
-			this.auth.add(auth);
+			this.auth.add(author);
 			
 		}
 			
 	}
 	
 	public int getAuth() {
-		return auth.size();
+		return this.auth.size();
 	}
 
 	public void setAuth(List<String> auth) {

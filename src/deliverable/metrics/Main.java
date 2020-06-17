@@ -11,15 +11,13 @@ import util.ReadPropertyFile;
 
 public class Main {
 	
-	static Integer numVersions;
-	
 	private static Logger logger = Logger.getLogger(Main.class.getName());
 	
 	public static void main(String[] args) throws JSONException, IOException, ParseException {
 		
 		//Get token and project name from conf.properties
 		
-		String token = PropertiesUtils.getProperty(ReadPropertyFile.NEWTOKEN);
+		String token = PropertiesUtils.getProperty(ReadPropertyFile.TOKEN);
 		
 		String project = PropertiesUtils.getProperty(ReadPropertyFile.PROJECT);
 		

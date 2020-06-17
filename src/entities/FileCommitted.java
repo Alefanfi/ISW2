@@ -6,11 +6,11 @@ public class FileCommitted {
 	
 private String filename;
 	
-	private Integer lineChange;
+	private int lineChange;
 	
-	private Integer lineDelete;
+	private int lineDelete;
 	
-	private Integer lineAdded;
+	private int lineAdded;
 	
 	private LocalDate date;
 	
@@ -18,9 +18,9 @@ private String filename;
 	
 	private String content;
 	
-	private Integer size;
+	private int size;
 
-	public FileCommitted(String filename, Integer lineChange, Integer lineDelete, Integer lineAdded, LocalDate date, String url, String content) {
+	public FileCommitted(String filename, int lineChange, int lineDelete, int lineAdded, LocalDate date, String url, String content) {
 		
 		this.filename = filename;
 		
@@ -56,11 +56,11 @@ private String filename;
 		this.date = date;
 	}
 	
-	public Integer getLineChange() {
+	public int getLineChange() {
 		return lineChange;
 	}
 
-	public void setLineChange(Integer lineChange) {
+	public void setLineChange(int lineChange) {
 		this.lineChange = lineChange;
 	}
 
@@ -72,19 +72,19 @@ private String filename;
 		this.filename = filename;
 	}
 
-	public Integer getLineDelete() {
+	public int getLineDelete() {
 		return lineDelete;
 	}
 
-	public void setLineDelete(Integer lineDelete) {
+	public void setLineDelete(int lineDelete) {
 		this.lineDelete = lineDelete;
 	}
 
-	public Integer getLineAdded() {
+	public int getLineAdded() {
 		return lineAdded;
 	}
 
-	public void setLineAdded(Integer lineAdded) {
+	public void setLineAdded(int lineAdded) {
 		this.lineAdded = lineAdded;
 	}
 
@@ -96,11 +96,11 @@ private String filename;
 		this.content = content;
 	}
 
-	public Integer getSize() {
+	public int getSize() {
 		return size;
 	}
 
-	public void setSize(Integer size) {
+	public void setSize(int size) {
 		this.size = size;
 	}
 
