@@ -28,9 +28,9 @@ public class Ticket {
 		
 		this.commitsTicket = new ArrayList<>();
 		
-		this.affectedVersions = new ArrayList<>();
+		this.affectedVersions = affectedVersions;
 		
-		this.fixVersions = new ArrayList<>();
+		this.fixVersions = fixVersions;
 		
 		this.createdDate = createdDate;
 		

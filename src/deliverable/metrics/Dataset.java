@@ -367,7 +367,7 @@ public class Dataset {
 				
 				//Checks release
 				
-				if(id !=-1 && id<numRelease && fileList != null) { 
+				if(id != -1 && id<numRelease && fileList != null) { 
 					
 					for(int w=0; w<fileList.size(); w++) {
 						
@@ -383,7 +383,7 @@ public class Dataset {
 			
 			id = getReleaseId(release, newTicketList.get(k).getFixVersions().get(0));
 			
-			if(id != -1 && id < numRelease && !fileList.isEmpty()) {
+			if(id != -1 && id < numRelease && fileList != null) {
 				
 				for(int i = 0; i<fileList.size(); i++) {
 					
