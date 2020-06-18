@@ -445,7 +445,7 @@ public class Dataset {
 	
 	}
 	
-	//function that permitte to start retrieve information about the project
+	/*function that permitte to start retrieve information about the project*/
 	
 	public static void retrieveInfo(String projName, String token) throws JSONException, IOException, ParseException {
 		
@@ -471,7 +471,7 @@ public class Dataset {
 		GetMetrics.countSize(commitedFile);
 			
 		//Create list of result
-		createDataset(release, tickets, commits, projName);
+		createDataset(release, commits, projName);
 		
 		LOGGER.info("Dataset done!");
 	
