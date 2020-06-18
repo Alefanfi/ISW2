@@ -231,7 +231,7 @@ public class Dataset {
 	
 	//creating the value that will be print in the file csv
 	
-	public static void createDataset(List<Release> release, List<Ticket> tickets, List<Commit> commits, String projName) throws FileNotFoundException {
+	public static void createDataset(List<Release> release, List<Commit> commits, String projName) throws FileNotFoundException {
 		
 		List<Result> result = new ArrayList<>();
 		List<HashMap<String,Result>> maps = new ArrayList<>();
@@ -439,7 +439,7 @@ public class Dataset {
 					+ ";" + result.getBuggy());
 		}
 		
-		//printer.flush();
+		printer.flush();
 		
 		printer.close();
 	
