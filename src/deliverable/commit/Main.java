@@ -25,7 +25,7 @@ public class Main {
 		
 		PrintStream printer = new PrintStream(new File("output.csv"));
 		  
-		printer.println("Ticket,Date");
+		printer.println("Ticket;Date");
 
 	    String tkt = null;
 	    LocalDate d;
@@ -46,7 +46,7 @@ public class Main {
 	    	  
 	    	}
 	    	   
-	    	printer.println(tkt + "," + d.getMonthValue() + "/" + d.getYear());
+	    	printer.println(tkt + ";" + d.getMonthValue() + "/" + d.getYear());
 	       
 	    }
 	       	       

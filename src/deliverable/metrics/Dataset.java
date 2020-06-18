@@ -251,7 +251,7 @@ public class Dataset {
 			maps.add(new HashMap<String, Result>());
 			
 			while(commits.size()>0 && commits.get(0).getDate().compareTo(releaseDate)<0) {
-				
+
 				//get the first commit
 				c = commits.get(0);
 				
@@ -261,115 +261,125 @@ public class Dataset {
 					
 					addResult(maps, c, fileList, i, result);
 					
-					commits.remove(c);
 				}
+				
+				commits.remove(c);
 				
 			}
 			
 		}
 		
-		//Affected version
-		
-		List<String> version = null;
-		int id;
-		
-		p=0;
-		numAffected = 0;
-		numBugs = Math.round(tickets.size()/100);
-		numAnalyseBugs = 0;
-		
-		List<Ticket> ticketList = checkFixVersionTickets(tickets, release);
-		
-		compareAffecteVersionToFixVersion(ticketList, release);
-		
-		for(int i = 0; i < ticketList.size(); i++) {
-			
-			c = ticketList.get(i).getCommitFix();
-			
-			version = tickets.get(i).getAffectedVersions();
-			
-			if(c == null || ticketList.get(i).getFixVersions().size() == 0) {
-				
-				continue;
-			
-			}else {
-				
-				fileList = c.getCommitFile();
-				
-				if(version.isEmpty()) {
-					
-					//if there isn't affected version use proportion
-					
-					findProportion(ticketList.get(i));
-					
-					proportionFunction(ticketList.get(i));
-				
-				
-				}else if(!version.isEmpty() && !fileList.isEmpty()) {
-					
-					for(int j=0; j<version.size(); j++) {
-					
-						id = getReleaseId(release, version.get(j));
-						
-						checkVersion(fileList, maps, false, id);
-					
-					}
-					
-				}
-				
-			}
-			
-			//fixed Version
-			
-			id = getReleaseId(release, ticketList.get(i).getFixVersions().get(0));
-			
-			if(id < release.size()/2) {
-				
-				checkVersion(fileList, maps, true, id);
-					
-			}
-				
-		}	
+		computeBugginess(maps);
 			
 		//Write the dataset in the file .csv
 		writeDataset(projName, result);
 		
 	}
 		
+	//take file and analyse it or using proportion or using the affected version take from jira
 	
+	private static void computeBugginess(List<HashMap<String, Result>> maps) {
+		
+		//Affected version
+		
+		List<String> version = null;
+		int id;
+		Commit c;		
+		List<FileCommitted> fileList = null;
+				
+		
+		p=0;
+		numAffected = 0;
+		numBugs = Math.round(tickets.size()/100);
+		numAnalyseBugs = 0;
+	
+		List<Ticket> ticketList = checkFixVersionTickets(tickets, release);
+					
+		compareAffecteVersionToFixVersion(ticketList, release);
+				
+		for(int i = 0; i < ticketList.size(); i++) {
+						
+			c = ticketList.get(i).getCommitFix();
+		
+			version = tickets.get(i).getAffectedVersions();
+					
+			if(c == null || ticketList.get(i).getFixVersions().size() == 0) {
+						
+				continue;
+				
+			}else {
+						
+				fileList = c.getCommitFile();
+						
+				if(version.isEmpty()) {
+					
+					//if there isn't affected version use proportion		
+					
+					findProportion(ticketList.get(i));
+
+					proportionFunction(ticketList.get(i));
+											
+				}else {
+
+					for(int j=0; j<version.size(); j++) {
+	
+						id = getReleaseId(release, version.get(j));
+
+						checkVersion(fileList, maps, false, id);	
+						
+					}			
+					
+				}						
+				
+			}					
+			
+			//fixed Version
+
+			id = getReleaseId(release, ticketList.get(i).getFixVersions().get(0));
+
+			if(id < release.size()/2) {
+
+				checkVersion(fileList, maps, true, id);
+
+			}
+
+		}
+		
+	}
+	
+	//check if a file is buggy or not
+
 	private static void checkVersion(List<FileCommitted> fileList, List<HashMap<String, Result>> maps, boolean updateFix, int id) {
 		
 		Result r = null;
-					
-		//if(fileList == null && fileList.size() != 0) {
 				
-			//Checks release
-					
-			if(id<release.size()/2 && !fileList.isEmpty()) { 
-							
-				for(int w=0; w<fileList.size(); w++) {
-					
-					r = maps.get(id).get(fileList.get(w).getFilename());
-																
-					if(r != null) {
+		//Checks release
+						
+		if(id<release.size()/2) {
+									
+			for(int w=0; w<fileList.size(); w++) {
 								
-						r.setBuggy("Si");
+				r = maps.get(id).get(fileList.get(w).getFilename());
+																				
+				if(r != null) {
+												
+					r.setBuggy("Si");
+											
+					if(updateFix) {
 						
-						if(updateFix) {
-						
-							r.addFix();
-							
-						}
+						r.addFix();						
 						
 					}
-						
-				}	
-					
-			}
+				
+				}
 			
-		//}
+			}	
+	
+		}
 		
 	}
+	
+	//check the file and, if it's not new update info, else create the new result
 		
 	private static void addResult(List<HashMap<String, Result>> maps, Commit c, List<FileCommitted> fileList, int i, List<Result> result) {
 		
@@ -417,17 +427,19 @@ public class Dataset {
 		  
 		printer.println("Release; File; Size; LocTouched; LocAdded; MaxLocAdded; AvgLocAdded; Nauth; Nfix; Nr; ChgSetSize; Buggy");
 		
+		//take result from the resaltList and print them in the file
+		
 		for(int i=0; i<resultList.size(); i++) {
 			
 			result = resultList.get(i);
 			
 			printer.println(result.getRelease() + ";" + result.getFile() + ";" + result.getSize() + ";" + result.getLocTouched() 
-					+ ";" + result.getLocAdded()  + ";" + result.getMaxLocAdded() + ";" + result.getAvgLocAdded() + "," 
+					+ ";" + result.getLocAdded()  + ";" + result.getMaxLocAdded() + ";" + result.getAvgLocAdded() + ";" 
 					+ result.getAuth() + ";" + result.getnFix() + ";" + result.getnR() + ";" + result.getChgSetSize() 
 					+ ";" + result.getBuggy());
 		}
 		
-		printer.flush();
+		//printer.flush();
 		
 		printer.close();
 	
@@ -461,9 +473,7 @@ public class Dataset {
 		//Create list of result
 		createDataset(release, tickets, commits, projName);
 		
-		//creatingResultList(release, tickets, commits, projName);
-		
-		LOGGER.info("Done!");
+		LOGGER.info("Dataset done!");
 	
 	}
 }

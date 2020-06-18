@@ -17,8 +17,6 @@ public class Result {
 	
 	private int maxLocAdded = 0;
 	
-	private int avgLocAdded = 0;
-	
 	private List<String> auth = new ArrayList<>();
 
 	private int nFix = 0;
@@ -66,7 +64,8 @@ public class Result {
 	}
 
 	public int getAvgLocAdded() {
-		return avgLocAdded;
+
+		return this.locAdded/this.nR;
 	}
 
 	public int getnFix() {
@@ -112,12 +111,6 @@ public class Result {
 	public void setMaxLocAdded(int maxLocAdded) {
 	
 		this.maxLocAdded = maxLocAdded;
-		
-	}
-
-	public void setAvgLocAdded(int avgLocAdded) {
-	
-		this.avgLocAdded = avgLocAdded;
 		
 	}
 
@@ -173,7 +166,12 @@ public class Result {
 		
 	public void addChgSetSize(int num) {
 	
-		this.chgSetSize = this.chgSetSize + num - 1;
+		this.chgSetSize = this.chgSetSize + num -1;
+		
+		if(this.chgSetSize<0) {
+			
+			this.chgSetSize = 0;
+		}
 		
 	}
 	
@@ -198,6 +196,7 @@ public class Result {
 	}
 	
 	public int getAuth() {
+		
 		return this.auth.size();
 	}
 

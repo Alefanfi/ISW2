@@ -2,7 +2,6 @@ package deliverable.metrics;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.logging.Logger;
 
 import org.json.JSONException;
 
@@ -10,8 +9,6 @@ import util.PropertiesUtils;
 import util.ReadPropertyFile;
 
 public class Main {
-	
-	private static Logger logger = Logger.getLogger(Main.class.getName());
 	
 	public static void main(String[] args) throws JSONException, IOException, ParseException {
 		
@@ -24,8 +21,6 @@ public class Main {
 		/* Start to get information about project that will be used for calculating metrics */
 		
 		Dataset.retrieveInfo(project, token);
-		
-		logger.info("Done");
 		 	
 	}
 
