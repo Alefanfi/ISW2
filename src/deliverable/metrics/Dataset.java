@@ -434,7 +434,7 @@ public class Dataset {
 			result = resultList.get(i);
 			
 			printer.println(result.getRelease() + ";" + result.getFile() + ";" + result.getSize() + ";" + result.getLocTouched() 
-					+ ";" + result.getLocAdded()  + ";" + result.getMaxLocAdded() + ";" + result.getAvgLocAdded() + ";" 
+					+ ";" + result.getLocAdded()  + ";" + result.getMaxLocAdded() + ";" + String.format("%.2f", result.getAvgLocAdded()) + ";" 
 					+ result.getAuth() + ";" + result.getnFix() + ";" + result.getnR() + ";" + result.getChgSetSize() 
 					+ ";" + result.getBuggy());
 		}

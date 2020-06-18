@@ -1,5 +1,6 @@
 package entities;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,8 @@ public class Result {
 	private int nR = 0;
 	
 	private int chgSetSize = 0;
+	
+	DecimalFormat df = new DecimalFormat("#.####");
 	
 	private String buggy = "No";
 
@@ -63,10 +66,11 @@ public class Result {
 		return maxLocAdded;
 	}
 
-	public int getAvgLocAdded() {
+	public float getAvgLocAdded() {
 
 		return this.locAdded/this.nR;
 	}
+	
 
 	public int getnFix() {
 		return nFix;
