@@ -78,7 +78,14 @@ public class Result {
 	}
 
 	public int getChgSetSize() {
-		return (chgSetSize - 1);
+		
+		if(this.chgSetSize<0) {
+		
+			this.chgSetSize = 0;
+		
+		}
+		
+		return chgSetSize;
 	}
 
 	public String getBuggy() {
@@ -167,12 +174,7 @@ public class Result {
 		
 	public void addChgSetSize(int num) {
 	
-		this.chgSetSize = this.chgSetSize + num -1;
-		
-		if(this.chgSetSize<0) {
-			
-			this.chgSetSize = 0;
-		}
+		this.chgSetSize += num -1;
 		
 	}
 	

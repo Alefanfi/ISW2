@@ -23,7 +23,7 @@ public class Dataset {
 	
 	static int numBugs;
 
-	static int p;
+	static float p;
 	
 	static int numAnalyseBugs;
 	
@@ -211,7 +211,7 @@ public class Dataset {
 	
 	//compute the proportional number (calculate the moving window)
 	
-	public static int proportionFunction(Ticket t) {
+	public static float proportionFunction(Ticket t) {
 		
 		numAffected += t.getAffectedVersions().size();
 		
@@ -219,9 +219,11 @@ public class Dataset {
 		
 		if(numAnalyseBugs>=numBugs) {
 			
-			p = numAffected/numAnalyseBugs;
+			p = numAffected/(float)numAnalyseBugs;
 			
 			numAnalyseBugs = 0;
+			
+			numAffected = 0;
 			
 		}
 		
@@ -287,7 +289,6 @@ public class Dataset {
 		Commit c;		
 		List<FileCommitted> fileList = null;
 				
-		
 		p=0;
 		numAffected = 0;
 		numBugs = Math.round(tickets.size()/100);
@@ -320,6 +321,8 @@ public class Dataset {
 					proportionFunction(ticketList.get(i));
 											
 				}else {
+					
+					proportionFunction(ticketList.get(i));
 
 					for(int j=0; j<version.size(); j++) {
 	
