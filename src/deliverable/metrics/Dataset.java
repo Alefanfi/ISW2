@@ -187,14 +187,26 @@ public class Dataset {
 		
 		String openingVersion = t.getOpeningVersion();
 		
-		double fv = getReleaseId(release, fixVersion) + 1;
+		int fv = getReleaseId(release, fixVersion) + 1;
 		
-		double ov = getReleaseId(release, openingVersion) + 1;
+		int ov = getReleaseId(release, openingVersion) + 1;
 		
-		int iv = (int) Math.round(fv-(fv-ov)*p);
+		//check value of fv and ov
+		
+		if(fv<ov) {
+    		
+    		int var = ov;
+    		ov = fv;
+    		fv = var;
+    		
+    	}
+		
+		//compute injected version
+		
+		int iv = (int) Math.floor(fv-(fv-ov)*p);
 		
 		//Checks if the value is negative
-    	if(iv <= 0) {
+    	if(iv < 0) {
     		
     		iv = 1;
     	
@@ -202,7 +214,7 @@ public class Dataset {
 		
     	//Add new affected version to the ticket
     	
-		for(int i=iv-1; i<ov; i++) {
+		for(int i=iv-1; i<fv-1; i++) {
 			
 			t.addAffectedVersion(release.get(i).getVersion());
 		}
@@ -271,16 +283,17 @@ public class Dataset {
 			
 		}
 		
-		computeBugginess(maps);
+		computeBugginess(maps, result);
 			
 		//Write the dataset in the file .csv
+		
 		writeDataset(projName, result);
 		
 	}
 		
 	//take file and analyse it or using proportion or using the affected version take from jira
 	
-	private static void computeBugginess(List<HashMap<String, Result>> maps) {
+	private static void computeBugginess(List<HashMap<String, Result>> maps,List<Result> result) {
 		
 		//Affected version
 		

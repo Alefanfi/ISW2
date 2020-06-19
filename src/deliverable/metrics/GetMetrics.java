@@ -419,11 +419,11 @@ public final class GetMetrics {
 				
 				td = tickets.get(j).getCreatedDate();
 			
-				if(td.isBefore(release.get(0).getReleaseDate()) && !td.isAfter(release.get(0).getReleaseDate())) {
+				if(td.compareTo(release.get(0).getReleaseDate())<0 && !(td.compareTo(release.get(0).getReleaseDate())>0)) {
 										
 					tickets.get(j).setOpeningVersion(release.get(0).getVersion());
 												
-				} else if((td.isBefore(dr) && td.isAfter(rd)) || td.isAfter(release.get(release.size()/2-1).getReleaseDate()) || td.compareTo(rd) == 0 ) {
+				} else if((td.compareTo(dr)<0 && td.compareTo(rd)>0) || td.compareTo(release.get(release.size()/2-1).getReleaseDate())>0 || td.compareTo(rd) == 0 ) {
 					
 					tickets.get(j).setOpeningVersion(release.get(i+1).getVersion());
 				
