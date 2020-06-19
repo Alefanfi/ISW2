@@ -419,7 +419,7 @@ public final class GetMetrics {
 				
 				td = tickets.get(j).getCreatedDate();
 			
-				if(td.compareTo(release.get(0).getReleaseDate())<0 && !(td.compareTo(release.get(0).getReleaseDate())>0)) {
+				if(td.compareTo(release.get(0).getReleaseDate())<0 && !(td.isAfter(release.get(0).getReleaseDate()))) {
 										
 					tickets.get(j).setOpeningVersion(release.get(0).getVersion());
 												

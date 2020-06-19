@@ -283,7 +283,7 @@ public class Dataset {
 			
 		}
 		
-		computeBugginess(maps, result);
+		computeBugginess(maps);
 			
 		//Write the dataset in the file .csv
 		
@@ -293,7 +293,7 @@ public class Dataset {
 		
 	//take file and analyse it or using proportion or using the affected version take from jira
 	
-	private static void computeBugginess(List<HashMap<String, Result>> maps,List<Result> result) {
+	private static void computeBugginess(List<HashMap<String, Result>> maps) {
 		
 		//Affected version
 		
